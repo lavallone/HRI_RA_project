@@ -1,0 +1,12 @@
+IMAGE
+<*,*,*,*>:  img/cat.jpg
+----
+TEXT
+<*,*,it,*>: Anche a me piacciono i gatti
+<*,*,*,*>:  I also like cats
+----
+TTS
+<*,*,it,*>: Anche a me piacciono i gatti
+<*,*,*,*>:  I also like cats
+----
+

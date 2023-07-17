@@ -1,0 +1,12 @@
+IMAGE
+<*,*,*,*>: img/trash/piantina.jpg
+----
+TEXT
+<*,*,it,*>: Spero ti sia divertito. Arrivederci.
+<*,*,*,*>:  I hope you have enjoyed. Goodbye but not for ever.
+----
+TTS
+<*,*,it,*>: Spero ti sia divertito. Arrivederci.
+<*,*,*,*>:  I hope you have enjoyed. Goodbye but not for ever.
+----
+

@@ -1,0 +1,11 @@
+TEXT
+<*,*,it,*>: butta
+<*,*,*,*>:  puts
+----
+TTS
+<*,*,it,*>: butta
+<*,*,*,*>:  puts
+----
+IMAGE
+<*,*,*,*>:  img/trash/piantina.jpg
+----

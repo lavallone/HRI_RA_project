@@ -1,0 +1,19 @@
+TEXT
+<*,*,it,*>: Scegli un servizio
+<*,*,*,*>:  Choose one service
+----
+TTS
+<*,*,it,*>: Scegli un servizio
+<*,*,*,*>:  Choose one service
+----
+BUTTONS
+news
+<*,*,it,*>: NEWS
+<*,*,*,*>:  NEWS
+eff
+<*,*,it,*>: Frasi ad effetto
+<*,*,*,*>:  Effect sentences
+impact
+<*,*,it,*>: Calcola il tuo impatto
+<*,*,*,*>:  Your green impact
+----

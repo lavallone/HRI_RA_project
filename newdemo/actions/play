@@ -1,0 +1,26 @@
+IMAGE
+<*,*,*,*>:  img/trash/carta.jpg
+----
+TEXT
+<*,*,it,*>: Scegli il bidone corretto
+<*,*,*,*>:  Choose the correct option trash
+----
+TTS
+<*,*,it,*>: Scegli il bidone corretto
+<*,*,*,*>:  Choose the correct option trash
+----
+BUTTONS
+paper
+<*,*,it,*>: PAPER
+<*,*,*,*>:  CARTA
+glass
+<*,*,it,*>: GLASS
+<*,*,*,*>:  VETRO
+compost
+<*,*,it,*>: COMPOST
+<*,*,*,*>:  UMIDO
+plastic
+<*,*,it,*>: PLASTICA
+<*,*,*,*>:  PLASTIC
+----
+
