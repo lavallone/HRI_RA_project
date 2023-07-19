@@ -1,23 +1,19 @@
 IMAGE
-<*, *, *, *>:  img/trash/robot_trash.webp
+<*,*,*,*>:  img/trash/robot_trash.webp
 ----
 TEXT
-<*,*,it,*>: Benvenuto - che cosa vogliamo fare? Qual &agrave la tua età?
-<*,*,*,*>:  Welcome - what do you want to do? Select your age
+<*,*,*,*>:  Hi! I am Pepper! I am the EnviroMate of this school! The principal put me here to teach you about recycling!
 ----
 GESTURE
 <*,*,*,*>: animations/Stand/Gestures/Hey_1
 ----
 TTS
-<*,*,it,*>: Ciao! Benvenuto!
-<*,*,*,*>:  Hello! Welcome!
+<*,*,*,*>:  Hi! I am Pepper! I am the EnviroMate of this school! The principal put me here to teach you about recycling!
 ----
 BUTTONS
-child
-<*,*,it,*>: Scuola elementare
+elementary
 <*,*,*,*>:  Elementary school
-guy
-<*,*,it,*>: Scuola media
+middle
 <*,*,*,*>:  High school
 ----
 

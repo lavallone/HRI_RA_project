@@ -5,4 +5,5 @@
 <adult,f,it,professor>
 <*,m,it,professor>
 <*,*, it, visitor>
-<*, *, *, *>
+<junior, *, *, *>
+<adult, *, *, *>

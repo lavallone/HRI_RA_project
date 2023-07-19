@@ -1,5 +1,5 @@
 IMAGE
-<*,*,*,*>:  img/hri.jpg
+<*,*,*,*>:  img/trash/baby_yoda.gif
 ----
 TEXT
 <*,*,it,*>: Ciao, di cosa hai bisogno?
@@ -17,4 +17,3 @@ put_trash
 <*,*,it,*>: Devo lo butto?
 <*,*,*,*>:  Where I can put? 
 ----
-

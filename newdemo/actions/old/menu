@@ -1,0 +1,12 @@
+IMAGE
+<*, *, *, *>:  waiter/img/pepperwaiter.jpg
+----
+TEXT_title
+<*, *, *, *>:  Menu!
+----
+TEXT
+<*,*,*,*>:  Fine, let me show what is in our menu!
+----
+GESTURE
+<*,*,*,*>: animations/Stand/Gestures/Hey_2
+----

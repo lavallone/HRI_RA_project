@@ -1,17 +1,17 @@
 TEXT_title
-<*,*,it,*>: Bravo! 
 <*,*,*,*>: Good job
 ----
 IMAGE
-<*,*,*,*>: img/yes.jpg
+<*,*,*,*>: img/trash/mario_happy.webp
 ----
 TEXT
-<*,*,it,*>: Bravo! Risposta esatta.
-<*,*,*,*>: Good job - You're answer is rigth
+<*,*,*,*>: Good job - Your  answer is rigth!
 ----
 TTS
-<*,*,it,*>: Bravo! Risposta esatta.
-<*,*,*,*>: Good job! Correct answer.
+<*,*,*,*>: Good job! Correct answer. YUPPY!
 ----
+BUTTONS 
+next
+<*,*,*,*>: NEXT QUESTION
 
 

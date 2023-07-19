@@ -1,0 +1,20 @@
+IMAGE
+<elementary,*,*,*>:  img/trash/hri.jpg
+<middle,*,*,*>:  img/trash/robot_bidoni.webp
+----
+TEXT
+<*,*,*,*>: What do you want to do?
+----
+TTS
+<*,*,*,*>:  Hi, what do you want to do?
+----
+BUTTONS
+news
+<middle,*,*,*>: News
+play
+<elementary,*,*,*>:  PLAY 
+recycle
+<elementary,*,*,*>: RECYCLE
+<middle,*,*,*>: Recycle
+----
+

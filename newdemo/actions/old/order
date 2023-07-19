@@ -1,0 +1,12 @@
+IMAGE
+<*, *, *, *>:  waiter/img/order.jpg
+----
+TEXT_title
+<*, *, *, *>:  Order
+----
+TEXT
+<*,*,*,*>:  Choose the dish that you wanna order
+----
+GESTURE
+<*,*,*,*>: animations/Stand/Gestures/Hey_1
+----

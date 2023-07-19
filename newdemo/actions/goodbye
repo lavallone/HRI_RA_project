@@ -1,12 +1,22 @@
 IMAGE
-<*,*,*,*>: img/trash/piantina.jpg
+<*,*,*,*>: img/trash/roboteplastica.jpg
 ----
 TEXT
-<*,*,it,*>: Spero ti sia divertito. Arrivederci.
-<*,*,*,*>:  I hope you have enjoyed. Goodbye but not for ever.
+<elementary, *, en, play>: I hope you enjoyed it! You did a great job! See you next time!
+
+<elementary,*,en, recycle>:  I hope I helped you out see you next time and remember to respect the ENVIRONMENT!
+
+<middle, *,en, news>: I hope you learned something! See you next time! Remember to respect the environment!
+
+<midlle,*,en, recycle>:  I hope I helped you out see you next time and remember to respect the environment!
 ----
 TTS
-<*,*,it,*>: Spero ti sia divertito. Arrivederci.
-<*,*,*,*>:  I hope you have enjoyed. Goodbye but not for ever.
+<elementary, *, en, play>: I hope you enjoyed it! You did a great job! See you next time!
+
+<elementary,*,en, recycle>:  I hope I helped you out see you next time and remember to respect the ENVIRONMENT!
+
+<middle, *,en, news>: I hope you learned something! See you next time! Remember to respect the environment!
+
+<midlle,*,en, recycle>:  I hope I helped you out see you next time and remember to respect the environment!
 ----
 

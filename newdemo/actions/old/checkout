@@ -1,0 +1,15 @@
+IMAGE
+<*, *, *, *>:  waiter/img/pepperwaiter.jpg
+----
+TEXT_title
+<*, *, *, *>:  Checkout!
+----
+TEXT
+<*,*,*,*>:  Please select your table id!
+----
+GESTURE
+<*,*,*,*>: animations/Stand/Gestures/Hey_1
+----
+TTS
+<*,*,*,*>: Nice! Please tell me what is your table id: I will resume your order!
+----

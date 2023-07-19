@@ -1,26 +1,16 @@
-IMAGE
-<*,*,*,*>:  img/trash/carta.jpg
-----
 TEXT
-<*,*,it,*>: Scegli il bidone corretto
-<*,*,*,*>:  Choose the correct option trash
+<*,*,*,*>: What is the right trash?
 ----
 TTS
-<*,*,it,*>: Scegli il bidone corretto
-<*,*,*,*>:  Choose the correct option trash
+<*,*,*,*>: What is the right trash?
 ----
 BUTTONS
 paper
-<*,*,it,*>: PAPER
-<*,*,*,*>:  CARTA
-glass
-<*,*,it,*>: GLASS
-<*,*,*,*>:  VETRO
+<*,*,*,*>:  PAPER
+waste
+<*,*,*,*>:  WASTE
 compost
-<*,*,it,*>: COMPOST
-<*,*,*,*>:  UMIDO
+<*,*,*,*>:  COMPOST
 plastic
-<*,*,it,*>: PLASTICA
 <*,*,*,*>:  PLASTIC
 ----
-
