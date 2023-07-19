@@ -51,4 +51,24 @@ problem.add_fluent(level)
 problem.add_action(move)
 problem.add_action(throw_bin)
 
+
 # define OBJECTS
+list_letter = [('A', 30),('B', 36),('C', 20),('D', 25),('E', 40),('F', 24),('G', 18),('H', 24),('I', 108)]
+cells = []
+for elem in list_letter:
+  for i in range(elem[1]):
+    cells.append(unified_planning.model.Object(f'{elem[0]}{i+1}', Cell))
+
+robot = unified_planning.model.Object('robot', Agent)
+bin1 = unified_planning.model.Object('bin1', Bin)
+bin2 = unified_planning.model.Object('bin2', Bin)
+bin3 = unified_planning.model.Object('bin3', Bin)
+
+
+problem.add_objects(cells)
+
+problem.add_object(robot)
+problem.add_object(bin1)
+problem.add_object(bin2)
+problem.add_object(bin3)
+
