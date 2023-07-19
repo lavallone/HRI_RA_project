@@ -1,0 +1,15 @@
+(define (domain school)
+    (:requirements :strips)
+    (:predicates (is_agent ?x) (is_bin ?x)(at ?x ?y)(adj ?x ?y) (throw ?x))
+    (:functions (level ?x))
+    (:action move
+        :parameters (?r ?from ?to)
+        :effect (and (not(at ?r ?from)) (at ?r ?to))
+        :precondition (and (is_agent ?r) (at ?r ?from) (adj ?from ?to) )
+    )
+    (:action throw_in_bin
+        :parameters (?r ?b ?pos)
+        :effect (and (throw ?b))
+        :precondition (and (is_agent ?r) (is_bin ?b) (at ?r ?pos) (at ?b ?pos) (< (level ?b) 3))
+    )
+)
