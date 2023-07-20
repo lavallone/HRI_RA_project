@@ -103,7 +103,7 @@
             (adj H7 I8) (adj I8 H7)
     )
     ; plastic goal
-    (:goal ( or (and (at robot C9) (at bin1 C9) (throw bin1) ) (and (at robot E39) (at bin2 E39) (throw bin2) ) (and (at robot H12) (at bin3 H12) (throw bin3)) ) )
+    (:goal ( or (and (at robot C9) (at bin1 C9) (throw_in_bin bin1) ) (and (at robot E39) (at bin2 E39) (throw_in_bin bin2) ) (and (at robot H12) (at bin3 H12) (throw_in_bin bin3)) ) )
     ; paper goal
     ;(:goal (or ((at robot D22) (at robot E38) (at robot G12))) )
     ; compost goal
