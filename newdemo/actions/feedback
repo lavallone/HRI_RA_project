@@ -1,0 +1,21 @@
+IMAGE
+<*,*,*,*>: img/questionar.png
+----
+TEXT
+<*,*,*,*>: Leave a feedback of your experience
+----
+TTS
+<*,*,*,*>: Leave a feedback of your experience
+----
+BUTTONS
+1
+<*,*,*,*>: 1
+2
+<*,*,*,*>: 2
+3
+<*,*,*,*>: 3
+4
+<*,*,*,*>: 4
+5
+<*,*,*,*>: 5
+----

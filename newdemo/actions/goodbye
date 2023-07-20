@@ -1,5 +1,6 @@
 IMAGE
-<*,*,*,*>: img/trash/roboteplastica.jpg
+<elementary,*,*,*>: img/walle-eve-robot.jpg
+<middle,*,*,*>: img/hand.png
 ----
 TEXT
 <elementary, *, en, play>: I hope you enjoyed it! You did a great job! See you next time!

@@ -1,6 +1,6 @@
 IMAGE
 <elementary,*,*,*>:  img/trash/hri.jpg
-<middle,*,*,*>:  img/trash/robot_bidoni.webp
+<middle,*,*,*>:  img/robot-economia-circolare.png
 ----
 TEXT
 <*,*,*,*>: What do you want to do?
