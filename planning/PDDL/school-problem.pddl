@@ -18,14 +18,14 @@
            (at bin1 C9) (at bin2 E39) (at bin3 H12)
 
             ;room A
-            (adj A1 A7) (adj A1 A7) (adj A2 A1) (adj A2 A3) (adj A2 A8) (adj A3 A2) (adj A3 A9) (adj A3 A4) (adj A4 A3) (adj A4 A10) (adj A4 A5) (adj A5 A4) (adj A5 A11) (adj A5 A6) (adj A6 A5) (adj A6 A12)
+            (adj A1 A2) (adj A1 A7) (adj A2 A1) (adj A2 A3) (adj A2 A8) (adj A3 A2) (adj A3 A9) (adj A3 A4) (adj A4 A3) (adj A4 A10) (adj A4 A5) (adj A5 A4) (adj A5 A11) (adj A5 A6) (adj A6 A5) (adj A6 A12)
             (adj A7 A1) (adj A7 A8) (adj A7 A13) (adj A8 A2) (adj A8 A7) (adj A8 A9) (adj A8 A14) (adj A9 A3) (adj A9 A8) (adj A9 A10) (adj A9 A15) (adj A10 A4) (adj A10 A9) (adj A10 A11) (adj A10 A16) (adj A11 A10) (adj A11 A5) (adj A11 A12) (adj A11 A6) (adj A12 A11) (adj A12 A18)
             (adj A13 A7) (adj A13 A14) (adj A13 A19) (adj A14 A8) (adj A14 A13) (adj A14 A15) (adj A14 A20) (adj A15 A9)  (adj A15 A14) (adj A15 A16) (adj A15 A21) (adj A16 A15) (adj A16 A10) (adj A16 A17) (adj A16 A22) (adj A17 A16)  (adj A17 A18) (adj A17 A11) (adj A17 A23) (adj A18 A17) (adj A18 A12) (adj A18 A24)
             (adj A19 A20) (adj A19 A13) (adj A19 A25) (adj A20 A19) (adj A20 A21) (adj A20 A14) (adj A20 A26) (adj A21 A20) (adj A21 A22) (adj A21 A15) (adj A21 A27) (adj A22 A21) (adj A22 A23) (adj A22 A16) (adj A22 A28) (adj A23 A22) (adj A23 A24) (adj A23 A17) (adj A23 A29) (adj A24 A23) (adj A24 A18) (adj A24 A30)
             (adj A25 A26) (adj A25 A19) (adj A26 A27) (adj A26 A25) (adj A26 A20) (adj A27 A26) (adj A27 A28) (adj A27 A21) (adj A28 A27) (adj A28 A29) (adj A28 A22) (adj A29 A30) (adj A29 A28) (adj A29 A23) (adj A30 A29) (adj A30 A24)
 
             ;room B
-            (adj B1 B7) (adj B1 B7) (adj B2 B1) (adj B2 B3) (adj B2 B8) (adj B3 B2) (adj B3 B9) (adj B3 B4) (adj B4 B3) (adj B4 B10) (adj B4 B5) (adj B5 B4) (adj B5 B11) (adj B5 B6) (adj B6 B5) (adj B6 B12)
+            (adj B1 B2) (adj B1 B7) (adj B2 B1) (adj B2 B3) (adj B2 B8) (adj B3 B2) (adj B3 B9) (adj B3 B4) (adj B4 B3) (adj B4 B10) (adj B4 B5) (adj B5 B4) (adj B5 B11) (adj B5 B6) (adj B6 B5) (adj B6 B12)
             (adj B7 B1) (adj B7 B8) (adj B7 B13) (adj B8 B2) (adj B8 B7) (adj B8 B9) (adj B8 B14) (adj B9 B3) (adj B9 B8) (adj B9 B10) (adj B9 B15) (adj B10 B4) (adj B10 B9) (adj B10 B11) (adj B10 B16) (adj B11 B10) (adj B11 B5) (adj B11 B12) (adj B11 B6) (adj B12 B11) (adj B12 B18)
             (adj B13 B7) (adj B13 B14) (adj B13 B19) (adj B14 B8) (adj B14 B13) (adj B14 B15) (adj B14 B20) (adj B15 B9)  (adj B15 B14) (adj B15 B16) (adj B15 B21) (adj B16 B15) (adj B16 B10) (adj B16 B17) (adj B16 B22) (adj B17 B16) (adj B17 B18) (adj B17 B11) (adj B17 B23) (adj B18 B17) (adj B18 B12) (adj B18 B24)
             (adj B19 B20) (adj B19 B13) (adj B19 B25) (adj B20 B19) (adj B20 B21) (adj B20 B14) (adj B20 B26) (adj B21 B20) (adj B21 B22) (adj B21 B15) (adj B21 B27) (adj B22 B21) (adj B22 B23) (adj B22 B16) (adj B22 B28) (adj B23 B22) (adj B23 B24) (adj B23 B17) (adj B23 B29) (adj B24 B23) (adj B24 B18) (adj B24 B30)
@@ -53,18 +53,18 @@
             (adj E31 E32) (adj E31 E21) (adj E32 E31) (adj E32 E33) (adj E32 E22) (adj E33 E23) (adj E33 E32) (adj E33 E34) (adj E34 E33) (adj E34 E35) (adj E34 E24) (adj E35 E34) (adj E35 E36) (adj E35 E25) (adj E36 E35) (adj E36 E37) (adj E36 E26) (adj E37 E36) (adj E37 E38) (adj E37 E27) (adj E38 E37) (adj E38 E39) (adj E38 E28) (adj E39 E38) (adj E39 E40) (adj E39 E29) (adj E40 E39) (adj E40 E30)
 
             ;room F
-            (adj F1 F7) (adj F1 F7) (adj F2 F1) (adj F2 F3) (adj F2 F8) (adj F3 F2) (adj F3 F9) (adj F3 F4) (adj F4 F3) (adj F4 F10) (adj F4 F5) (adj F5 F4) (adj F5 F11) (adj F5 F6) (adj F6 F5) (adj F6 F12)
+            (adj F1 F2) (adj F1 F7) (adj F2 F1) (adj F2 F3) (adj F2 F8) (adj F3 F2) (adj F3 F9) (adj F3 F4) (adj F4 F3) (adj F4 F10) (adj F4 F5) (adj F5 F4) (adj F5 F11) (adj F5 F6) (adj F6 F5) (adj F6 F12)
             (adj F7 F1) (adj F7 F8) (adj F7 F13) (adj F8 F2) (adj F8 F7) (adj F8 F9) (adj F8 F14) (adj F9 F3) (adj F9 F8) (adj F9 F10) (adj F9 F15) (adj F10 F4) (adj F10 F9) (adj F10 F11) (adj F10 F16) (adj F11 F10) (adj F11 F5) (adj F11 F12) (adj F11 F6) (adj F12 F11) (adj F12 F18)
             (adj F13 F7) (adj F13 F14) (adj F13 F19) (adj F14 F8) (adj F14 F13) (adj F14 F15) (adj F14 F20) (adj F15 F9)  (adj F15 F14) (adj F15 F16) (adj F15 F21) (adj F16 F15) (adj F16 F10) (adj F16 F17) (adj F16 F22) (adj F17 F16)  (adj F17 F18) (adj F17 F11) (adj F17 F23) (adj F18 F17) (adj F18 F12) (adj F18 F24)
             (adj F19 F20) (adj F19 F13) (adj F20 F19) (adj F20 F21) (adj F20 F14) (adj F21 F20) (adj F21 F22) (adj F21 F15) (adj F22 F21) (adj F22 F16) (adj F22 F23) (adj F23 F22) (adj F23 F24) (adj F23 F17) (adj F24 F23) (adj F24 F18)
 
             ;room G
-            (adj F1 F7) (adj F1 F7) (adj F2 F1) (adj F2 F3) (adj F2 F8) (adj F3 F2) (adj F3 F9) (adj F3 F4) (adj F4 F3) (adj F4 F10) (adj F4 F5) (adj F5 F4) (adj F5 F11) (adj F5 F6) (adj F6 F5) (adj F6 F12)
-            (adj F7 F1) (adj F7 F8) (adj F7 F13) (adj F8 F2) (adj F8 F7) (adj F8 F9) (adj F8 F14) (adj F9 F3) (adj F9 F8) (adj F9 F10) (adj F9 F15) (adj F10 F4) (adj F10 F9) (adj F10 F11) (adj F10 F16) (adj F11 F10) (adj F11 F5) (adj F11 F12) (adj F11 F6) (adj F12 F11) (adj F12 F18)
-            (adj F13 F7) (adj F13 F14) (adj F14 F8) (adj F14 F13) (adj F14 F15) (adj F15 F9) (adj F15 F14) (adj F15 F16) (adj F16 F15) (adj F16 F10) (adj F16 F17) (adj F17 F16) (adj F17 F18) (adj F17 F11) (adj F18 F17) (adj F18 F12)
+            (adj G1 G2) (adj G1 G7) (adj G2 G1) (adj G2 G3) (adj G2 G8) (adj G3 G2) (adj G3 G9) (adj G3 G4) (adj G4 G3) (adj G4 G10) (adj G4 G5) (adj G5 G4) (adj G5 G11) (adj G5 G6) (adj G6 G5) (adj G6 G12)
+            (adj G7 G1) (adj G7 G8) (adj G7 G13) (adj G8 G2) (adj G8 G7) (adj G8 G9) (adj G8 G14) (adj G9 G3) (adj G9 G8) (adj G9 G10) (adj G9 G15) (adj G10 G4) (adj G10 G9) (adj G10 G11) (adj G10 G16) (adj G11 G10) (adj G11 G5) (adj G11 G12) (adj G11 G6) (adj G12 G11) (adj G12 G18)
+            (adj G13 G7) (adj G13 G14) (adj G14 G8) (adj G14 G13) (adj G14 G15) (adj G15 G9) (adj G15 G14) (adj G15 G16) (adj G16 G15) (adj G16 G10) (adj G16 G17) (adj G17 G16) (adj G17 G18) (adj G17 G11) (adj G18 G17) (adj G18 G12)
             
             ;room H
-            (adj H1 H7) (adj H1 H7) (adj H2 H1) (adj H2 H3) (adj H2 H8) (adj H3 H2) (adj H3 H9) (adj H3 H4) (adj H4 H3) (adj H4 H10) (adj H4 H5) (adj H5 H4) (adj H5 H11) (adj H5 H6) (adj H6 H5) (adj H6 H12)
+            (adj H1 H2) (adj H1 H7) (adj H2 H1) (adj H2 H3) (adj H2 H8) (adj H3 H2) (adj H3 H9) (adj H3 H4) (adj H4 H3) (adj H4 H10) (adj H4 H5) (adj H5 H4) (adj H5 H11) (adj H5 H6) (adj H6 H5) (adj H6 H12)
             (adj H7 H1) (adj H7 H8) (adj H7 H13) (adj H8 H2) (adj H8 H7) (adj H8 H9) (adj H8 H14) (adj H9 H3) (adj H9 H8) (adj H9 H10) (adj H9 H15) (adj H10 H4) (adj H10 H9) (adj H10 H11) (adj H10 H16) (adj H11 H10) (adj H11 H5) (adj H11 H12) (adj H11 H6) (adj H12 H11) (adj H12 H18)
             (adj H13 H7) (adj H13 H14) (adj H13 H19) (adj H14 H8) (adj H14 H13) (adj H14 H15) (adj H14 H20) (adj H15 H9)  (adj H15 H14) (adj H15 H16) (adj H15 H21) (adj H16 H15) (adj H16 H10) (adj H16 H17) (adj H16 H22) (adj H17 H16) (adj H17 H18) (adj H17 H11) (adj H17 H23) (adj H18 H17) (adj H18 H12) (adj H18 H24)
             (adj H19 H20) (adj H19 H13) (adj H20 H19) (adj H20 H21) (adj H20 H14) (adj H21 H20) (adj H21 H22) (adj H21 H15) (adj H22 H21) (adj H22 H16) (adj H22 H23) (adj H23 H22) (adj H23 H24) (adj H23 H17) (adj H24 H23) (adj H24 H18)
