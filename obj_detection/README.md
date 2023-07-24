@@ -5,4 +5,4 @@
 The dataset is available at this link [HRI_RA_dataset](https://universe.roboflow.com/sappia/hri-ra-mtc9l) and it has four categories: **plastic**, **paper**, **compost** and **trash**.
 ![](img.png)
 
-♻ Our model has the ability to recognize and classify different types of waste, providing precise guidance to users regarding where to throw each item. Our social robot **EnvironMate**, employs this perception capability when users ask it where a particular garbage object needs to be placed.
+♻ Our model has the ability to recognize and classify different types of waste, providing precise guidance to users regarding where to throw each item. Our social robot **EnvironMate**, employs this perception capability when users ask him where a particular garbage object needs to be placed.
