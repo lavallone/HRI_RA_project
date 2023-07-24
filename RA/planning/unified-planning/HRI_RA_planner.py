@@ -1,11 +1,13 @@
-# remember to install 
-# pip install --pre unified-planning[pyperplan,tamer,plot] for the planner engines
+# remember to run: 
+# pip install -r requirements.txt
 from unified_planning.shortcuts import *
+import json
 
 global coords2states_bins, states2coords_bins, coords2states_doors
 coords2states_bins = {(16,1) : "C9", (18,27): "E39", (2,28) : "H12", (18,7) : "D22", (18,26) : "E38", (7,28) : "G12", (15,12) : "I85", (1,20) : "I3",  (1,1) : "A1", (11,6) : "B30", (12,28) : "F18"}
 states2coords_bins = {'C9': (16, 1), 'E39': (18, 27), 'H12': (2, 28), 'D22': (18, 7), 'E38': (18, 26), 'G12': (7, 28), 'I85': (15, 12), 'I3': (1, 20), 'A1': (1, 1), 'B30': (11, 6), 'F18': (12, 28)}
 coords2states_doors = {(13,3) : ["B33", "C3"], (2,7) : ["A12", "I5"], (9,7) : ["B18", "I33"], (13,9) : ["D4", "I56"], (14,21) : ["E3", "I78"], (12,22) : ["F13", "I68"], (7,22) : ["G7", "I28"], (2,22) : ["H7", "I8"], (5,26) : ["G4", "H22"]}
+states2cells = json.load(open("../states2cells.json","r"))
 
 def plan(garbage_type, bins_fullness, random_doors):
 	"""
@@ -22,8 +24,8 @@ def plan(garbage_type, bins_fullness, random_doors):
 	STATES for performing PDDL plans.
  
 	The outputs are:
-		- is_plan: boolean  variable which tells us if there is a plan or not
-		- ris_plan: sequence of STATES to reach the plan, if there is any (we need a format to be able to perform the mapping STATES --> CELLS)
+		- ris_plan: sequence of STATES to reach the goal, if there isn't such plan its value is 'None'
+  					(we need a format to be able to perform the mapping STATES --> CELLS)
 		- bins_fullness (updated): is the bin into which we have to throw garbage in (is used to update 'bins_fullness')
 	"""
 	Cell = UserType('Cell')
@@ -201,8 +203,6 @@ def plan(garbage_type, bins_fullness, random_doors):
 	with OneshotPlanner(problem_kind = problem.kind) as planner:
 		result = planner.solve(problem)
 		if result.status == up.engines.PlanGenerationResultStatus.SOLVED_SATISFICING:
-			is_plan = True
-			print("Pyperplan returned: %s" % result.plan)
 			plan_split=str(result.plan).split("move(robot, ")[1:]
 			goal=(plan_split[-1].split(")")[0]).split(", ")[1]
 			ris_plan=[]
@@ -212,17 +212,20 @@ def plan(garbage_type, bins_fullness, random_doors):
 			# update the bin
 			bins_fullness[states2coords_bins[goal]] += 1
 		else:
-			is_plan = False
 			ris_plan = None
-			print("No plan found.")
 
-	return is_plan, ris_plan, bins_fullness
+	return ris_plan, bins_fullness
 
 if __name__ == "__main__":
     # parameters (set here only for experiments purposes)
 	garbage_type = "paper"
-	bins_fullness = {(16,1): 0, (18,27): 0, (2,28): 0, (18,7): 0, (18,26): 0, (7,28): 0, (15,12): 0, (1,20): 0, (1,1): 0, (11,6): 0, (12,28): 0}
-	random_doors = [(2,7), (9,7), (7,22)]  
-	is_plan, ris_plan, bins_fullness = plan(garbage_type, bins_fullness, random_doors)
-	print(ris_plan)
-	print(bins_fullness)
+	bins_fullness = {(16,1): 0, (18,27): 0, (2,28): 0, (18,7): 0, (18,26): 3, (7,28): 0, (15,12): 0, (1,20): 0, (1,1): 0, (11,6): 0, (12,28): 0}
+	random_doors = [(9, 7), (13, 9), (13, 3)]
+	ris_plan, bins_fullness = plan(garbage_type, bins_fullness, random_doors)
+	if ris_plan is not None:# a plan exists 
+		# convert plan from STATES to CELLS (for visualization purposes)
+		for i in range(len(ris_plan)):
+			ris_plan[i] = states2cells[ris_plan[i]]
+	else:
+		ris_plan = "<NO PLAN FOUND>"
+	print(str(ris_plan)+" - "+str(bins_fullness))
