@@ -13,9 +13,9 @@
               I51 I52 I53 I54 I55 I56 I57 I58 I59 I60 I61 I62 I63 I64 I65 I66 I67 I68 I69 I70 I71 I72 I73 I74 I75 I76 I77 I78 I79 I80 I81 I82 I83 I84 I85 I86 I87 I88 I89 I90 I91 I92 I93 I94 I95 I96 I97 I98 I99 I100 
               I101 I102 I103 I104 I105 I106 I107 I108
     )
-    (:init (is_agent robot) (at robot I90)
+    (:init (is_agent robot) (agent_at robot I90)
            (is_bin bin1) (is_bin bin2) (is_bin bin3) (=(level bin1) 2) (=(level bin2) 2) (=(level bin3) 1) 
-           (at bin1 C9) (at bin2 E39) (at bin3 H12)
+           (bin_at bin1 C9) (bin_at bin2 E39) (bin_at bin3 H12)
 
             ;room A
             (adj A1 A2) (adj A1 A7) (adj A2 A1) (adj A2 A3) (adj A2 A8) (adj A3 A2) (adj A3 A9) (adj A3 A4) (adj A4 A3) (adj A4 A10) (adj A4 A5) (adj A5 A4) (adj A5 A11) (adj A5 A6) (adj A6 A5) (adj A6 A12)
@@ -93,7 +93,7 @@
 
             ; all doors open
             (adj A12 I5) (adj I5 A12)
-            ;(adj B18 I33) (adj I33 B18)
+            (adj B18 I33) (adj I33 B18)
             (adj B33 C3) (adj C3 B33)
             (adj D4 I56) (adj I56 D4)
             (adj E3 I78) (adj I78 E3)
@@ -102,12 +102,6 @@
             (adj G4 H22) (adj H22 G4)
             (adj H7 I8) (adj I8 H7)
     )
-    ; plastic goal
-    (:goal ( or (and (at robot C9) (at bin1 C9) (throw_in_bin bin1) ) (and (at robot E39) (at bin2 E39) (throw_in_bin bin2) ) (and (at robot H12) (at bin3 H12) (throw_in_bin bin3)) ) )
-    ; paper goal
-    ;(:goal (or ((at robot D22) (at robot E38) (at robot G12))) )
-    ; compost goal
-    ;(:goal (or ((at robot A1) (at robot B30) (at robot F18))) )
-    ; trash goal
-    ;(:goal (or ((at robot I85) (at robot I3))) )
+    ; plastic goal example
+    (:goal ( or (and (agent_at robot C9) (bin_at bin1 C9) (throw_in_bin bin1) ) (and (agent_at robot E39) (bin_at bin2 E39) (throw_in_bin bin2) ) (and (agent_at robot H12) (bin_at bin3 H12) (throw_in_bin bin3)) ) )
 )

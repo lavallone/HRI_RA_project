@@ -1,0 +1,3 @@
+pyparsing
+networkx
+--pre unified-planning[pyperplan,tamer,plot]
