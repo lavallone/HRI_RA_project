@@ -14,7 +14,7 @@ from KR_RL.school_map import create_map
 from KR_RL.q_learning import Q_learning
 from planning.unified_planning.HRI_RA_planner import plan
 
-# mapping between positions for PDDL planning
+# mapping between positions for PDDL planning visualization
 global states2cells
 states2cells = json.load(open("planning/states2cells.json","r"))
 
@@ -91,7 +91,7 @@ if __name__ == "__main__":
     if plot_stats:
         random.seed(30) # for reproducibility
     
-    garbage_type = "compost" # given by the 'application' --> we need to take it from somewhere :)
+    garbage_type = "plastic" # given by the 'application' --> we need to take it from somewhere :)
     
     goals = define_goals(garbage_type) # we set the goals
     doors_closed = random_closed(3) # we randomly close 3 dooors of the school map
@@ -102,7 +102,7 @@ if __name__ == "__main__":
     my_map = create_map(x, trash_cans, window_size_x=3000, window_size_y=2000)
     problem_id = int(random.random()*100)
     plt.imshow(my_map)
-    plt.savefig(f'imgs/map_goals_{problem_id}.png')
+    plt.savefig(f'../imgs/map/map_goals_{problem_id}.png')
     matrix = [[row * 30 + col for col in range(30)] for row in range(20)]
     
     ###############################################################################################
@@ -130,7 +130,6 @@ if __name__ == "__main__":
         cells_adj_doors = [363, 423, 66, 68, 276, 278, 429, 369, 471, 411, 383, 381, 233, 231, 83, 81, 206, 146]
         cells_adj_doors = set(cells_adj_doors)
         states2cells_doors = {363 : 393, 423 : 393, 66 : 67, 68 : 67, 276 : 277, 278 : 277, 429 : 399, 369 : 399, 471 : 441, 411 : 441, 381 : 382, 383 : 382, 233 : 232, 231 : 232, 83 : 82, 81 : 82, 206 : 176, 146 : 176}
-
         shortest_path = []
         for i in range(len(ris_plan)):
             shortest_path.append(ris_plan[i])
@@ -181,4 +180,4 @@ if __name__ == "__main__":
         x[i,j] = 2
     my_map_path = create_map(x, trash_cans, window_size_x=3000, window_size_y=2000)
     plt.imshow(my_map_path)
-    plt.savefig(f'imgs/map_path_{problem_id}.png')
+    plt.savefig(f'../imgs/map/map_path_{problem_id}.png')
