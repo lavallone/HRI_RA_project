@@ -1,0 +1,12 @@
+IMAGE
+<*,*,*,*>:  img/bear.jpg
+----
+TEXT
+<*,*,it,*>: A me piacciono gli orsi polari
+<*,*,*,*>:  I like the polar bears 
+----
+TTS
+<*,*,it,*>: A me piacciono gli orsi polari
+<*,*,*,*>:  I like the polar bears 
+----
+

@@ -1,0 +1,12 @@
+IMAGE
+<*,*,*,*>:  img/dolphin.jpg
+----
+TEXT
+<*,*,it,*>: I delfini sono molto intelligenti
+<*,*,*,*>: Dolphins are very intelligent
+----
+TTS
+<*,*,it,*>: I delfini sono molto intelligenti
+<*,*,*,*>: Dolphins are very intelligent
+----
+

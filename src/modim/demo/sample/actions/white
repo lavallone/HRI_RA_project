@@ -1,0 +1,12 @@
+IMAGE
+<*,*,*,*>:  img/white.jpg
+----
+TEXT
+<*,*,it,*>: Guarda questo leone bianco!
+<*,*,*,*>:  Look at this white lion!
+----
+TTS
+<*,*,it,*>: Guarda questo leone bianco!
+<*,*,*,*>:  Look at this white lion!
+----
+

@@ -1,0 +1,21 @@
+version: "2.3"
+services:
+
+  modim:
+    image: iocchi/modim
+    container_name: modim
+    tty: true
+    network_mode: host
+    volumes:
+      - $MODIM_APP:/opt/modim_app
+    environment:
+      - MODIM_APP=/opt/modim_app
+
+  nginx:
+    image: nginx
+    container_name: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - $MODIM_APP:/usr/share/nginx/html
+

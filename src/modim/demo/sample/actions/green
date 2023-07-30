@@ -1,0 +1,12 @@
+IMAGE
+<*,*,*,*>:  img/green.jpg
+----
+TEXT
+<*,*,it,*>: Mi piace il verde della natura
+<*,*,*,*>:  I like the green in the nature
+----
+TTS
+<*,*,it,*>: Mi piace il verde della natura
+<*,*,*,*>:  I like the green in the nature
+----
+

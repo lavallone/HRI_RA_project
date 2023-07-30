@@ -1,0 +1,12 @@
+IMAGE
+<*,*,*,*>:  img/bird.jpg
+----
+TEXT
+<*,*,it,*>: Questi sono i miei uccellini favoriti
+<*,*,*,*>:  These are my favourite birds
+----
+TTS
+<*,*,it,*>: Questi sono i miei uccellini favoriti
+<*,*,*,*>:  These are my favourite birds
+----
+

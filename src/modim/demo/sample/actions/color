@@ -1,0 +1,35 @@
+IMAGE
+<*,*,*,*>:  img/rainbow.jpg
+----
+TEXT
+<*,*,it,*>: Qual è il tuo colore preferito?
+<*,*,*,*>:  What is your favourite color?
+----
+TTS
+<*,*,it,*>: Qual è il tuo colore preferito?
+<*,*,*,*>:  What is your favourite color?
+----
+BUTTONS
+green
+<*,*,it,*>: Verde
+<*,*,*,*>:  Green
+blue
+<*,*,it,*>: Blu
+<*,*,*,*>:  Blue
+red
+<*,*,it,*>: Rosso
+<*,*,*,*>:  Red
+yellow
+<*,*,it,*>: Giallo
+<*,*,*,*>:  Yellow
+orange
+<*,*,it,*>: Arancione
+<*,*,*,*>:  Orange
+white
+<*,*,it,*>: Bianco
+<*,*,*,*>:  White
+black
+<*,*,it,*>: Nero
+<*,*,*,*>:  Black
+----
+

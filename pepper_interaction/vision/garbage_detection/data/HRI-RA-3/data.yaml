@@ -1,0 +1,15 @@
+names:
+- compost
+- paper
+- plastic
+- trash
+nc: 4
+roboflow:
+  license: CC BY 4.0
+  project: hri-ra-mtc9l
+  url: https://universe.roboflow.com/sappia/hri-ra-mtc9l/dataset/3
+  version: 3
+  workspace: sappia
+test: ../test/images
+train: /home/lavallone/Desktop/HRI_RA_project/obj_detection/data/HRI-RA-3/train/images
+val: /home/lavallone/Desktop/HRI_RA_project/obj_detection/data/HRI-RA-3/valid/images

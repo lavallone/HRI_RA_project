@@ -1,0 +1,12 @@
+IMAGE
+<*,*,*,*>:  img/orange.jpg
+----
+TEXT
+<*,*,it,*>: Le arance sono arancioni!
+<*,*,*,*>:  Oranges are orange!
+----
+TTS
+<*,*,it,*>: Le arance sono arancioni!
+<*,*,*,*>:  Oranges are orange!
+----
+
