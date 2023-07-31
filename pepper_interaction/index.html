@@ -39,7 +39,7 @@
     <!-- image -->
     <p>
     <div align='center'> <img height=300 id='image_default' src="img/PEPPER.png" alt=""/> </div>
-    <div align='center'> <img height=300 id='image_default' src="" alt=""/></div>
+    <div align='center'> <img height=300 id='image_default' src="" alt=""/></div> <!-- possibility to add another image -->
     </p>
 
     <!-- text -->
@@ -70,13 +70,7 @@
     console.log("Trying connection...")
     wsrobot_init(ip,port);
 
-    function hello() {
-        console.log("runnig interaction...");
-        codews.send("im.robot.say('hello')\n");
-    }
-
   </script>
 
 </body>
 </html>
-

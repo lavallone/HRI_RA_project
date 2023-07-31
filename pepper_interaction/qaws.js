@@ -135,6 +135,3 @@ codews = new WebSocket(codeurl);
 codews.onopen = function(){
   console.log("codews connection received");
 }
-
-
-

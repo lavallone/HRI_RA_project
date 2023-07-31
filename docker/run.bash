@@ -9,7 +9,7 @@ if [ ! "$1" == "" ]; then
   VERSION=$1
 fi
 
-# change setings here if needed
+# change settings here if needed
 CAMERA_DEVICE=/dev/video0
 PEPPER_TOOLS_HOME=$HOME/src/Pepper/pepper_tools
 MODIM_HOME=$HOME/src/modim
@@ -47,7 +47,7 @@ docker run -it -d \
     -v $MODIM_HOME:/home/robot/src/modim \
     -v $HOME/.qibullet:/home/robot/.qibullet \
     -e MODIM_HOME=/home/robot/src/modim \
-    -e MODIM_APP=/home/robot/playground/interaction \
+    -e MODIM_APP=/home/robot/playground/pepper_interaction \
     $IMAGENAME:$VERSION
 
 
