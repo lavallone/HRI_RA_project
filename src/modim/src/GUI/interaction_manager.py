@@ -386,7 +386,7 @@ class InteractionManager:
         dir_path = 'imgs/super_recycling_imgs/'
         dict_trash = {}
 
-        for elem in os.listdir('/home/robot/playground/pepper_interaction/'+dir_path):
+        for elem in os.listdir('/home/robot/playground/'+dir_path):
             waste_class = elem.split('_')[0]
             dict_trash[elem] = waste_class
 
@@ -397,16 +397,16 @@ class InteractionManager:
         print('CLASS', path_waste)
         c = 0
         while c < 3: 
-            im.executeModality('IMAGE', path_waste)
-            ans = im.ask('play', timeout = 15)
+            self.executeModality('IMAGE', path_waste)
+            ans = self.ask('play', timeout = 15)
             if ans == class_wast: 
                 c += 1
-                im.execute('correct')
+                self.execute('correct')
                 img_waste = random.choice(list(dict_trash.keys()))
                 class_wast = dict_trash[img_waste] 
                 path_waste = dir_path+img_waste
             else: 
-                im.execute('wrong')
+                self.execute('wrong')
         return True
 
     def detect_garbage(self, img_path):

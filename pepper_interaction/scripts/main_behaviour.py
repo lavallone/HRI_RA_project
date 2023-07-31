@@ -30,8 +30,8 @@ def behaviour():
     DEBUG = True
     im.init()   
     
-    fd_w = open('/home/robot/playground/pepper_interaction/info_people.txt', 'a')
-    fd_r = open('/home/robot/playground/pepper_interaction/info_people.txt', 'r')
+    fd_w = open('/home/robot/playground/info_people.txt', 'a')
+    fd_r = open('/home/robot/playground/info_people.txt', 'r')
     
 
     #print(im.robot.alive)
@@ -99,12 +99,12 @@ def behaviour():
 
         im.robot.stopSensorMonitor()    
 
-        print('VOCA', im.vocabulary)
+        #print('VOCA', im.vocabulary)
 
         if someone:                 #start interaction
-            im.execute('presentation')
-            time.sleep(15)
+            im.ask('presentation', timeout = 10)
             new_user = im.robot.memory_service.getData('FakeRobot/ASR')
+            #new_user = 'leo lavalle 10'
             #print(new_user)
             new_user_s = new_user.split(' ')
             #print(new_user_s)
@@ -140,7 +140,7 @@ def behaviour():
 
             else:
                 if int(new_user_s[2]) < int('11'): im.profile[0] = 'elementary'
-                else: im.profile[0] = 'midlle'
+                else: im.profile[0] = 'middle'
                 #MODIFY PROFILE - lasciare solo vocale
                 #im.executeModality('TEXT', 'Welcom back '+new_user[0]+' 'new_user[1]+', what do you want to do?')
                 #im.executeModality('TTS', 'Welcom back '+new_user[0]+' 'new_user[1]+', what do you want to do?')
@@ -150,10 +150,8 @@ def behaviour():
             
         if(activity == 'recycle'):
             im.profile[3] = 'recycle'
-            im.execute('recycle') #only asr answer
-            time.sleep(15)
+            im.ask('recycle', timeout = 15) #only asr answer
             ans_rec = im.robot.memory_service.getData('FakeRobot/ASR')
-            time.sleep(10)
             print('ANSSSSS RECCC', ans_rec)
             ans_rec = ans_rec.split(' ')
             garbage_class = '' 
@@ -168,16 +166,15 @@ def behaviour():
             
             if(garbage_class == ''):
                 if(im.profile[0] == 'elementary'):
-                    im.executeModality('IMAGE', 'img/trash/walle.jpg')
+                    im.executeModality('IMAGE', 'imgs/trash/walle.jpg')
                 im.executeModality('TEXT', 'Let me see the object') #cambiare il text aggiungere tts
                 time.sleep(5)
 
-                #TODO 
-                # chiamare per fare object detection
                 img_path = "data/users_imgs/"+str(random.randint(1, 20))+".jpg"
                 garbage_class, ris_img_path= im.detect_garbage(img_path)
-                ris_img_path = "../../../../playground/pepper_interaction/vision/garbage_detection/"+ris_img_path
+                ris_img_path = "../../../../playground/vision/garbage_detection/"+ris_img_path
                 im.executeModality('IMAGE', 'vision/garbage_detection/'+ris_img_path)
+                time.sleep(5)
             
             im.executeModality('IMAGE', 'imgs/map/map.png')
             im.executeModality('TTS', 'This is the map of the school, these are the available bins in which you can throw your object')
@@ -193,6 +190,7 @@ def behaviour():
             time.sleep(5)
             im.executeModality('IMAGE', map_bestpath_path)
             im.executeModality('TTS', "Here's the path!")
+            time.sleep(10)
 
             finished = True
 
@@ -236,8 +234,11 @@ def behaviour():
 
         anyTouch.signal.disconnect(idAnyTouch)    
 
-        im.robot.memory_service.insertData('SonarFront',0.0)
-        im.robot.memory_service.insertData('SonarBack',0.0)
+        tm = int(time.time())
+        im.robot.memory_service.insertData('Device/SubDeviceList/Platform/Front/Sonar/Sensor/Value', 0.0)
+        im.robot.memory_service.insertData('Device/SubDeviceList/Platform/Back/Sonar/Sensor/Value', 0.0)
+
+        print(im.robot.sensorvalue())
         im.init() 
 
 

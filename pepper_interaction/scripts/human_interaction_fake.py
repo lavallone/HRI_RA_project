@@ -93,7 +93,7 @@ def main():
                     print("Touching %s ..." %mkey)
                     #print("Robot Say: Hey, don't touch me!")
                     memory_service.insertData(mkey,1.0)
-                    time.sleep(5)               #touch interaction duration 
+                    time.sleep(3)               #touch interaction duration 
                     memory_service.insertData(mkey,0.0)
                     print("Touching %s ... done" %mkey)
                 except:

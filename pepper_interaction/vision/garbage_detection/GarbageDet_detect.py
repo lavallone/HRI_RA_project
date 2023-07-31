@@ -4,7 +4,7 @@ import socket
 import threading
 
 def detect(img_path):
-    ris = subprocess.run(["python", os.getcwd()+"/yolov5/detect.py", "--weights", "model/best.pt", "--img", "640", "--conf", "0.05", "--source", str(img_path)], capture_output=True, text=True)
+    ris = subprocess.run(["python", os.getcwd()+"/yolov5/detect.py", "--weights", "model/best.pt", "--img", "640", "--conf", "0.05", "--source", str(img_path)], capture_output=True, text=True) # add "--half" if you have GPUs!
     print(ris.stderr)
     return ris.stdout
 

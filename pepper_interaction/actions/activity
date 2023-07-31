@@ -9,9 +9,8 @@ TTS
 <*,*,*,*>:  Hi, what do you want to do?
 ----
 ASR
-<middle,*,*,*>: {'news': ['news']}
-<elementary,*,*,*>:  {'play':['play', 'game', 'super recycling bros']}
-<*,*,*,*>: {'recycle': ['recycle', 'recycling']}
+<middle,*,*,*>: {'news': ['news'], 'recycle': ['recycle']}
+<elementary,*,*,*>:  {'play':['play', 'game', 'super recycling bros'], 'recycle': ['recycle', 'recycling']}
 ----
 BUTTONS
 news
