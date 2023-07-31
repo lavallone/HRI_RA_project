@@ -1,5 +1,6 @@
 # HRI_RA_project
 Project for the **H**uman **R**obot **I**nteraction and **R**easoning **A**gents modules belonging to the *Elective in AI* course at Sapienza University.
+<img src="https://i.imgur.com/FDRb0dM.png"  width="300" height="60">
 * **docker** folder contains the scripts to *build* and *run* the ***pepper-hri*** image.
   ```
   cd docker/
@@ -36,8 +37,5 @@ Project for the **H**uman **R**obot **I**nteraction and **R**easoning **A**gents
   ```
   Finally the python code to run the actual interaction with Pepper robot:
   ```
-  python main_beahaviour.py
+  python main_behaviour.py
   ```
-  
-  <img src="https://i.imgur.com/FDRb0dM.png"  width="300" height="60">
-  
