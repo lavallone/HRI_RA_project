@@ -11,9 +11,9 @@ fi
 
 # change settings here if needed
 CAMERA_DEVICE=/dev/video0
-PEPPER_TOOLS_HOME=$HOME/src/Pepper/pepper_tools
-MODIM_HOME=$HOME/src/modim
-PLAYGROUND_FOLDER=$HOME/playground
+PEPPER_TOOLS_HOME=$HOME/Desktop/HRI_RA_project/src/Pepper/pepper_tools
+MODIM_HOME=$HOME/Desktop/HRI_RA_project/src/modim
+PLAYGROUND_FOLDER=$HOME/Desktop/HRI_RA_project/pepper_interaction
 
 
 echo "Running image $IMAGENAME:$VERSION ..."
@@ -47,7 +47,7 @@ docker run -it -d \
     -v $MODIM_HOME:/home/robot/src/modim \
     -v $HOME/.qibullet:/home/robot/.qibullet \
     -e MODIM_HOME=/home/robot/src/modim \
-    -e MODIM_APP=/home/robot/playground/pepper_interaction \
+    -e MODIM_APP=/home/robot/playground \
     $IMAGENAME:$VERSION
 
 
