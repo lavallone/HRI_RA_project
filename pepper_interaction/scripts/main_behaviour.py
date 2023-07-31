@@ -43,7 +43,7 @@ def behaviour():
     new_user = ''
 
     def onTouched(value):
-        if DEBUG: print('IN ON-TOUCHED', value)
+        print('IN ON-TOUCHED', value)
         im.executeModality('TTS', 'Hey Do not touch me!')
     
     anyTouch = im.robot.memory_service.subscriber("TouchChanged")
