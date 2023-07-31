@@ -1,12 +1,17 @@
 IMAGE
-<elementary,*,*,*>:  img/trash/hri.jpg
-<middle,*,*,*>:  img/robot-economia-circolare.png
+<elementary,*,*,*>:  imgs/trash/hri.jpg
+<middle,*,*,*>:  imgs/robot-economia-circolare.png
 ----
 TEXT
 <*,*,*,*>: What do you want to do?
 ----
 TTS
 <*,*,*,*>:  Hi, what do you want to do?
+----
+ASR
+<middle,*,*,*>: {'news': ['news']}
+<elementary,*,*,*>:  {'play':['play', 'game', 'super recycling bros']}
+<*,*,*,*>: {'recycle': ['recycle', 'recycling']}
 ----
 BUTTONS
 news

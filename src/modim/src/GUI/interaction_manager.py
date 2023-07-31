@@ -137,6 +137,8 @@ class InteractionManager:
         for key in action: # only BUTTONS
             if key == 'BUTTONS':
                 actual_interaction = pm.evalSection(key)
+                for elem in actual_interaction:
+                    if elem[1] == '': actual_interaction.remove(elem)
                 print('key interaction %s' %key)
                 if (len(actual_interaction) == 0):
                     continue
@@ -154,7 +156,9 @@ class InteractionManager:
         self.logdata('Exec-action-end-%s' %actionname)
 
     def asr_run(self,timeout=30):
+        print(self.vocabulary)
         if self.robot !=None and self.vocabulary != None:
+            print(self.vocabulary)
             t0 = time.time()
             tnow = time.time()
             while tnow-t0<timeout:
@@ -377,22 +381,20 @@ class InteractionManager:
             self.logfile = None
       
     ## OUR FUNCTIONS
-    def face_detection(self):
-        print('faceDetection')
 
-    def giochino(self):
-        dir_path = 'img/play_trash/'
+    def super_recycling_game(self):
+        dir_path = 'imgs/super_recycling_imgs/'
         dict_trash = {}
 
-        for elem in os.listdir('/home/robot/playground/newdemo/'+dir_path):
+        for elem in os.listdir('/home/robot/playground/pepper_interaction/'+dir_path):
             waste_class = elem.split('_')[0]
             dict_trash[elem] = waste_class
 
         img_waste = random.choice(list(dict_trash.keys()))
         class_wast = dict_trash[img_waste] 
         path_waste = dir_path+img_waste
-        print('CLASSE', class_wast)
-        print('CLASSE', path_waste)
+        print('CLASS', class_wast)
+        print('CLASS', path_waste)
         c = 0
         while c < 3: 
             im.executeModality('IMAGE', path_waste)

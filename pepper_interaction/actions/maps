@@ -1,8 +1,5 @@
 IMAGE
-<*,*,*,*>: img/trash/piantina.jpg
-----
-TEXT
-<*,*,*,*>: This is the best path that you can follow for an empty bin
+<*,*,*,*>: imgs/map/map.png
 ----
 TTS
 <*,*,*,*>: This is the best path that you can follow for an empty bin
