@@ -1,11 +1,14 @@
 IMAGE
-<*,*,*,*>: img/questionar.png
+<*,*,*,*>: imgs/questionar.png
 ----
 TEXT
 <*,*,*,*>: Leave a feedback of your experience
 ----
 TTS
 <*,*,*,*>: Leave a feedback of your experience
+----
+ASR
+<*,*,*,*>: {'1':['1', 'one'],'2':['2', 'two'],'3':['3', 'three'],'4':['4', 'four'],'5':['5','five']}
 ----
 BUTTONS
 1

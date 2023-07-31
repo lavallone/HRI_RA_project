@@ -1,8 +1,6 @@
 TEXT
-<elementary,*,*,*>:  What do you want  to throw?
-<middle,*,*,*>:  What do you want  to throw?
+<*,*,*,*>:  How can I help you?
 ----
 TTS
-<elementary,*,*,*>:  What do you want  to throw?
-<middle,*,*,*>:  What do you want  to throw?
+<*,*,*,*>:  How can I help you?
 ----

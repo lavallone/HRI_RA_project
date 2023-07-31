@@ -1,14 +1,17 @@
 IMAGE
-<*,*,*,*>:  img/pepper-robot_0.png
+<*,*,*,*>:  imgs/pepper-robot_0.png
 ----
 TEXT
-<*,*,*,*>:  Hi! I am Pepper! I am the EnviroMate of this school! The principal put me here to teach you about recycling!
+<*,*,*,*>:  What is your school order? 
 ----
 GESTURE
 <*,*,*,*>: animations/Stand/Gestures/Hey_1
 ----
 TTS
-<*,*,*,*>:  Hi! I am Pepper! I am the EnviroMate of this school! The principal put me here to teach you about recycling!
+<*,*,*,*>:  What is your school order?
+----
+ASR
+<*,*,*,*>:  {'elementary': ['elementary school', 'elementary'], 'middle': ['middle', 'high school', 'secondary', 'secondary school']}
 ----
 BUTTONS
 elementary

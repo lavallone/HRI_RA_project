@@ -2,7 +2,7 @@ TEXT_title
 <*,*,*,*>: Good job
 ----
 IMAGE
-<*,*,*,*>: img/mario/happy.png
+<*,*,*,*>: imgs/mario/happy.png
 ----
 TEXT
 <*,*,*,*>: Good job - Your  answer is rigth!

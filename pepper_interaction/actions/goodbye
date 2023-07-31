@@ -1,9 +1,9 @@
 IMAGE
-<elementary,*,*,*>: img/walle-eve-robot.jpg
-<middle,*,*,*>: img/hand.png
+<elementary,*,*,*>: imgs/walle-eve-robot.jpg
+<middle,*,*,*>: imgs/hand.png
 ----
 TEXT
-<elementary, *, en, play>: I hope you enjoyed it! You did a great job! See you next time!
+<elementary, *, en, play>: I hope you enjoyed it! You did a great job! See you next time! <br>
 
 <elementary,*,en, recycle>:  I hope I helped you out see you next time and remember to respect the ENVIRONMENT!
 

@@ -1,5 +1,5 @@
 IMAGE
-<*,*,*,*>: img/mario/sad.png
+<*,*,*,*>: imgs/mario/sad.png
 ----
 TEXT
 <*,*,*,*>: Sorry! Wrong Answer! Try again!
