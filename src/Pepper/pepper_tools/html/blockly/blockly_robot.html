@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Blockly Robot</title>
+  <script src="blockly/blockly_compressed.js"></script>
+  <script src="blockly/blocks_compressed.js"></script>
+  <script src="blockly/javascript_compressed.js"></script>
+  <script src="blockly/python_compressed.js"></script>
+  <script src="blockly/msg/js/en.js"></script>
+  <script src="robot_blocks.js"></script>
+  <script src="robot_blocks_python.js"></script>
+  <script src="websocket_robot.js"></script>
+  <style>
+    body {
+      background-color: #fff;
+      font-family: sans-serif;
+    }
+    h1 {
+      font-weight: normal;
+      font-size: 140%;
+    }
+  </style>
+</head>
+<body>
+  <h1>Blockly robot</h1>
+
+  <p>Generating robot code from blocks.</p>
+
+  <p>
+    <table border=0>
+    <tr height=40>
+      <td>Robot IP</td>
+<script>
+      document.write("<td><input type=\"text\" name=\"IP\" id=\"IP\" value=\"" + 
+            window.location.hostname + "\" width=240></td>")
+</script>
+      <td width=100><button onclick="connect()">Connect</button></td>
+      <td width=120><button onclick="disconnect()">Disconnect</button></td>
+      <td><div id="connection"><font color='red'>Not Connected</font></div></td>
+    </tr>
+    <tr height=40>
+      <td>Status</td>
+      <td><div id="status" style="color: blue;" >Idle</div></td>
+      <td><a href="../index.html">Back</a>
+    </tr>
+    </table>
+  </p>
+
+  <p>
+    <button onclick="showCode()">Show code</button>
+    <button id="run_btn" onclick="runCode()">Run</button>
+    <button id="stop_btn" onclick="stopCode()">Stop</button>
+  </p>
+
+  <table border=0>
+  <tr>
+  <th>Blockly workspace</th><th></th><th>Python code</th></tr>
+  <tr>
+  <td>
+  <div id="blocklyDiv" style="height: 480px; width: 600px;"></div>
+
+    <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
+
+    <category colour="120" name="Robot">
+
+      <block type="begin"></block>
+      <block type="end"></block>
+      <block type="forward">
+        <value name="steps">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+      </block>
+      <block type="backward">
+        <value name="steps">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+      </block>
+      <block type="left">
+        <value name="steps">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+      </block>
+      <block type="right">
+        <value name="steps">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+      </block>
+      <block type="turn">
+        <value name="degrees">
+          <block type="math_number">
+            <field name="NUM">90</field>
+          </block>
+        </value>
+      </block>
+      <block type="wait">
+        <value name="seconds">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+      </block>
+      <block type="setSpeed">
+        <value name="tv">
+          <block type="math_number">
+            <field name="NUM">0.0</field>
+          </block>
+        </value>
+        <value name="rv">
+          <block type="math_number">
+            <field name="NUM">0.0</field>
+          </block>
+        </value>
+        <value name="time">
+          <block type="math_number">
+            <field name="NUM">0.1</field>
+          </block>
+        </value>
+      </block>
+
+    </category>
+
+    <category colour="0" name="Sensors">
+
+      <block type="obstacle_distance"></block>
+      <block type="get_pose"></block>
+
+    </category>
+
+    <category colour="200" name="Controls">
+
+      <block type="controls_if"></block>
+
+      <block type="controls_whileUntil"></block>
+
+      <block type="controls_repeat_ext">
+        <value name="TIMES">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+      </block>
+
+    </category>
+
+    <category colour="200" name="Op & Fn">
+
+      <block type="logic_compare"></block>
+
+      <block type="distance"></block>
+
+      <block type="random">
+        <value name="min">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <value name="max">
+          <block type="math_number">
+            <field name="NUM">90</field>
+          </block>
+        </value>
+      </block>
+
+      <block type="math_number">
+        <field name="NUM">1</field>
+      </block>
+
+      <block type="math_arithmetic"></block>
+
+      <block type="text">
+        <field name="TEXT"></field>
+      </block>
+
+      <block type="text_print">
+        <value name="TEXT">
+          <shadow type="text">
+            <field name="TEXT">abc</field>
+          </shadow>
+        </value>
+      </block>
+
+    </category>
+
+    <category name="Variables" colour="330" custom="VARIABLE"></category>
+    <category name="Functions" colour="290" custom="PROCEDURE"></category>
+
+    </xml>
+
+    <xml xmlns="http://www.w3.org/1999/xhtml" id="startBlocks" style="display:none">
+      <variables></variables>
+      <block type="begin" id="begin0" x="100" y="20"></block>
+      <block type="end" id="end0" x="100" y="140"></block>
+    </xml>
+
+
+  </td>
+
+  <td width=20>
+  </td>
+
+  <td>
+    <div id="codeDiv" style="height: 480px; width: 240px; background-color: #DDDDDD; font-size: 120%;"></div>
+    
+  </td>
+  </tr>
+  </table>
+
+  <hr>
+
+  <h3> Blockly XML code </h3>
+
+  <p>  <button onclick="saveCode()">Export block code</button> </p>
+
+  <p>
+     <textarea id="xmlSave" rows="6" cols="108"></textarea> 
+  <!--- div id="xmlDiv" style="height: 120px; width: 800px; background-color: #DDDDDD; font-size: 80%;"></div --->
+  </p>
+
+  <br>
+
+  <p>  <button onclick="loadCode()">Import block code</button> </p>
+
+  <p>
+    <textarea id="xmlLoad" rows="6" cols="108"></textarea> 
+  </p>
+
+  <br>
+
+
+
+                <!-- ****** SCRIPTS ****** -->
+
+  <script>
+
+    var demoWorkspace = Blockly.inject('blocklyDiv',
+        // options
+        {media: 'blockly/media/',
+         toolbox: document.getElementById('toolbox'),
+         scrollbars : true,
+         grid : {
+		        spacing : 20, 
+		        length : 1, 
+		        colour : '#888', 
+		        snap : false
+	        },
+	    zoom : {
+		    controls : true, 
+		    wheel : true, 
+		    startScale : 1.2, 
+		    maxScale : 3, 
+		    minScale : 0.3, 
+		    scaleSpeed : 1.2
+	      }
+        });
+
+    Blockly.Xml.domToWorkspace(document.getElementById('startBlocks'),
+                               demoWorkspace);
+
+    document.getElementById("run_btn").disabled = true;
+    document.getElementById("stop_btn").disabled = true;
+
+
+    function showCode() {
+      // Generate Python code and display it.
+      Blockly.Python.INFINITE_LOOP_TRAP = null;
+      var code = Blockly.Python.workspaceToCode(demoWorkspace);
+      //alert(code);
+      document.getElementById("codeDiv").innerHTML = "<pre>"+code+"</pre>";
+    }
+
+    function runCode() {
+      // Generate JavaScript code and run it.
+      window.LoopTrap = 1000;
+      //Blockly.Python.INFINITE_LOOP_TRAP =
+      //    'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
+      Blockly.Python.INFINITE_LOOP_TRAP = null;
+      var code = Blockly.Python.workspaceToCode(demoWorkspace);
+      document.getElementById("codeDiv").innerHTML = "<pre>"+code+"</pre>";
+      wsrobot_send(code);
+    }
+
+    function stopCode() {
+      // quit the program and stop the robot
+      wsrobot_send("stop"); 
+    }
+
+    function saveCode() {
+        var xml = Blockly.Xml.workspaceToDom(demoWorkspace);
+        var xml_text = Blockly.Xml.domToText(xml); 
+        //console.log('save block code')
+        //console.log(xml_text)
+        document.getElementById("xmlSave").innerText = xml_text;
+    }
+
+    function loadCode() {
+        var xml_text = document.getElementById("xmlLoad").value;
+        var xml = Blockly.Xml.textToDom(xml_text);
+        demoWorkspace.clear()
+        Blockly.Xml.domToWorkspace(xml, demoWorkspace);
+    }
+
+    function check_connection() {
+        console.log("check connection")
+        if (wsrobot_connected()) {
+            console.log("wsrobot_connected true")
+            document.getElementById("connection").innerHTML = "<font color='green'>Connected</font>";
+            document.getElementById("run_btn").disabled = false;
+            document.getElementById("stop_btn").disabled = false;
+        }
+        else {
+            console.log("wsrobot_connected false")
+            document.getElementById("connection").innerHTML = "<font color='red'>Not Connected</font>";
+            document.getElementById("run_btn").disabled = true;
+            document.getElementById("stop_btn").disabled = true;
+        }
+    }
+
+    function connect() {
+        wsrobot_init(9010);  // init websocket robot
+        setTimeout(check_connection, 1000);
+    }
+
+    function disconnect() {
+        wsrobot_quit();  // init websocket robot
+        setTimeout(check_connection, 1000);
+    }
+
+
+
+  </script>
+
+</body>
+</html>

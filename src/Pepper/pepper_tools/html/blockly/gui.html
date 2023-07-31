@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Robot GUI</title>
+  <script src="websocket_robot.js"></script>
+  <style>
+    body {
+      background-color: #fff;
+      font-family: sans-serif;
+    }
+    h1 {
+      font-weight: normal;
+      font-size: 140%;
+    }
+  </style>
+</head>
+<body>
+
+    <h1 id="status" align='center' style="color: blue;" >Idle</h1>
+
+
+  <br>
+
+
+
+                <!-- ****** SCRIPTS ****** -->
+
+  <script>
+
+    
+/*
+    function check_connection() {
+        console.log("check connection")
+        if (wsrobot_connected()) {
+            console.log("wsrobot_connected true")
+            document.getElementById("connection").innerHTML = "<font color='green'>Connected</font>";
+            document.getElementById("run_btn").disabled = false;
+            document.getElementById("stop_btn").disabled = false;
+        }
+        else {
+            console.log("wsrobot_connected false")
+            document.getElementById("connection").innerHTML = "<font color='red'>Not Connected</font>";
+            document.getElementById("run_btn").disabled = true;
+            document.getElementById("stop_btn").disabled = true;
+        }
+    }
+*/
+
+    function connect() {
+        wsrobot_init();  // init websocket robot
+        setTimeout(check_connection, 1000);
+    }
+
+    function disconnect() {
+        wsrobot_quit();  // init websocket robot
+        setTimeout(check_connection, 1000);
+    }
+
+
+
+  </script>
+
+</body>
+</html>

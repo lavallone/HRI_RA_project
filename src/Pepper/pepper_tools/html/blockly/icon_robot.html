@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Icon Robot</title>
+  <script src="websocket_robot.js"></script>
+  <style>
+    body {
+      background-color: #fff;
+      font-family: sans-serif;
+    }
+    h1 {
+      font-weight: normal;
+      font-size: 140%;
+    }
+  </style>
+</head>
+<body>
+  <h1>Icon robot</h1>
+
+  <p>Program robot with predefined command icons.</p>
+
+  <p>
+    <table border=0>
+    <tr height=40>
+      <td>Robot IP</td>
+<script>
+      document.write("<td><input type=\"text\" name=\"IP\" id=\"IP\" value=\"" + 
+            window.location.hostname + "\" width=240></td>")
+</script>
+      <td width=100><button onclick="connect()">Connect</button></td>
+      <td width=120><button onclick="disconnect()">Disconnect</button></td>
+      <td><div id="connection"><font color='red'>Not Connected</font></div></td>
+    </tr>
+    <tr height=40>
+      <td>Status</td>
+      <td><div id="status" style="color: blue;" >Idle</div></td>
+    </tr>
+    </table>
+  </p>
+
+  <p>
+  </p>
+
+  <table border=0>
+  <tr>  <th>Icons workspace</th> </tr>
+
+  <tr>
+  <td>
+
+<table border=1>
+<tr>
+  <td><button id="u1_btn" onclick="command('U1')"><img width=100 src="img/userdefined.jpg"></button></td>
+  <td><button id="u2_btn" onclick="command('U2')"><img width=100 src="img/userdefined.jpg"></button></td>
+  <td><button id="u3_btn" onclick="command('U3')"><img width=100 src="img/userdefined.jpg"></button></td>
+</tr>
+<tr>
+  <td><button id="u4_btn" onclick="command('U4')"><img width=100 src="img/userdefined.jpg"></button></td>
+  <td><button id="u5_btn" onclick="command('U5')"><img width=100 src="img/userdefined.jpg"></button></td>
+  <td><button id="u6_btn" onclick="command('U6')"><img width=100 src="img/userdefined.jpg"></button></td>
+</tr>
+<tr>
+  <td><button id="u7_btn" onclick="command('U7')"><img width=100 src="img/userdefined.jpg"></button></td>
+  <td><button id="u8_btn" onclick="command('U8')"><img width=100 src="img/userdefined.jpg"></button></td>
+  <td><button id="u9_btn" onclick="command('U9')"><img width=100 src="img/userdefined.jpg"></button></td>
+</tr>
+</table>
+    
+  </td>
+
+  </tr>
+  </table>
+
+  <hr>
+
+
+                <!-- ****** SCRIPTS ****** -->
+
+  <script>
+
+    function command(c) {
+       wsrobot_send("event_"+c);
+    }
+
+    function check_connection() {
+        console.log("check connection")
+        if (wsrobot_connected()) {
+            console.log("wsrobot_connected true")
+            document.getElementById("connection").innerHTML = "<font color='green'>Connected</font>";
+            document.getElementById("run_btn").disabled = false;
+            document.getElementById("stop_btn").disabled = false;
+        }
+        else {
+            console.log("wsrobot_connected false")
+            document.getElementById("connection").innerHTML = "<font color='red'>Not Connected</font>";
+            document.getElementById("run_btn").disabled = true;
+            document.getElementById("stop_btn").disabled = true;
+        }
+    }
+
+    function connect() {
+        wsrobot_init(9010);  // init websocket robot
+        setTimeout(check_connection, 1000);
+    }
+
+    function disconnect() {
+        wsrobot_quit();  // init websocket robot
+        setTimeout(check_connection, 1000);
+    }
+
+  </script>
+
+</body>
+</html>
+
