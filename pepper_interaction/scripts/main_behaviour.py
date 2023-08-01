@@ -172,7 +172,6 @@ def behaviour():
 
                 img_path = "data/users_imgs/"+str(random.randint(1, 20))+".jpg"
                 garbage_class, ris_img_path= im.detect_garbage(img_path)
-                ris_img_path = "../../../../playground/vision/garbage_detection/"+ris_img_path
                 im.executeModality('IMAGE', 'vision/garbage_detection/'+ris_img_path)
                 time.sleep(5)
             

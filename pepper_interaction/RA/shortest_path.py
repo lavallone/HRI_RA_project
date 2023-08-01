@@ -196,7 +196,7 @@ def handle_client(client_socket, client_address):
             client_socket.sendall(ris.encode("utf-8"))
     
     except Exception as e:
-        print("Error:", e)   
+        print("Error:", e)
     finally:
         client_socket.close()
         print("Connection closed with:", client_address)
