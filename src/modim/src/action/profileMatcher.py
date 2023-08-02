@@ -13,7 +13,7 @@ class ProfileMatcher():
     def evalSection(self, sectionType):
         if not sectionType in self.action:
             return ""
-        if sectionType == "BUTTONS":
+        if sectionType == "BUTTONS" or sectionType == 'IMAGEBUTTONS':
             buttonsList = self.action[sectionType]
             finalButtons = []
             for button in buttonsList:
@@ -28,6 +28,12 @@ class ProfileMatcher():
         conds = []
         if 'BUTTONS' in self.action:
             buttonsList = self.action["BUTTONS"]
+            for button in buttonsList:
+                buttonRules = button[1]
+                best = self.look_for_best_rule(buttonRules)
+                conds.append(button[0])
+        if 'IMAGEBUTTONS' in self.action:
+            buttonsList = self.action["IMAGEBUTTONS"]
             for button in buttonsList:
                 buttonRules = button[1]
                 best = self.look_for_best_rule(buttonRules)

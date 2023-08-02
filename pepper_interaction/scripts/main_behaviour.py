@@ -28,7 +28,7 @@ def behaviour():
                  'compost':['apple', 'banana', 'fruit', 'bread', 'food', 'sandwich']}
 
     DEBUG = True
-    im.init()   
+    im.init()
     
     fd_w = open('/home/robot/playground/info_people.txt', 'a')
     fd_r = open('/home/robot/playground/info_people.txt', 'r')
@@ -196,22 +196,28 @@ def behaviour():
         elif(activity == 'news'):
             im.profile[3] = 'news'
             
-            while not finished:
-                article = im.ask('news')
-                im.executeModality('IMAGE', '')
-                #button = im.executeModality('BUTTONS', [('exit', 'EXIT'), ('back', 'BACK')])
-                article = int(article)-1
-                
-                pages = ['microplastics', 'pollution', 'fashion', 'recycled']
-                print(pages)
-                button = im.ask(pages[article], timeout = 25)        
-
-                if button == 'exit': finished = True
-                elif button == 'back': finished = False
-                elif button == 'timeout':finished = True
+            im.display.display_image("imgs/paper.png", place='left')
+            im.display.display_image("imgs/plastic.png")
+            im.display.display_image("imgs/fashion.png", place='right')
+            im.display.display_text("News ♻", "default")
+            im.display.display_newsbuttons([["fashion", "Fashion pollution", "https://earth.org/fast-fashions-detrimental-effect-on-the-environment/"], 
+                                            ["plastic", "Plastic in oceans", "https://oceanliteracy.unesco.org/plastic-pollution-ocean/"],
+                                            ["paper", "Paper recycling" , "https://www.twosides.info/paper-packaging-is-recycled-more-than-any-other-material"]
+                                            ])
             
-            #im.display.loadUrl('https://bitbucket.org/mtlazaro/modim/src/master/')
-
+            finished = False
+            while not finished:
+                time.sleep(10)
+                # qui a loop ogni tot secondi il robot chiede allo user se ha finito...
+                # appena gli risponde di si --> si setta finished=True ed esce dal loop!
+                
+                finished = True
+                
+            im.display.remove_buttons()
+            im.display.display_image("", place='left')
+            im.display.display_image("")
+            im.display.display_image("", place='right')
+            im.display.display_text("", "default")
 
         elif(activity == 'play'):
             im.profile[3] = 'play'
@@ -225,13 +231,13 @@ def behaviour():
                 im.executeModality('TEXT', 'Exiting...')
             time.sleep(10)
             
-        if finished: 
-            im.execute('goodbye')
+        if finished:
             feed = im.ask('feedback', timeout = 20)
+            # robot deve avere una reazione diversa a seconda dello score rating
 
         ### mettere in attesa finche non si allontana (tramite laser e sonar)        
 
-        anyTouch.signal.disconnect(idAnyTouch)    
+        anyTouch.signal.disconnect(idAnyTouch)
 
         tm = int(time.time())
         im.robot.memory_service.insertData('Device/SubDeviceList/Platform/Front/Sonar/Sensor/Value', 0.0)

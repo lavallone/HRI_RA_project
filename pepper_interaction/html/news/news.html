@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>News</title>
+
+  <!---<script src="qaws.js"></script>--->
+
+  <style>
+    body {
+      background-color: #fff;
+      font-family: sans-serif;
+    }
+    h1 {
+      font-weight: normal;
+      font-size: 300%;
+    }
+
+  input[type=button] {
+    background-color: #A01010; /* Red */
+    border: none;
+    border-radius: 8px;
+    color: white;
+    padding: 14px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+    margin:10px 10px 10px 10px;
+  }
+
+  </style>
+</head>
+<body>
+
+    <!-- text -->
+
+    <p>
+    <h1>
+    <div align='center' id='text_default'>News ♻</div>
+    </h1>
+    </p>
+
+    <!-- image -->
+    <p>
+      <div class="image-container" align="center">
+        <img height=215 id='image_1' src="imgs/fashion.png" alt=""/>
+        <img height=215 id='image_2' src="imgs/plastic.png" alt=""/>
+        <img height=215 id='image_3' src="imgs/paper.png" alt=""/>
+      </div>
+    </p>
+
+    <!-- buttons -->
+  
+    <p>
+      <div class="button-container" align='center'>
+        <input type="button" id="fashion" value="Fashion pollution" onclick="openPage('https://earth.org/fast-fashions-detrimental-effect-on-the-environment/')">
+        <input type="button" id="plastic" value="Plastic in oceans" onclick="openPage('https://oceanliteracy.unesco.org/plastic-pollution-ocean/')">
+        <input type="button" id="paper" value="Paper recycling" onclick="openPage('https://www.twosides.info/paper-packaging-is-recycled-more-than-any-other-material')">
+      </div>
+    </p>
+
+  <!-- ****** SCRIPTS ****** -->
+
+  <script>
+    function openPage(url) {
+      window.open(url, '_blank'); // Opens the URL in a new tab/window
+    }
+  </script>
+
+</body>
+</html>

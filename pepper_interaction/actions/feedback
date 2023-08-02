@@ -7,18 +7,15 @@ TEXT
 TTS
 <*,*,*,*>: Leave a feedback of your experience
 ----
-ASR
-<*,*,*,*>: {'1':['1', 'one'],'2':['2', 'two'],'3':['3', 'three'],'4':['4', 'four'],'5':['5','five']}
-----
-BUTTONS
+IMAGEBUTTONS
 1
-<*,*,*,*>: 1
+<*,*,*,*>: imgs/smile1.jpg
 2
-<*,*,*,*>: 2
+<*,*,*,*>: imgs/smile2.jpg
 3
-<*,*,*,*>: 3
+<*,*,*,*>: imgs/smile3.jpg
 4
-<*,*,*,*>: 4
+<*,*,*,*>: imgs/smile4.jpg
 5
-<*,*,*,*>: 5
+<*,*,*,*>: imgs/smile5.jpg
 ----

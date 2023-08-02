@@ -104,6 +104,9 @@ def parseRulesFileButtons(file):
         if "BUTTONS" in line:
             in_buttons_section = True
             continue
+        if "IMAGEBUTTONS" in line:
+            in_buttons_section = True
+            continue    
         if in_buttons_section:
             if line[0:4] == "----": #end of section
                 break

@@ -59,6 +59,7 @@ class ActionReader(dict):
                 if (line.startswith("TEXT") or
                     line.startswith("IMAGE") or
                     line == "BUTTONS" or
+                    line == "IMAGEBUTTONS" or
                     line == "TTS" or
                     line == "ASR" or
                     line == "ASRCMD" or
@@ -81,7 +82,7 @@ class ActionReader(dict):
         print("ActionReader debug: %s" %(sectionType))
 
         if (sectionType.startswith("TEXT") or
-            sectionType.startswith("IMAGE") or
+            sectionType=="IMAGE" or
             sectionType == "ASR" or
             sectionType == "ASRCMD" or
             sectionType == "TTS" or

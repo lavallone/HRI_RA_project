@@ -141,7 +141,8 @@ class DisplayWS:
     def display_imagebuttons(self, data): 
         global last_answer, return_value
         for d in data:
-            self.websend("display_imagebutton_"+d+"\n")
+            print "WebSend: ", "display_button_"+d[0]+"$"+d[1]+"\n"
+            self.websend("display_imagebutton_"+d[0]+"$"+d[1]+"\n")
             #time.sleep(0.01)
         last_answer = None
         return_value = "OK"
@@ -152,6 +153,16 @@ class DisplayWS:
         for d in data:
             print "WebSend: ", "display_button_"+d[0]+"$"+d[1]+"\n"
             self.websend("display_button_"+d[0]+"$"+d[1]+"\n")
+            #time.sleep(0.1)
+        last_answer = None
+        return_value = "OK"
+    
+    def display_newsbuttons(self, data): 
+        global last_answer, return_value
+        self.remove_buttons()
+        for d in data:
+            print "WebSend: ", "display_newsbutton_"+d[0]+"$"+d[1]+"$"+d[2]+"\n"
+            self.websend("display_newsbutton_"+d[0]+"$"+d[1]+"$"+d[2]+"\n")
             #time.sleep(0.1)
         last_answer = None
         return_value = "OK"

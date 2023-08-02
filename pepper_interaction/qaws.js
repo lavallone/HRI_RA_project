@@ -48,18 +48,51 @@ function wsrobot_init(ip, port) {
             console.log(p);
             vp = p.split('$');
 
-            if (vp[1].substr(0,3)=='img') {
-                b.type = "image";
-                b.src = vp[1];
-            }
-            else {
-                b.type = "button";
-                b.value = vp[1]; 
-            }
+            b.type = "button";
+            b.value = vp[1];
             
             b.name = vp[0]; 
             b.id = vp[0];
             b.onclick = function(event) { button_fn(event) };
+            var bdiv = document.getElementById("buttons");
+            bdiv.appendChild(b);
+          }
+          else if (v[1]=='imagebutton') {
+            var b = document.createElement("input");
+            //Assign different attributes to the element. 
+            p = v[2] 
+            for (i=3; i<v.length; i++){
+                p = p + "_" + v[i];
+            }
+            console.log(p);
+            vp = p.split('$');
+
+            b.type = "image";
+            b.src = vp[1];
+            
+            b.name = vp[0]; 
+            b.id = vp[0];
+            b.onclick = function(event) { button_fn(event) };
+            var bdiv = document.getElementById("buttons");
+            bdiv.appendChild(b);
+          }
+          else if (v[1]=='newsbutton') {
+            var b = document.createElement("input");
+            //Assign different attributes to the element. 
+            p = v[2] 
+            for (i=3; i<v.length; i++){
+                p = p + "_" + v[i];
+            }
+            console.log(p);
+            vp = p.split('$');
+
+            b.type = "button";
+            b.value = vp[1];
+            b.src = vp[2]
+            
+            b.name = vp[0]; 
+            b.id = vp[0];
+            b.onclick = function(event) {button_fn_openPage(event)}
             var bdiv = document.getElementById("buttons");
             bdiv.appendChild(b);
           }
@@ -72,7 +105,6 @@ function wsrobot_init(ip, port) {
                     bdiv.removeChild( fc );
                     fc = bdiv.firstChild;
                 }
-
             }
         }
         else if (v[0]=='url') {
@@ -116,6 +148,11 @@ function button_fn(event) {
   var bsrc = event.srcElement || event.originalTarget
   console.log('websocket button '+bsrc.id)
   wsrobot_send(bsrc.id);
+}
+
+function button_fn_openPage(event) {
+  var url = event.srcElement
+  window.open(url.src, '_blank'); // Opens the URL in a new tab/window
 }
 
 

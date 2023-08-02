@@ -115,7 +115,7 @@ class InteractionManager:
 
         threads = [] #for parallel execution of the modalities
         for key in action: # all modalities except BUTTONS and ASR
-            if key == 'NAME' or key == 'BUTTONS' or key == 'ASR':
+            if key == 'NAME' or key == 'BUTTONS' or key == 'IMAGEBUTTONS' or key == 'ASR':
                 continue
             actual_interaction = pm.evalSection(key)
             print('key interaction %s' %key)
@@ -135,7 +135,7 @@ class InteractionManager:
 
         # show buttons        
         for key in action: # only BUTTONS
-            if key == 'BUTTONS':
+            if key == 'BUTTONS' or key == 'IMAGEBUTTONS':
                 actual_interaction = pm.evalSection(key)
                 for elem in actual_interaction:
                     if elem[1] == '': actual_interaction.remove(elem)
@@ -255,7 +255,7 @@ class InteractionManager:
             if self.display != None:
                 self.display.display_text(interaction, place)
 
-        elif modality.upper().startswith('IMAGE'):
+        elif modality.upper() == 'IMAGE':
             vmod = modality.split('_')
             place = 'default'
             if (len(vmod)>1):
@@ -270,6 +270,11 @@ class InteractionManager:
             print 'display_buttons('+str(interaction)+')'
             if self.display != None:
                 self.display.display_buttons(interaction)
+                
+        elif modality.upper() == 'IMAGEBUTTONS':
+            print 'display_buttons('+str(interaction)+')'
+            if self.display != None:
+                self.display.display_imagebuttons(interaction)
 
         elif modality.upper() == 'ASRCMD':
             grammarFile = None

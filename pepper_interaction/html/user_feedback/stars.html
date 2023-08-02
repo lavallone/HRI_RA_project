@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Star rating</title>
+
+  <!---<script src="qaws.js"></script>--->
+
+  <style>
+    body {
+      background-color: #fff;
+      font-family: sans-serif;
+    }
+    h1 {
+      font-weight: normal;
+      font-size: 300%;
+    }
+
+    .star-rating {
+      display: flex;
+      flex-direction: row-reversed;
+      justify-content: flex-end;
+    }
+
+    .radio-input {
+      position: fixed;
+      opacity: 0;
+      pointer-events: none;
+    }
+    
+    .radio-label {
+      cursor: pointer;
+      font-size: 0;
+      color: rgba(0,0,0,0.2);
+      transition: color 0.1s ease-in-out;
+    }
+    
+    .radio-label:before {
+      content: "★";
+      display: inline-block;
+      font-size: 70px;
+    }
+
+    .radio-input:checked ~ .radio-label {
+      color: #ffc700;
+      color: gold;
+    }
+    
+    .radio-label:hover,
+    .radio-label:hover ~ .radio-label {
+      color: goldenrod;
+    }
+    
+    .radio-input:checked + .radio-label:hover,
+    .radio-input:checked + .radio-label:hover ~ .radio-label,
+    .radio-input:checked ~ .radio-label:hover,
+    .radio-input:checked ~ .radio-label:hover ~ .radio-label,
+    .radio-label:hover ~ .radio-input:checked ~ .radio-label {
+      color: darkgoldenrod;
+    }    
+    
+    
+
+  </style>
+</head>
+<body>
+
+    <!-- text -->
+    <p>
+      <h1>
+        <div align='center' id='text_default'>Rate the interaction</div>
+      </h1>
+    </p>
+
+    <!-- image -->
+    <p>
+      <div align='center'> <img height=200 id='image_default' src="imgs/feedback.png" alt=""/> </div>
+    </p>
+
+    <!-- radio buttons -->
+    <p>
+      <div class="rating">
+        <input class="radio-input" type="radio" id="star5" name="star-input" value="5" />
+        <label class="radio-label" class for="star5" title="5 stars">5 stars</label>
+      
+        <input class="radio-input" type="radio" id="star4" name="star-input" value="4" />
+        <label class="radio-label" for="star4" title="4 stars">4 stars</label>
+      
+        <input class="radio-input" type="radio" id="star3" name="star-input" value="3" />
+        <label class="radio-label" for="star3" title="3 stars">3 stars</label>
+      
+        <input class="radio-input" type="radio" id="star2" name="star-input" value="2" />
+        <label class="radio-label" for="star2" title="2 stars">2 stars</label>
+      
+        <input class="radio-input" type="radio" id="star1" name="star-input" value="1" />
+        <label class="radio-label" for="star1" title="1 star">1 star</label>
+      </div>      
+    </p>
+
+  <!-- ****** SCRIPTS ****** -->
+  <script>
+
+    var ip=window.location.hostname;
+    if (ip=='')
+        ip='127.0.0.1';
+    var port = 9100;
+
+    console.log("Trying connection...")
+    wsrobot_init(ip,port);
+
+  </script>
+
+</body>
+</html>
