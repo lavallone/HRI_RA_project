@@ -1,6 +1,8 @@
 TEXT
-<*,*,*,*>:  How can I help you?
+<*,old,*,*>:  How can I help you?
+<*,new, *, *>: How can I help you? 
 ----
 TTS
-<*,*,*,*>:  How can I help you?
+<*,old,*,*>:  How can I help you?
+<*,new, *, *>: How can I help you? You can you ask me where you have to throw a specific object, or even show it to me and I will indicate the right bucket to throw it into.
 ----

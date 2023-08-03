@@ -3,22 +3,24 @@ IMAGE
 <middle,*,*,*>:  imgs/robot-economia-circolare.png
 ----
 TEXT
-<*,*,*,*>: What do you want to do?
+<*,new,*,*>: What do you want to do?
+<*,old,*,*>: What do you want to do?
 ----
 TTS
-<*,*,*,*>:  Hi, what do you want to do?
-----
-ASR
-<middle,*,*,*>: {'news': ['news'], 'recycle': ['recycle']}
-<elementary,*,*,*>:  {'play':['play', 'game', 'super recycling bros'], 'recycle': ['recycle', 'recycling']}
+<*,new,*,*>:  What do you want to do?
+<*,old,*,*>:  What do you want to do?
 ----
 BUTTONS
 news
-<middle,*,*,*>: News
+<middle,new,*,*>: News
+<middle,old,*,*>: News
 play
-<elementary,*,*,*>:  PLAY 
+<elementary,new,*,*>:  PLAY 
+<elementary,old,*,*>:  PLAY 
 recycle
-<elementary,*,*,*>: RECYCLE
-<middle,*,*,*>: Recycle
+<elementary,new,*,*>: RECYCLE
+<elementary,old,*,*>: RECYCLE
+<middle,old,*,*>: Recycle
+<middle,new,*,*>: Recycle
 ----
 
