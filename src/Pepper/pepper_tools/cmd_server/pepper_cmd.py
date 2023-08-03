@@ -1343,4 +1343,227 @@ class PepperRobot:
             h = max(h,c[1])
         z.append(h)    
         return z
+    
+    
+    ###########################################################
+    #                                                         #
+    #           FUNCTIONS FOR ANIMATIONS (added)              #
+    #                                                         #
+    ###########################################################
 
+    def yes(self):
+        self.headPose(0.0,1.0,0.5)
+        self.headPose(0.0,0.0,0.5)
+        self.headPose(0.0,1.0,0.5)
+        self.headPose(0.0,0.0,0.5)
+
+        # normal posture: [0.00, -0.21, 
+        # 1.55, 0.13, -1.24, -0.52, 0.01, 
+        # 1.56, -0.14, 1.22, 0.52, -0.01, 
+        # 0, 0, 0, 0, 0]
+        self.normalPosture()
+        return
+        
+
+    def no(self):
+        self.headPose(0.5,0.0,0.5)
+        self.headPose(-0.5,0.0,0.5)
+        self.headPose(0.5,0.0,0.5)
+        self.headPose(-0.5,0.0,0.5)
+        self.headPose(0.0,0.0,0.5)
+
+        self.normalPosture()
+        return
+
+
+    def notouch(self):
+        #jointNames = ["HeadYaw", "HeadPitch", 
+        # "LShoulderPitch", "LShoulderRoll", "LElbowYaw", "LElbowRoll", "LWristYaw", 
+        # "RShoulderPitch", "RShoulderRoll", "RElbowYaw", "RElbowRoll", "RWristYaw", 
+        # "LHand", "RHand", "HipRoll", "HipPitch", "KneePitch"]
+
+        jointValues = [0.0, 0.2, 
+                    1.55, 0.13, -2.08, -1.52, 0.5, 
+                    1.55, -0.14, 2.08, 1.52, -0.5, 
+                    1.0, 1.0, 0.0, 0.5, -0.0]
+        self.setPosture(jointValues)
+
+        self.normalPosture()
+        return
+
+
+    def hello(self):
+        session = self.session_service("ALMotion")
+
+        isAbsolute = True
+        # hello posture
+        jointNames = ["RElbowRoll", "RElbowYaw", "RHand", "RShoulderPitch", "RShoulderRoll", "RWristYaw"]
+        
+        jointValues = [1.32, 1.42, 1.71, -0.03, -0.10, -1.01]
+        times = [0.8, 0.8, 0.8, 0.8, 0.8, 0.8]
+        session.angleInterpolation(jointNames, jointValues, times, isAbsolute)
+        
+        # arm to the right
+        session.angleInterpolation("RElbowYaw", 1.83, 0.8, isAbsolute)
+        
+        # arm to the left
+        session.angleInterpolation("RElbowYaw", 1.04, 0.8, isAbsolute)
+        
+        # arm to the right
+        session.angleInterpolation("RElbowYaw", 1.42, 0.8, isAbsolute)
+
+        self.normalPosture()
+        return
+
+
+    def thinking(self):
+        session = self.session_service("ALMotion")
+        isAbsolute = True
+
+        jointNames = ["RElbowRoll", "RElbowYaw", "RHand", "RShoulderPitch", "RShoulderRoll", "RWristYaw"]
+        jointValues = [1.55, 1.04, 0.5, -0.5, -0.2, 1.01]
+
+        session.angleInterpolation("HeadPitch", 0.1, 0.5, isAbsolute)
+        session.angleInterpolation(jointNames, jointValues, 1, isAbsolute)
+
+        session.angleInterpolation("HeadPitch", 0.2, 0.5, isAbsolute)
+        session.angleInterpolation("RHand", 0.2, 0.3, isAbsolute)
+        session.angleInterpolation("RShoulderRoll", -0, 0.8, isAbsolute)
+        session.angleInterpolation("RHand", 0.5, 0.3, isAbsolute)
+        session.angleInterpolation("RShoulderRoll", -0.2, 0.8, isAbsolute)
+        session.angleInterpolation("RHand", 0.2, 0.3, isAbsolute)
+        session.angleInterpolation("RShoulderRoll", -0, 0.8, isAbsolute)
+        session.angleInterpolation("RHand", 0.5, 0.3, isAbsolute)
+        session.angleInterpolation("RShoulderRoll", -0.2, 0.8, isAbsolute)
+        
+        self.normalPosture()
+        return
+
+
+    def lookhere(self):
+        session = self.session_service("ALMotion")
+
+        isAbsolute = True
+        jointNames = ["LElbowRoll", "LElbowYaw", "LHand", "LShoulderPitch", "LShoulderRoll", "LWristYaw"]
+        
+        jointValues = [-1.56, -1, 1.71, 1, 0.8, -0.5]
+        session.angleInterpolation(jointNames, jointValues, 2, isAbsolute)
+
+        self.normalPosture()
+        return
+
+
+    def turnHead(self):
+        self.headPose(1.5, 0, 2)
+        self.normalPosture()
+        return
+
+
+    def talking(self):
+        session = self.session_service("ALMotion")
+
+        jointNames = ["HeadYaw", "HeadPitch", 
+            "LShoulderPitch", "LShoulderRoll", "LElbowYaw", "LElbowRoll", "LWristYaw", 
+            "RShoulderPitch", "RShoulderRoll", "RElbowYaw", "RElbowRoll", "RWristYaw", 
+            "LHand", "RHand", "HipRoll", "HipPitch", "KneePitch"]
+
+        jointValues = [0.0, 0.1, 
+                    1.5, 0.5, -1.5, -1.52, -1, 
+                    0.5, -0.1, 1.42, 1.32, 1, 
+                    0.5, 0, 0.0, -0.1, 0]
+        session.angleInterpolation(jointNames, jointValues, 1, True)
+
+
+        jointValues = [0.2, 0.1, 
+                    -0.5, 0.13, -1.04, -1.32, -0.5, 
+                    0.8, -0.1, 1.5, 1.3, -0.5, 
+                    0.3, 0, 0.0, -0.2, 0]
+        session.angleInterpolation(jointNames, jointValues, 1, True)
+
+        jointValues = [0.1, -0.1, 
+                    -0.8, 0.2, -1.2, -1, -0.5, 
+                    1.2, -0.14, 1.5, 1.52, 0.5, 
+                    0, 0.3, 0.0, -0.1, 0.0]
+        session.angleInterpolation(jointNames, jointValues, 1, True)
+
+        
+        jointValues = [-0.2, 0.0, 
+                    1, 0.13, -1.22, -1.52, -1, 
+                    1.55, -0.14, 1, 1.2, 0.9, 
+                    0.5, 0.1, 0.0, -0.1, 0.1]
+        session.angleInterpolation(jointNames, jointValues, 1, True)
+
+
+        jointValues = [0.1, 0, 
+                    1.3, 0.13, -1, -1, 0.5, 
+                    1, -0.14, 1.4, 1.3, -0.5, 
+                    0.3, 0, 0.0, 0, -0.0]
+        session.angleInterpolation(jointNames, jointValues, 1, True)
+
+        self.normalPosture()
+        return
+    
+    
+    def talkingfast(self):
+        session = self.session_service("ALMotion")
+
+        jointNames = ["HeadYaw", "HeadPitch", 
+         "LShoulderPitch", "LShoulderRoll", "LElbowYaw", "LElbowRoll", "LWristYaw", 
+         "RShoulderPitch", "RShoulderRoll", "RElbowYaw", "RElbowRoll", "RWristYaw", 
+         "LHand", "RHand", "HipRoll", "HipPitch", "KneePitch"]
+
+        jointValues = [0.1, -0.1, 
+                    -0.8, 0.2, -1.2, -1, -0.5, 
+                    1.2, -0.14, 1.5, 1.52, 0.5, 
+                    0, 0.3, 0.0, -0.1, 0.0]
+        session.angleInterpolation(jointNames, jointValues, 0.8, True)
+        
+        jointValues = [-0.2, 0.0, 
+                    0.5, 0.13, -1.22, -1.52, -1, 
+                    1.55, -0.14, 1, 1.2, 0.9, 
+                    0.5, 0.1, 0.0, -0.1, 0.1]
+        session.angleInterpolation(jointNames, jointValues, 0.8, True)
+
+        jointValues = [0.1, 0, 
+                    1, 0.13, -1, -1, 0.5, 
+                    1, -0.14, 1.4, 1.3, -0.5, 
+                    0.3, 0, 0.0, 0, -0.0]
+        session.angleInterpolation(jointNames, jointValues, 0.8, True)
+
+        self.normalPosture()
+        return
+    
+    
+    def exultation(self):
+        session = self.session_service("ALMotion")
+
+        isAbsolute = True
+        jointNames = ["RElbowRoll", "RElbowYaw", "RHand", "RShoulderPitch", "RShoulderRoll", "RWristYaw",
+                      "LElbowRoll", "LElbowYaw", "LHand", "LShoulderPitch", "LShoulderRoll", "LWristYaw"]
+        
+        jointValues = [1.32, 1.42, 0, -0.03, -0.80, -1.01,
+                       -1.32, -1.42, 0, -0.03, 0.80, 1.01]
+        session.angleInterpolation(jointNames, jointValues, 0.8, isAbsolute)
+        
+        # arms up
+        jointNames = ["RElbowRoll", "LElbowRoll", "RElbowYaw", "LElbowYaw", "RShoulderPitch", "LShoulderPitch"]
+        jointValues = [0.8, -0.8, 0.7, -0.7, -1, -1]
+        session.angleInterpolation(jointNames, jointValues, 0.3, isAbsolute)
+        
+        # arms down
+        jointNames = ["RElbowRoll", "LElbowRoll", "RElbowYaw", "LElbowYaw", "RShoulderPitch", "LShoulderPitch"]
+        jointValues = [1.32, -1.32, 1.42, -1.42, -0.03, -0.03]
+        session.angleInterpolation(jointNames, jointValues, 0.3, isAbsolute)
+        
+        # arms up
+        jointNames = ["RElbowRoll", "LElbowRoll", "RElbowYaw", "LElbowYaw", "RShoulderPitch", "LShoulderPitch"]
+        jointValues = [0.8, -0.8, 0.7, -0.7, -1, -1]
+        session.angleInterpolation(jointNames, jointValues, 0.3, isAbsolute)
+        
+        # arms down
+        jointNames = ["RElbowRoll", "LElbowRoll", "RElbowYaw", "LElbowYaw", "RShoulderPitch", "LShoulderPitch"]
+        jointValues = [1.32, -1.32, 1.42, -1.42, -0.03, -0.03]
+        session.angleInterpolation(jointNames, jointValues, 0.3, isAbsolute)
+
+        self.normalPosture()
+        return

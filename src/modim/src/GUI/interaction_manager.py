@@ -406,11 +406,20 @@ class InteractionManager:
             ans = self.ask('play', timeout = 15)
             if ans == class_wast: 
                 c += 1
+
+                #############
+                # Thread con yes 
+                # thread = threading.Thread(target = self.robot.yes) 
+                # thread.start()
+                #############
                 self.execute('correct')
                 img_waste = random.choice(list(dict_trash.keys()))
                 class_wast = dict_trash[img_waste] 
                 path_waste = dir_path+img_waste
             else: 
+                #############
+                # Thread con no 
+                #############
                 self.execute('wrong')
         return True
 
