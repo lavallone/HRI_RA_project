@@ -136,12 +136,12 @@ def behaviour():
 
         #print('VOCA', im.vocabulary)
 
-
+        
         if someone:                 #start interaction
             
             #######################################
             im.robot.hello()
-            thread = threading.Thread(target = im.robot.talking) 
+            thread = threading.Thread(target = im.robot.talkingfast) 
             thread.start()
             #######################################
 
@@ -157,7 +157,7 @@ def behaviour():
             #da mettere nell'if new?
 
             #######################################
-            thread = threading.Thread(target = im.robot.talkingfast) 
+            thread = threading.Thread(target = im.robot.talkingfast1) 
             thread.start()
             #######################################
 
@@ -186,7 +186,8 @@ def behaviour():
                     while(age == 'timeout'):
 
                         ##################
-                        #talking
+                        thread = threading.Thread(target = im.robot.talkingfast2) 
+                        thread.start()
                         ##################
 
                         age = im.ask('welcome', timeout=15)      
@@ -200,7 +201,8 @@ def behaviour():
                     #im.executeModality('TEXT', 'Hi '+new_user_s[0]+' '+new_user_s[1]+', what do you want to do?')
 
                     #################
-                    # talking lungo 
+                    thread = threading.Thread(target = im.robot.talking) 
+                    thread.start()
                     #################
 
                     im.executeModality('TTS', 'Hi '+new_user_s[0]+' '+new_user_s[1]+'.')
@@ -217,7 +219,8 @@ def behaviour():
                 #im.executeModality('TEXT', 'Welcom back '+new_user[0]+' 'new_user[1]+', what do you want to do?')
 
                 #################
-                # talking corto 
+                thread = threading.Thread(target = im.robot.talkingfast) 
+                thread.start()
                 #################
 
                 im.executeModality('TTS', 'Welcome back '+new_user_s[0]+' '+new_user_s[1]+'.')
@@ -227,7 +230,8 @@ def behaviour():
         
         
         #################
-        # talking corto 
+        thread = threading.Thread(target = im.robot.talkingfast1) 
+        thread.start()
         #################
 
         activity = im.ask('activity', timeout = 25)
@@ -235,13 +239,15 @@ def behaviour():
         if(activity == 'recycle'):
             im.profile[3] = 'recycle'
 
-            #if im.profile[1] == 'new':
+            if im.profile[1] == 'new':
                 #################
-                # talking lungo 
+                thread = threading.Thread(target = im.robot.talking) 
+                thread.start()
                 #################
-            #else: 
+            else: 
                 #################
-                # talking corto 
+                thread = threading.Thread(target = im.robot.talkingfast2) 
+                thread.start()
                 #################
             
             im.ask('recycle', timeout = 15) #only asr answer
@@ -264,6 +270,10 @@ def behaviour():
                 img_path = "data/users_imgs/"+str(random.randint(1, 20))+".jpg"
 
                 #### DA VEDERE SE INSERIRE UNA THINKING MENTRE RICONOSCE L'IMMAGINE
+                #thread = threading.Thread(target = im.robot.thinking) 
+                #thread.start()
+                #thread = threading.Thread(target = im.robot.lookhere) 
+                #thread.start()
 
                 garbage_class, ris_img_path= im.detect_garbage(img_path)
                 #ris_img_path = "../../../../playground/vision/garbage_detection/"+ris_img_path
@@ -273,7 +283,8 @@ def behaviour():
             
             
             #################
-            # talking corto 
+            thread = threading.Thread(target = im.robot.talkingfast) 
+            thread.start()
             #################
 
             im.executeModality('IMAGE', 'imgs/map/map.png')
@@ -290,13 +301,16 @@ def behaviour():
             time.sleep(5)
 
             #### DA INSERIRE UNA THINKING MENTRE FA FINTA DI CERCARE IL PATH
+            thread = threading.Thread(target = im.robot.thinking) 
+            thread.start()
 
             im.executeModality('TTS', 'Now I will show you the fastest path to reach the '+garbage_class+' bin')
             im.executeModality('IMAGE', 'imgs/loading/loading-25.gif')   
             time.sleep(5)
 
             #################
-            # gesture look here 
+            thread = threading.Thread(target = im.robot.lookhere) 
+            thread.start() 
             #################
             im.executeModality('IMAGE', map_bestpath_path)
             im.executeModality('TTS', "Here's the path!")
@@ -315,6 +329,15 @@ def behaviour():
                                             ["plastic", "Plastic in oceans", "https://oceanliteracy.unesco.org/plastic-pollution-ocean/"],
                                             ["paper", "Paper recycling" , "https://www.twosides.info/paper-packaging-is-recycled-more-than-any-other-material"]
                                             ])
+            '''
+            if qualcosa == fashion:
+                im.executeModality('TTS', 'Did you know that "fashion production" comprises 10% of total global carbon emissions, as much as the European Union? And it dries up water sources and pollutes rivers and streams, while 85% of all textiles go to dumps each year? Take a look at this article to learn about "Fast Fashion and Its Environmental Impact".')
+            elif qualcosa == plastic:
+                im.executeModality('TTS', 'Did you know that plastic is one of the most enduring materials man has created? And it is possible that it does not even fully degrade, but becomes what we call microplastic? Take a look at this article to learn about the presence of plastic in our oceans.')
+            else:
+                im.executeModality('TTS', 'Did you know that paper packaging is the most recycled packaging material in Europe? Take a look at the article to deepen the topic.')
+            '''
+
             while not finished:
                 time.sleep(10)
                 im.executeModality('TTS', 'Have you finished reading?')
@@ -351,7 +374,8 @@ def behaviour():
             if DEBUG: print(im.profile)
 
             #################
-            # da capire la gesture (anche indicare) 
+            thread = threading.Thread(target = im.robot.lookhere) 
+            thread.start()
             #################
 
             st = im.ask('play_welcome', timeout = 15)
@@ -359,8 +383,9 @@ def behaviour():
                 finished = im.super_recycling_game()
 
                 ##########################
-                #thread = threading.Thread(target = im.robot.exultation) 
-                #thread.start()
+                thread = threading.Thread(target = im.robot.exultation) 
+                thread.start()
+                ##########################
 
                 im.executeModality('TEXT', 'Waiting...')
             else:
@@ -371,13 +396,21 @@ def behaviour():
         if finished: 
 
             # Thread con hello 
+            ##########################
+            thread = threading.Thread(target = im.robot.hello) 
+            thread.start()
+            ##########################
+
             im.execute('goodbye')
             feed = im.ask('feedback', timeout = 20)
 
             # CREARE GESTURES 1-2 TRISTE, 3 MEZZO MEZZO, 4-5 FELICE 
-            # if feed == 1 or feed == 2:
-            # elif feed == 3:
-            # else: 
+            if feed == 1 or feed == 2:
+                im.robot.sad()
+            elif feed == 3:
+                im.robot.normal()
+            else: 
+                im.robot.happy()
 
             # robot deve avere una reazione diversa a seconda dello score rating
 

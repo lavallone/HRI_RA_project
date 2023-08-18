@@ -406,11 +406,11 @@ class InteractionManager:
             ans = self.ask('play', timeout = 15)
             if ans == class_wast: 
                 c += 1
-
                 #############
                 # Thread con yes 
-                # thread = threading.Thread(target = self.robot.yes) 
-                # thread.start()
+                self.robot.yes()
+                #thread = threading.Thread(target = self.robot.yes) 
+                #thread.start()
                 #############
                 self.execute('correct')
                 img_waste = random.choice(list(dict_trash.keys()))
@@ -419,6 +419,9 @@ class InteractionManager:
             else: 
                 #############
                 # Thread con no 
+                self.robot.no()
+                #thread = threading.Thread(target = self.robot.no) 
+                #thread.start()
                 #############
                 self.execute('wrong')
         return True

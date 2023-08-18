@@ -1361,7 +1361,15 @@ class PepperRobot:
         # 1.55, 0.13, -1.24, -0.52, 0.01, 
         # 1.56, -0.14, 1.22, 0.52, -0.01, 
         # 0, 0, 0, 0, 0]
-        self.normalPosture()
+        return
+    
+    
+    def little_yes(self):
+        self.headPose(0.0, 0.5, 0.8)
+        self.headPose(0.0, 0, 0.8)
+        self.headPose(0.0, 0.5, 0.8)
+        self.headPose(0.0, 0.0, 0.8)
+
         return
         
 
@@ -1372,7 +1380,6 @@ class PepperRobot:
         self.headPose(-0.5,0.0,0.5)
         self.headPose(0.0,0.0,0.5)
 
-        self.normalPosture()
         return
 
 
@@ -1387,6 +1394,10 @@ class PepperRobot:
                     1.55, -0.14, 2.08, 1.52, -0.5, 
                     1.0, 1.0, 0.0, 0.5, -0.0]
         self.setPosture(jointValues)
+
+        self.headPose(0.5,0.0,0.5)
+        self.headPose(-0.5,0.0,0.5)
+        self.headPose(0.0,0.0,0.5)
 
         self.normalPosture()
         return
@@ -1443,11 +1454,20 @@ class PepperRobot:
     def lookhere(self):
         session = self.session_service("ALMotion")
 
+        arg1 = 0
+        arg2 = 1
+        arg3 = 0.5 
+        thread = threading.Thread(target = self.headPose, args=(arg1, arg2, arg3)) 
+        thread.start()
+
         isAbsolute = True
         jointNames = ["LElbowRoll", "LElbowYaw", "LHand", "LShoulderPitch", "LShoulderRoll", "LWristYaw"]
         
         jointValues = [-1.56, -1, 1.71, 1, 0.8, -0.5]
+        #-1.56, -1, 1.71, 1, 0.8, -0.5
         session.angleInterpolation(jointNames, jointValues, 2, isAbsolute)
+
+        self.headPose(0.0,1.0,0.5)
 
         self.normalPosture()
         return
@@ -1467,7 +1487,7 @@ class PepperRobot:
             "RShoulderPitch", "RShoulderRoll", "RElbowYaw", "RElbowRoll", "RWristYaw", 
             "LHand", "RHand", "HipRoll", "HipPitch", "KneePitch"]
 
-        jointValues = [0.0, 0.1, 
+        jointValues = [0.0, 0, 
                     1.5, 0.5, -1.5, -1.52, -1, 
                     0.5, -0.1, 1.42, 1.32, 1, 
                     0.5, 0, 0.0, -0.1, 0]
@@ -1492,19 +1512,12 @@ class PepperRobot:
                     1.55, -0.14, 1, 1.2, 0.9, 
                     0.5, 0.1, 0.0, -0.1, 0.1]
         session.angleInterpolation(jointNames, jointValues, 1, True)
-
-
-        jointValues = [0.1, 0, 
-                    1.3, 0.13, -1, -1, 0.5, 
-                    1, -0.14, 1.4, 1.3, -0.5, 
-                    0.3, 0, 0.0, 0, -0.0]
-        session.angleInterpolation(jointNames, jointValues, 1, True)
-
+      
         self.normalPosture()
         return
     
     
-    def talkingfast(self):
+    def talkingfast(self, n = 0):
         session = self.session_service("ALMotion")
 
         jointNames = ["HeadYaw", "HeadPitch", 
@@ -1512,26 +1525,74 @@ class PepperRobot:
          "RShoulderPitch", "RShoulderRoll", "RElbowYaw", "RElbowRoll", "RWristYaw", 
          "LHand", "RHand", "HipRoll", "HipPitch", "KneePitch"]
 
-        jointValues = [0.1, -0.1, 
-                    -0.8, 0.2, -1.2, -1, -0.5, 
-                    1.2, -0.14, 1.5, 1.52, 0.5, 
-                    0, 0.3, 0.0, -0.1, 0.0]
-        session.angleInterpolation(jointNames, jointValues, 0.8, True)
-        
-        jointValues = [-0.2, 0.0, 
-                    0.5, 0.13, -1.22, -1.52, -1, 
-                    1.55, -0.14, 1, 1.2, 0.9, 
-                    0.5, 0.1, 0.0, -0.1, 0.1]
-        session.angleInterpolation(jointNames, jointValues, 0.8, True)
+        jointValues = [0.1, 0.1, 
+                    1.5, 0.5, -1.5, -1.52, -1, 
+                    0.5, -0.1, 1.42, 1.32, 1, 
+                    0.5, 0, 0.0, -0.1, 0]
+        session.angleInterpolation(jointNames, jointValues, 1, True)
 
-        jointValues = [0.1, 0, 
-                    1, 0.13, -1, -1, 0.5, 
-                    1, -0.14, 1.4, 1.3, -0.5, 
-                    0.3, 0, 0.0, 0, -0.0]
-        session.angleInterpolation(jointNames, jointValues, 0.8, True)
+
+        jointValues = [0, 0, 
+                    -0.5, 1, -1.04, -1.32, -0.5, 
+                    0.8, 0.1, 1.5, 1.3, -0.5, 
+                    0.3, 0, 0.0, -0.2, 0]
+        session.angleInterpolation(jointNames, jointValues, 1, True)
+
 
         self.normalPosture()
         return
+
+
+
+    def talkingfast1(self):
+        session = self.session_service("ALMotion")
+
+        jointNames = ["HeadYaw", "HeadPitch", 
+         "LShoulderPitch", "LShoulderRoll", "LElbowYaw", "LElbowRoll", "LWristYaw", 
+         "RShoulderPitch", "RShoulderRoll", "RElbowYaw", "RElbowRoll", "RWristYaw", 
+         "LHand", "RHand", "HipRoll", "HipPitch", "KneePitch"]
+
+        jointValues = [0.2, 0.1, 
+                    1.5, 0.5, -1.5, -1.52, 0, 
+                    0.5, -0.1, 1.42, 1.32, 1, 
+                    0.5, 0, 0.0, -0.1, 0]
+        session.angleInterpolation(jointNames, jointValues, 1, True)
+
+
+        jointValues = [0, 0, 
+                    0.5, 0.13, -1.04, -1.32, -0.5, 
+                    0.8, -0.1, 1.5, 1.3, -0.5, 
+                    0.3, 1, 0.0, -0.2, 0]
+        session.angleInterpolation(jointNames, jointValues, 1, True)
+
+        self.normalPosture()
+        return
+    
+
+    def talkingfast2(self):
+        session = self.session_service("ALMotion")
+
+        jointNames = ["HeadYaw", "HeadPitch", 
+         "LShoulderPitch", "LShoulderRoll", "LElbowYaw", "LElbowRoll", "LWristYaw", 
+         "RShoulderPitch", "RShoulderRoll", "RElbowYaw", "RElbowRoll", "RWristYaw", 
+         "LHand", "RHand", "HipRoll", "HipPitch", "KneePitch"]
+
+        jointValues = [-0.2, 0.0, 
+                        1, 0.13, -1.22, -1.52, -1, 
+                        1.55, -0.14, 1, 1.2, 0.9, 
+                        1, 0.1, 0.0, -0.1, 0.1]
+        session.angleInterpolation(jointNames, jointValues, 1, True)
+
+            
+        jointValues = [0, 0, 
+                        1.3, 0.13, -1, -1, 0.5, 
+                        1, -0.14, 1.4, 1.3, -0.5, 
+                        0.3, 1, 0.0, 0, -0.0]
+        session.angleInterpolation(jointNames, jointValues, 1, True)
+        
+        self.normalPosture()
+        return
+    
     
     
     def exultation(self):
@@ -1566,4 +1627,32 @@ class PepperRobot:
         session.angleInterpolation(jointNames, jointValues, 0.3, isAbsolute)
 
         self.normalPosture()
+        return
+    
+
+    def sad(self):    
+        self.headPose(0.0,1.0,0.8)
+
+        self.headPose(0.5,1.0,0.5)
+        self.headPose(-0.5,1.0,0.5)
+        self.headPose(0.5,1.0,0.5)
+        self.headPose(-0.5,1.0,0.5)
+        self.headPose(0.0,1.0,0.5)
+    
+        self.normalPosture()
+        return
+    
+
+    def normal(self):
+        self.headPose(0.0, 0.5, 0.8)
+        self.headPose(0.0, 0, 0.8)
+        self.headPose(0.0, 0.5, 0.8)
+        self.headPose(0.0, 0.0, 0.8) 
+
+        self.hello()
+        return
+    
+
+    def happy(self):
+        self.exultation()
         return
