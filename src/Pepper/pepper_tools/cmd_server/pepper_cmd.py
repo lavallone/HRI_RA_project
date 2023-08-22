@@ -1347,127 +1347,187 @@ class PepperRobot:
     
     ###########################################################
     #                                                         #
-    #           FUNCTIONS FOR ANIMATIONS (added)              #
+    #     FUNCTIONS FOR ANIMATIONS MIDDLE SCHOOL (added)      #
     #                                                         #
     ###########################################################
 
-    def yes(self):
-        self.headPose(0.0,1.0,0.5)
-        self.headPose(0.0,0.0,0.5)
-        self.headPose(0.0,1.0,0.5)
-        self.headPose(0.0,0.0,0.5)
+    def yes(self, age):
 
-        # normal posture: [0.00, -0.21, 
-        # 1.55, 0.13, -1.24, -0.52, 0.01, 
-        # 1.56, -0.14, 1.22, 0.52, -0.01, 
-        # 0, 0, 0, 0, 0]
-        return
-    
-    
-    def little_yes(self):
-        self.headPose(0.0, 0.5, 0.8)
-        self.headPose(0.0, 0, 0.8)
-        self.headPose(0.0, 0.5, 0.8)
-        self.headPose(0.0, 0.0, 0.8)
+        if age == 'middle':
+            self.headPose(0.0,1.0,0.5)
+            self.headPose(0.0,0.0,0.5)
+            self.headPose(0.0,1.0,0.5)
+            self.headPose(0.0,0.0,0.5)
+        elif age == 'elementary':
+            self.headPose(0.0,1.0,0.8)
+            self.headPose(0.0,0.0,0.8)
+            self.headPose(0.0,1.0,0.8)
+            self.headPose(0.0,0.0,0.8)
 
         return
+    
+
+    def no(self, age):
+        if age == 'middle':
+            self.headPose(0.5,0.0,0.5)
+            self.headPose(-0.5,0.0,0.5)
+            self.headPose(0.5,0.0,0.5)
+            self.headPose(-0.5,0.0,0.5)
+            self.headPose(0.0,0.0,0.5)
+        elif age == 'elementary':
+            self.headPose(0.5,0.0,0.8)
+            self.headPose(-0.5,0.0,0.8)
+            self.headPose(0.5,0.0,0.8)
+            self.headPose(-0.5,0.0,0.8)
+            self.headPose(0.0,0.0,0.8)
+
+        return
+
+
+    def notouch(self, age):
+        jointNames = ["HeadYaw", "HeadPitch", 
+         "LShoulderPitch", "LShoulderRoll", "LElbowYaw", "LElbowRoll", "LWristYaw", 
+         "RShoulderPitch", "RShoulderRoll", "RElbowYaw", "RElbowRoll", "RWristYaw", 
+         "LHand", "RHand", "HipRoll", "HipPitch", "KneePitch"]
+        session = self.session_service("ALMotion")
+        isAbsolute = True
         
+        if age == 'middle':
+            jointValues = [0.0, 0.2, 
+                        1.55, 0.13, -2.08, -1.52, 0.5, 
+                        1.55, -0.14, 2.08, 1.52, -0.5, 
+                        1.0, 1.0, 0.0, 0.5, -0.0]
+            session.angleInterpolation(jointNames, jointValues, 0.8, isAbsolute)
 
-    def no(self):
-        self.headPose(0.5,0.0,0.5)
-        self.headPose(-0.5,0.0,0.5)
-        self.headPose(0.5,0.0,0.5)
-        self.headPose(-0.5,0.0,0.5)
-        self.headPose(0.0,0.0,0.5)
+            self.headPose(0.5,0.0,0.5)
+            self.headPose(-0.5,0.0,0.5)
+            self.headPose(0.0,0.0,0.5)
 
-        return
+        elif age == 'elementary':
+            jointValues = [0.0, 0.2, 
+                        1.55, 0.13, -2.08, -1.52, 0.5, 
+                        1.55, -0.14, 2.08, 1.52, -0.5, 
+                        1.0, 1.0, 0.0, 0.5, -0.0]
+            session.angleInterpolation(jointNames, jointValues, 1, isAbsolute)
 
-
-    def notouch(self):
-        #jointNames = ["HeadYaw", "HeadPitch", 
-        # "LShoulderPitch", "LShoulderRoll", "LElbowYaw", "LElbowRoll", "LWristYaw", 
-        # "RShoulderPitch", "RShoulderRoll", "RElbowYaw", "RElbowRoll", "RWristYaw", 
-        # "LHand", "RHand", "HipRoll", "HipPitch", "KneePitch"]
-
-        jointValues = [0.0, 0.2, 
-                    1.55, 0.13, -2.08, -1.52, 0.5, 
-                    1.55, -0.14, 2.08, 1.52, -0.5, 
-                    1.0, 1.0, 0.0, 0.5, -0.0]
-        self.setPosture(jointValues)
-
-        self.headPose(0.5,0.0,0.5)
-        self.headPose(-0.5,0.0,0.5)
-        self.headPose(0.0,0.0,0.5)
+            self.headPose(0.5,0.0,0.8)
+            self.headPose(-0.5,0.0,0.8)
+            self.headPose(0.0,0.0,0.8)
 
         self.normalPosture()
         return
 
 
-    def hello(self):
+    def hello(self, age):
         session = self.session_service("ALMotion")
 
         isAbsolute = True
         # hello posture
         jointNames = ["RElbowRoll", "RElbowYaw", "RHand", "RShoulderPitch", "RShoulderRoll", "RWristYaw"]
         
-        jointValues = [1.32, 1.42, 1.71, -0.03, -0.10, -1.01]
-        times = [0.8, 0.8, 0.8, 0.8, 0.8, 0.8]
-        session.angleInterpolation(jointNames, jointValues, times, isAbsolute)
-        
-        # arm to the right
-        session.angleInterpolation("RElbowYaw", 1.83, 0.8, isAbsolute)
-        
-        # arm to the left
-        session.angleInterpolation("RElbowYaw", 1.04, 0.8, isAbsolute)
-        
-        # arm to the right
-        session.angleInterpolation("RElbowYaw", 1.42, 0.8, isAbsolute)
+        if age == 'middle':
+            jointValues = [1.32, 1.42, 1.71, -0.03, -0.10, -1.01]
+            times = [0.8, 0.8, 0.8, 0.8, 0.8, 0.8]
+            session.angleInterpolation(jointNames, jointValues, times, isAbsolute)
+            
+            # arm to the right
+            session.angleInterpolation("RElbowYaw", 1.83, 0.8, isAbsolute)
+            
+            # arm to the left
+            session.angleInterpolation("RElbowYaw", 1.04, 0.8, isAbsolute)
+            
+            # arm to the right
+            session.angleInterpolation("RElbowYaw", 1.42, 0.8, isAbsolute)
+
+        elif age == 'elementary':
+            jointValues = [1.32, 1.42, 1.71, -0.03, -0.10, -1.01]
+            session.angleInterpolation(jointNames, jointValues, 1, isAbsolute)
+            
+            # arm to the right
+            session.angleInterpolation("RElbowYaw", 1.83, 1, isAbsolute)
+            
+            # arm to the left
+            session.angleInterpolation("RElbowYaw", 1.04, 1, isAbsolute)
+            
+            # arm to the right
+            session.angleInterpolation("RElbowYaw", 1.42, 1, isAbsolute)
 
         self.normalPosture()
         return
 
 
-    def thinking(self):
+    def thinking(self, age):
         session = self.session_service("ALMotion")
         isAbsolute = True
 
         jointNames = ["RElbowRoll", "RElbowYaw", "RHand", "RShoulderPitch", "RShoulderRoll", "RWristYaw"]
-        jointValues = [1.55, 1.04, 0.5, -0.5, -0.2, 1.01]
 
-        session.angleInterpolation("HeadPitch", 0.1, 0.5, isAbsolute)
-        session.angleInterpolation(jointNames, jointValues, 1, isAbsolute)
+        if age == 'middle':
+            jointValues = [1.55, 1.04, 0.5, -0.5, -0.2, 1.01]
 
-        session.angleInterpolation("HeadPitch", 0.2, 0.5, isAbsolute)
-        session.angleInterpolation("RHand", 0.2, 0.3, isAbsolute)
-        session.angleInterpolation("RShoulderRoll", -0, 0.8, isAbsolute)
-        session.angleInterpolation("RHand", 0.5, 0.3, isAbsolute)
-        session.angleInterpolation("RShoulderRoll", -0.2, 0.8, isAbsolute)
-        session.angleInterpolation("RHand", 0.2, 0.3, isAbsolute)
-        session.angleInterpolation("RShoulderRoll", -0, 0.8, isAbsolute)
-        session.angleInterpolation("RHand", 0.5, 0.3, isAbsolute)
-        session.angleInterpolation("RShoulderRoll", -0.2, 0.8, isAbsolute)
+            session.angleInterpolation("HeadPitch", 0.1, 0.5, isAbsolute)
+            session.angleInterpolation(jointNames, jointValues, 1, isAbsolute)
+
+            session.angleInterpolation("HeadPitch", 0.2, 0.5, isAbsolute)
+            session.angleInterpolation("RHand", 0.2, 0.3, isAbsolute)
+            session.angleInterpolation("RShoulderRoll", -0, 0.8, isAbsolute)
+            session.angleInterpolation("RHand", 0.5, 0.3, isAbsolute)
+            session.angleInterpolation("RShoulderRoll", -0.2, 0.8, isAbsolute)
+            session.angleInterpolation("RHand", 0.2, 0.3, isAbsolute)
+            session.angleInterpolation("RShoulderRoll", -0, 0.8, isAbsolute)
+            session.angleInterpolation("RHand", 0.5, 0.3, isAbsolute)
+            session.angleInterpolation("RShoulderRoll", -0.2, 0.8, isAbsolute)
+        
+        elif age == 'elementary':
+            jointValues = [1.55, 1.04, 0.5, -0.5, -0.2, 1.01]
+
+            session.angleInterpolation("HeadPitch", 0.1, 0.5, isAbsolute)
+            session.angleInterpolation(jointNames, jointValues, 1, isAbsolute)
+
+            session.angleInterpolation("HeadPitch", 0.2, 0.8, isAbsolute)
+            session.angleInterpolation("RHand", 0.2, 0.3, isAbsolute)
+            session.angleInterpolation("RShoulderRoll", -0, 1, isAbsolute)
+            session.angleInterpolation("RHand", 0.5, 0.3, isAbsolute)
+            session.angleInterpolation("RShoulderRoll", -0.2, 1, isAbsolute)
+            session.angleInterpolation("RHand", 0.2, 0.3, isAbsolute)
+            session.angleInterpolation("RShoulderRoll", -0, 1, isAbsolute)
+            session.angleInterpolation("RHand", 0.5, 0.3, isAbsolute)
+            session.angleInterpolation("RShoulderRoll", -0.2, 1, isAbsolute)
         
         self.normalPosture()
         return
 
 
-    def lookhere(self):
+    def lookhere(self, age):
         session = self.session_service("ALMotion")
-
-        arg1 = 0
-        arg2 = 1
-        arg3 = 0.5 
-        thread = threading.Thread(target = self.headPose, args=(arg1, arg2, arg3)) 
-        thread.start()
-
         isAbsolute = True
         jointNames = ["LElbowRoll", "LElbowYaw", "LHand", "LShoulderPitch", "LShoulderRoll", "LWristYaw"]
-        
-        jointValues = [-1.56, -1, 1.71, 1, 0.8, -0.5]
-        #-1.56, -1, 1.71, 1, 0.8, -0.5
-        session.angleInterpolation(jointNames, jointValues, 2, isAbsolute)
 
-        self.headPose(0.0,1.0,0.5)
+        if age == 'middle':
+            arg1 = 0
+            arg2 = 1
+            arg3 = 0.5 
+            thread = threading.Thread(target = self.headPose, args=(arg1, arg2, arg3)) 
+            thread.start()
+
+            jointValues = [-1.56, -1, 1.71, 1, 0.8, -0.5]
+            #-1.56, -1, 1.71, 1, 0.8, -0.5
+            session.angleInterpolation(jointNames, jointValues, 1, isAbsolute)
+
+            self.headPose(0.0,1.0,0.5)
+
+        elif age == 'elementary':
+            arg1 = 0
+            arg2 = 1
+            arg3 = 0.8 
+            thread = threading.Thread(target = self.headPose, args=(arg1, arg2, arg3)) 
+            thread.start()
+            
+            jointValues = [-1.56, -1, 1.71, 1, 0.8, -0.5]
+            #-1.56, -1, 1.71, 1, 0.8, -0.5
+            session.angleInterpolation(jointNames, jointValues, 2, isAbsolute)
+
+            self.headPose(0.0,1.0,0.5)
 
         self.normalPosture()
         return
@@ -1479,7 +1539,7 @@ class PepperRobot:
         return
 
 
-    def talking(self):
+    def talking(self, age):
         session = self.session_service("ALMotion")
 
         jointNames = ["HeadYaw", "HeadPitch", 
@@ -1487,172 +1547,276 @@ class PepperRobot:
             "RShoulderPitch", "RShoulderRoll", "RElbowYaw", "RElbowRoll", "RWristYaw", 
             "LHand", "RHand", "HipRoll", "HipPitch", "KneePitch"]
 
-        jointValues = [0.0, 0, 
-                    1.5, 0.5, -1.5, -1.52, -1, 
-                    0.5, -0.1, 1.42, 1.32, 1, 
-                    0.5, 0, 0.0, -0.1, 0]
-        session.angleInterpolation(jointNames, jointValues, 1, True)
+        if age == 'middle':
+            jointValues = [0.0, 0, 
+                        1.5, 0.5, -1.5, -1.52, -1, 
+                        0.5, -0.1, 1.42, 1.32, 1, 
+                        0.5, 0, 0.0, -0.1, 0]
+            session.angleInterpolation(jointNames, jointValues, 0.8, True)
 
+            jointValues = [0.2, 0.1, 
+                        -0.5, 0.13, -1.04, -1.32, -0.5, 
+                        0.8, -0.1, 1.5, 1.3, -0.5, 
+                        0.3, 0, 0.0, -0.2, 0]
+            session.angleInterpolation(jointNames, jointValues, 0.8, True)
 
-        jointValues = [0.2, 0.1, 
-                    -0.5, 0.13, -1.04, -1.32, -0.5, 
-                    0.8, -0.1, 1.5, 1.3, -0.5, 
-                    0.3, 0, 0.0, -0.2, 0]
-        session.angleInterpolation(jointNames, jointValues, 1, True)
+            jointValues = [0.1, -0.1, 
+                        -0.8, 0.2, -1.2, -1, -0.5, 
+                        1.2, -0.14, 1.5, 1.52, 0.5, 
+                        0, 0.3, 0.0, -0.1, 0.0]
+            session.angleInterpolation(jointNames, jointValues, 0.8, True)
 
-        jointValues = [0.1, -0.1, 
-                    -0.8, 0.2, -1.2, -1, -0.5, 
-                    1.2, -0.14, 1.5, 1.52, 0.5, 
-                    0, 0.3, 0.0, -0.1, 0.0]
-        session.angleInterpolation(jointNames, jointValues, 1, True)
-
-        
-        jointValues = [-0.2, 0.0, 
-                    1, 0.13, -1.22, -1.52, -1, 
-                    1.55, -0.14, 1, 1.2, 0.9, 
-                    0.5, 0.1, 0.0, -0.1, 0.1]
-        session.angleInterpolation(jointNames, jointValues, 1, True)
-      
-        self.normalPosture()
-        return
-    
-    
-    def talkingfast(self, n = 0):
-        session = self.session_service("ALMotion")
-
-        jointNames = ["HeadYaw", "HeadPitch", 
-         "LShoulderPitch", "LShoulderRoll", "LElbowYaw", "LElbowRoll", "LWristYaw", 
-         "RShoulderPitch", "RShoulderRoll", "RElbowYaw", "RElbowRoll", "RWristYaw", 
-         "LHand", "RHand", "HipRoll", "HipPitch", "KneePitch"]
-
-        jointValues = [0.1, 0.1, 
-                    1.5, 0.5, -1.5, -1.52, -1, 
-                    0.5, -0.1, 1.42, 1.32, 1, 
-                    0.5, 0, 0.0, -0.1, 0]
-        session.angleInterpolation(jointNames, jointValues, 1, True)
-
-
-        jointValues = [0, 0, 
-                    -0.5, 1, -1.04, -1.32, -0.5, 
-                    0.8, 0.1, 1.5, 1.3, -0.5, 
-                    0.3, 0, 0.0, -0.2, 0]
-        session.angleInterpolation(jointNames, jointValues, 1, True)
-
-
-        self.normalPosture()
-        return
-
-
-
-    def talkingfast1(self):
-        session = self.session_service("ALMotion")
-
-        jointNames = ["HeadYaw", "HeadPitch", 
-         "LShoulderPitch", "LShoulderRoll", "LElbowYaw", "LElbowRoll", "LWristYaw", 
-         "RShoulderPitch", "RShoulderRoll", "RElbowYaw", "RElbowRoll", "RWristYaw", 
-         "LHand", "RHand", "HipRoll", "HipPitch", "KneePitch"]
-
-        jointValues = [0.2, 0.1, 
-                    1.5, 0.5, -1.5, -1.52, 0, 
-                    0.5, -0.1, 1.42, 1.32, 1, 
-                    0.5, 0, 0.0, -0.1, 0]
-        session.angleInterpolation(jointNames, jointValues, 1, True)
-
-
-        jointValues = [0, 0, 
-                    0.5, 0.13, -1.04, -1.32, -0.5, 
-                    0.8, -0.1, 1.5, 1.3, -0.5, 
-                    0.3, 1, 0.0, -0.2, 0]
-        session.angleInterpolation(jointNames, jointValues, 1, True)
-
-        self.normalPosture()
-        return
-    
-
-    def talkingfast2(self):
-        session = self.session_service("ALMotion")
-
-        jointNames = ["HeadYaw", "HeadPitch", 
-         "LShoulderPitch", "LShoulderRoll", "LElbowYaw", "LElbowRoll", "LWristYaw", 
-         "RShoulderPitch", "RShoulderRoll", "RElbowYaw", "RElbowRoll", "RWristYaw", 
-         "LHand", "RHand", "HipRoll", "HipPitch", "KneePitch"]
-
-        jointValues = [-0.2, 0.0, 
+            jointValues = [-0.2, 0.0, 
                         1, 0.13, -1.22, -1.52, -1, 
                         1.55, -0.14, 1, 1.2, 0.9, 
-                        1, 0.1, 0.0, -0.1, 0.1]
-        session.angleInterpolation(jointNames, jointValues, 1, True)
+                        0.5, 0.1, 0.0, -0.1, 0.1]
+            session.angleInterpolation(jointNames, jointValues, 0.8, True)
 
+        elif age == 'elementary':
+            jointValues = [0.0, 0, 
+                        1.5, 0.5, -1.5, -1.52, -1, 
+                        0.5, -0.1, 1.42, 1.32, 1, 
+                        0.5, 0, 0.0, -0.1, 0]
+            session.angleInterpolation(jointNames, jointValues, 1, True)
+
+            jointValues = [0.2, 0.1, 
+                        -0.5, 0.13, -1.04, -1.32, -0.5, 
+                        0.8, -0.1, 1.5, 1.3, -0.5, 
+                        0.3, 0, 0.0, -0.2, 0]
+            session.angleInterpolation(jointNames, jointValues, 1, True)
+
+            jointValues = [0.1, -0.1, 
+                        -0.8, 0.2, -1.2, -1, -0.5, 
+                        1.2, -0.14, 1.5, 1.52, 0.5, 
+                        0, 0.3, 0.0, -0.1, 0.0]
+            session.angleInterpolation(jointNames, jointValues, 1, True)
             
-        jointValues = [0, 0, 
-                        1.3, 0.13, -1, -1, 0.5, 
-                        1, -0.14, 1.4, 1.3, -0.5, 
-                        0.3, 1, 0.0, 0, -0.0]
-        session.angleInterpolation(jointNames, jointValues, 1, True)
+            jointValues = [-0.2, 0.0, 
+                        1, 0.13, -1.22, -1.52, -1, 
+                        1.55, -0.14, 1, 1.2, 0.9, 
+                        0.5, 0.1, 0.0, -0.1, 0.1]
+            session.angleInterpolation(jointNames, jointValues, 1, True)
         
         self.normalPosture()
         return
     
     
-    
-    def exultation(self):
+    def talkingfast(self, age):
         session = self.session_service("ALMotion")
 
+        jointNames = ["HeadYaw", "HeadPitch", 
+         "LShoulderPitch", "LShoulderRoll", "LElbowYaw", "LElbowRoll", "LWristYaw", 
+         "RShoulderPitch", "RShoulderRoll", "RElbowYaw", "RElbowRoll", "RWristYaw", 
+         "LHand", "RHand", "HipRoll", "HipPitch", "KneePitch"]
+        
+        if age == 'middle':
+            jointValues = [0.1, 0.1, 
+                        1.5, 0.5, -1.5, -1.52, -1, 
+                        0.5, -0.1, 1.42, 1.32, 1, 
+                        0.5, 0, 0.0, -0.1, 0]
+            session.angleInterpolation(jointNames, jointValues, 0.8, True)
+
+            jointValues = [0, 0, 
+                        -0.5, 1, -1.04, -1.32, -0.5, 
+                        0.8, 0.1, 1.5, 1.3, -0.5, 
+                        0.3, 0, 0.0, -0.2, 0]
+            session.angleInterpolation(jointNames, jointValues, 0.8, True)
+
+        elif age == 'elementary':
+            jointValues = [0.1, 0.1, 
+                        1.5, 0.5, -1.5, -1.52, -1, 
+                        0.5, -0.1, 1.42, 1.32, 1, 
+                        0.5, 0, 0.0, -0.1, 0]
+            session.angleInterpolation(jointNames, jointValues, 1, True)
+
+            jointValues = [0, 0, 
+                        -0.5, 1, -1.04, -1.32, -0.5, 
+                        0.8, 0.1, 1.5, 1.3, -0.5, 
+                        0.3, 0, 0.0, -0.2, 0]
+            session.angleInterpolation(jointNames, jointValues, 1, True)
+
+        self.normalPosture()
+        return
+
+
+
+    def talkingfast1(self, age):
+        session = self.session_service("ALMotion")
+
+        jointNames = ["HeadYaw", "HeadPitch", 
+         "LShoulderPitch", "LShoulderRoll", "LElbowYaw", "LElbowRoll", "LWristYaw", 
+         "RShoulderPitch", "RShoulderRoll", "RElbowYaw", "RElbowRoll", "RWristYaw", 
+         "LHand", "RHand", "HipRoll", "HipPitch", "KneePitch"]
+
+        if age == 'middle':
+            jointValues = [0.2, 0.1, 
+                        1.5, 0.5, -1.5, -1.52, 0, 
+                        0.5, -0.1, 1.42, 1.32, 1, 
+                        0.5, 0, 0.0, -0.1, 0]
+            session.angleInterpolation(jointNames, jointValues, 0.8, True)
+
+            jointValues = [0, 0, 
+                        0.5, 0.13, -1.04, -1.32, -0.5, 
+                        0.8, -0.1, 1.5, 1.3, -0.5, 
+                        0.3, 1, 0.0, -0.2, 0]
+            session.angleInterpolation(jointNames, jointValues, 0.8, True)
+
+        elif age == 'elementary':
+            jointValues = [0.2, 0.1, 
+                        1.5, 0.5, -1.5, -1.52, 0, 
+                        0.5, -0.1, 1.42, 1.32, 1, 
+                        0.5, 0, 0.0, -0.1, 0]
+            session.angleInterpolation(jointNames, jointValues, 1, True)
+
+            jointValues = [0, 0, 
+                        0.5, 0.13, -1.04, -1.32, -0.5, 
+                        0.8, -0.1, 1.5, 1.3, -0.5, 
+                        0.3, 1, 0.0, -0.2, 0]
+            session.angleInterpolation(jointNames, jointValues, 1, True)
+
+        self.normalPosture()
+        return
+    
+
+    def talkingfast2(self, age):
+        session = self.session_service("ALMotion")
+
+        jointNames = ["HeadYaw", "HeadPitch", 
+         "LShoulderPitch", "LShoulderRoll", "LElbowYaw", "LElbowRoll", "LWristYaw", 
+         "RShoulderPitch", "RShoulderRoll", "RElbowYaw", "RElbowRoll", "RWristYaw", 
+         "LHand", "RHand", "HipRoll", "HipPitch", "KneePitch"]
+
+        if age == 'middle':
+            jointValues = [-0.2, 0.0, 
+                            1, 0.13, -1.22, -1.52, -1, 
+                            1.55, -0.14, 1, 1.2, 0.9, 
+                            1, 0.1, 0.0, -0.1, 0.1]
+            session.angleInterpolation(jointNames, jointValues, 0.8, True)
+
+            jointValues = [0, 0, 
+                            1.3, 0.13, -1, -1, 0.5, 
+                            1, -0.14, 1.4, 1.3, -0.5, 
+                            0.3, 1, 0.0, 0, -0.0]
+            session.angleInterpolation(jointNames, jointValues, 0.8, True)
+
+        elif age == 'elementary':
+            jointValues = [-0.2, 0.0, 
+                            1, 0.13, -1.22, -1.52, -1, 
+                            1.55, -0.14, 1, 1.2, 0.9, 
+                            1, 0.1, 0.0, -0.1, 0.1]
+            session.angleInterpolation(jointNames, jointValues, 1, True)
+                
+            jointValues = [0, 0, 
+                            1.3, 0.13, -1, -1, 0.5, 
+                            1, -0.14, 1.4, 1.3, -0.5, 
+                            0.3, 1, 0.0, 0, -0.0]
+            session.angleInterpolation(jointNames, jointValues, 1, True)
+        
+        self.normalPosture()
+        return
+    
+    
+    def exultation(self, age):
+        session = self.session_service("ALMotion")
         isAbsolute = True
-        jointNames = ["RElbowRoll", "RElbowYaw", "RHand", "RShoulderPitch", "RShoulderRoll", "RWristYaw",
-                      "LElbowRoll", "LElbowYaw", "LHand", "LShoulderPitch", "LShoulderRoll", "LWristYaw"]
-        
-        jointValues = [1.32, 1.42, 0, -0.03, -0.80, -1.01,
-                       -1.32, -1.42, 0, -0.03, 0.80, 1.01]
-        session.angleInterpolation(jointNames, jointValues, 0.8, isAbsolute)
-        
-        # arms up
-        jointNames = ["RElbowRoll", "LElbowRoll", "RElbowYaw", "LElbowYaw", "RShoulderPitch", "LShoulderPitch"]
-        jointValues = [0.8, -0.8, 0.7, -0.7, -1, -1]
-        session.angleInterpolation(jointNames, jointValues, 0.3, isAbsolute)
-        
-        # arms down
-        jointNames = ["RElbowRoll", "LElbowRoll", "RElbowYaw", "LElbowYaw", "RShoulderPitch", "LShoulderPitch"]
-        jointValues = [1.32, -1.32, 1.42, -1.42, -0.03, -0.03]
-        session.angleInterpolation(jointNames, jointValues, 0.3, isAbsolute)
-        
-        # arms up
-        jointNames = ["RElbowRoll", "LElbowRoll", "RElbowYaw", "LElbowYaw", "RShoulderPitch", "LShoulderPitch"]
-        jointValues = [0.8, -0.8, 0.7, -0.7, -1, -1]
-        session.angleInterpolation(jointNames, jointValues, 0.3, isAbsolute)
-        
-        # arms down
-        jointNames = ["RElbowRoll", "LElbowRoll", "RElbowYaw", "LElbowYaw", "RShoulderPitch", "LShoulderPitch"]
-        jointValues = [1.32, -1.32, 1.42, -1.42, -0.03, -0.03]
-        session.angleInterpolation(jointNames, jointValues, 0.3, isAbsolute)
+
+        if age == 'middle':
+            jointNames = ["RElbowRoll", "RElbowYaw", "RHand", "RShoulderPitch", "RShoulderRoll", "RWristYaw",
+                        "LElbowRoll", "LElbowYaw", "LHand", "LShoulderPitch", "LShoulderRoll", "LWristYaw"]
+            jointValues = [1.32, 1.42, 0, -0.03, -0.80, -1.01,
+                        -1.32, -1.42, 0, -0.03, 0.80, 1.01]
+            session.angleInterpolation(jointNames, jointValues, 0.8, isAbsolute)
+            
+            # arms up
+            jointNames = ["RElbowRoll", "LElbowRoll", "RElbowYaw", "LElbowYaw", "RShoulderPitch", "LShoulderPitch"]
+            jointValues = [0.8, -0.8, 0.7, -0.7, -1, -1]
+            session.angleInterpolation(jointNames, jointValues, 0.3, isAbsolute)
+            
+            # arms down
+            jointNames = ["RElbowRoll", "LElbowRoll", "RElbowYaw", "LElbowYaw", "RShoulderPitch", "LShoulderPitch"]
+            jointValues = [1.32, -1.32, 1.42, -1.42, -0.03, -0.03]
+            session.angleInterpolation(jointNames, jointValues, 0.3, isAbsolute)
+            
+            # arms up
+            jointNames = ["RElbowRoll", "LElbowRoll", "RElbowYaw", "LElbowYaw", "RShoulderPitch", "LShoulderPitch"]
+            jointValues = [0.8, -0.8, 0.7, -0.7, -1, -1]
+            session.angleInterpolation(jointNames, jointValues, 0.3, isAbsolute)
+            
+            # arms down
+            jointNames = ["RElbowRoll", "LElbowRoll", "RElbowYaw", "LElbowYaw", "RShoulderPitch", "LShoulderPitch"]
+            jointValues = [1.32, -1.32, 1.42, -1.42, -0.03, -0.03]
+            session.angleInterpolation(jointNames, jointValues, 0.3, isAbsolute)
+
+
+        elif age == 'elementary':
+            jointNames = ["RElbowRoll", "RElbowYaw", "RHand", "RShoulderPitch", "RShoulderRoll", "RWristYaw",
+                        "LElbowRoll", "LElbowYaw", "LHand", "LShoulderPitch", "LShoulderRoll", "LWristYaw"]
+            
+            jointValues = [1.32, 1.42, 0, -0.03, -0.80, -1.01,
+                        -1.32, -1.42, 0, -0.03, 0.80, 1.01]
+            session.angleInterpolation(jointNames, jointValues, 1, isAbsolute)
+            
+            # arms up
+            jointNames = ["RElbowRoll", "LElbowRoll", "RElbowYaw", "LElbowYaw", "RShoulderPitch", "LShoulderPitch"]
+            jointValues = [0.8, -0.8, 0.7, -0.7, -1, -1]
+            session.angleInterpolation(jointNames, jointValues, 0.5, isAbsolute)
+            
+            # arms down
+            jointNames = ["RElbowRoll", "LElbowRoll", "RElbowYaw", "LElbowYaw", "RShoulderPitch", "LShoulderPitch"]
+            jointValues = [1.32, -1.32, 1.42, -1.42, -0.03, -0.03]
+            session.angleInterpolation(jointNames, jointValues, 0.5, isAbsolute)
+            
+            # arms up
+            jointNames = ["RElbowRoll", "LElbowRoll", "RElbowYaw", "LElbowYaw", "RShoulderPitch", "LShoulderPitch"]
+            jointValues = [0.8, -0.8, 0.7, -0.7, -1, -1]
+            session.angleInterpolation(jointNames, jointValues, 0.5, isAbsolute)
+            
+            # arms down
+            jointNames = ["RElbowRoll", "LElbowRoll", "RElbowYaw", "LElbowYaw", "RShoulderPitch", "LShoulderPitch"]
+            jointValues = [1.32, -1.32, 1.42, -1.42, -0.03, -0.03]
+            session.angleInterpolation(jointNames, jointValues, 0.5, isAbsolute)
 
         self.normalPosture()
         return
     
 
-    def sad(self):    
-        self.headPose(0.0,1.0,0.8)
+    def sad(self, age):    
+        if age == 'middle':
+            self.headPose(0.0,1.0,0.8)
+            self.headPose(0.5,1.0,0.5)
+            self.headPose(-0.5,1.0,0.5)
+            self.headPose(0.5,1.0,0.5)
+            self.headPose(-0.5,1.0,0.5)
+            self.headPose(0.0,1.0,0.5)
 
-        self.headPose(0.5,1.0,0.5)
-        self.headPose(-0.5,1.0,0.5)
-        self.headPose(0.5,1.0,0.5)
-        self.headPose(-0.5,1.0,0.5)
-        self.headPose(0.0,1.0,0.5)
+        elif age == 'elementary':
+            self.headPose(0.0,1.0,0.8)
+            self.headPose(0.5,1.0,0.8)
+            self.headPose(-0.5,1.0,0.8)
+            self.headPose(0.5,1.0,0.8)
+            self.headPose(-0.5,1.0,0.8)
+            self.headPose(0.0,1.0,0.8)
     
         self.normalPosture()
         return
     
 
-    def normal(self):
-        self.headPose(0.0, 0.5, 0.8)
-        self.headPose(0.0, 0, 0.8)
-        self.headPose(0.0, 0.5, 0.8)
-        self.headPose(0.0, 0.0, 0.8) 
+    def normal(self, age):
+        if age == 'middle':
+            self.headPose(0.0, 0.5, 0.8)
+            self.headPose(0.0, 0, 0.8)
+            self.headPose(0.0, 0.5, 0.8)
+            self.headPose(0.0, 0.0, 0.8) 
 
-        self.hello()
+        elif age == 'elementary':
+            self.headPose(0.0, 0.5, 1)
+            self.headPose(0.0, 0, 1)
+            self.headPose(0.0, 0.5, 1)
+            self.headPose(0.0, 0.0, 1) 
+
         return
     
 
-    def happy(self):
-        self.exultation()
+    def happy(self, age):
+        self.exultation(age)
         return

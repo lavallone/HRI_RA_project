@@ -26,7 +26,7 @@ def behaviour():
                'waste':'img/trash/bin_waste.png'}
 
     key_words = {'plastic': ['bottle', 'coke', 'can', 'water'], 
-                 'paper': ['notebook','sheet', 'copybook', 'newspaper', 'mail'], 
+                 'paper': ['notebook','sheet', 'copybook', 'newspaper', 'paper', 'mail'], 
                  'trash':['snack', 'dirty', 'coffee'], 
                  'compost':['apple', 'banana', 'fruit', 'bread', 'food', 'sandwich']}
 
@@ -41,7 +41,7 @@ def behaviour():
         print('IN ON-TOUCHED', value)
 
         #####################
-        thread = threading.Thread(target = im.robot.notouch) 
+        thread = threading.Thread(target = lambda: im.robot.notouch(age = "elementary")) 
         thread.start()
         #####################
 
@@ -140,8 +140,8 @@ def behaviour():
         if someone:                 #start interaction
             
             #######################################
-            im.robot.hello()
-            thread = threading.Thread(target = im.robot.talkingfast) 
+            im.robot.hello('elementary')
+            thread = threading.Thread(target = lambda: im.robot.talkingfast(age = "elementary")) 
             thread.start()
             #######################################
 
@@ -157,7 +157,7 @@ def behaviour():
             #da mettere nell'if new?
 
             #######################################
-            thread = threading.Thread(target = im.robot.talkingfast1) 
+            thread = threading.Thread(target = lambda: im.robot.talkingfast1(age = "elementary")) 
             thread.start()
             #######################################
 
@@ -186,7 +186,7 @@ def behaviour():
                     while(age == 'timeout'):
 
                         ##################
-                        thread = threading.Thread(target = im.robot.talkingfast2) 
+                        thread = threading.Thread(target = lambda: im.robot.talkingfast2(age = "elementary")) 
                         thread.start()
                         ##################
 
@@ -201,7 +201,7 @@ def behaviour():
                     #im.executeModality('TEXT', 'Hi '+new_user_s[0]+' '+new_user_s[1]+', what do you want to do?')
 
                     #################
-                    thread = threading.Thread(target = im.robot.talking) 
+                    thread = threading.Thread(target = lambda: im.robot.talking(age = im.profile[0])) 
                     thread.start()
                     #################
 
@@ -210,7 +210,21 @@ def behaviour():
                     time.sleep(5)
                     #inserire parte di presentation su quello che fa
                     #add gesture di saluto
-                else: im.profile[0] = 'middle'
+                
+                else: 
+                    im.profile[0] = 'middle'
+                    open('/home/robot/playground/info_people.txt', 'a').write(' middle\n')
+                    im.profile[0] = 'middle'
+                    if DEBUG: print(im.profile)
+                    #################
+                    thread = threading.Thread(target = lambda: im.robot.talking(age = 'middle')) 
+                    thread.start()
+                    #################
+                    im.executeModality('TTS', 'Hi '+new_user_s[0]+' '+new_user_s[1]+'.')
+                    im.execute('presentation')
+                    time.sleep(5)
+                
+
             else:
                 if old_user_school ==  'elementary': im.profile[0] = 'elementary'
                 else: im.profile[0] = 'middle'
@@ -219,7 +233,7 @@ def behaviour():
                 #im.executeModality('TEXT', 'Welcom back '+new_user[0]+' 'new_user[1]+', what do you want to do?')
 
                 #################
-                thread = threading.Thread(target = im.robot.talkingfast) 
+                thread = threading.Thread(target = lambda: im.robot.talkingfast(age = im.profile[0])) 
                 thread.start()
                 #################
 
@@ -230,7 +244,7 @@ def behaviour():
         
         
         #################
-        thread = threading.Thread(target = im.robot.talkingfast1) 
+        thread = threading.Thread(target = lambda: im.robot.talkingfast1(age = im.profile[0])) 
         thread.start()
         #################
 
@@ -241,12 +255,12 @@ def behaviour():
 
             if im.profile[1] == 'new':
                 #################
-                thread = threading.Thread(target = im.robot.talking) 
+                thread = threading.Thread(target = lambda: im.robot.talking(age = im.profile[0])) 
                 thread.start()
                 #################
             else: 
                 #################
-                thread = threading.Thread(target = im.robot.talkingfast2) 
+                thread = threading.Thread(target = lambda: im.robot.talkingfast2(age = im.profile[0])) 
                 thread.start()
                 #################
             
@@ -283,7 +297,7 @@ def behaviour():
             
             
             #################
-            thread = threading.Thread(target = im.robot.talkingfast) 
+            thread = threading.Thread(target = lambda: im.robot.talkingfast(age = im.profile[0])) 
             thread.start()
             #################
 
@@ -300,18 +314,21 @@ def behaviour():
             im.executeModality('IMAGE', map_goals_path)
             time.sleep(5)
 
-            #### DA INSERIRE UNA THINKING MENTRE FA FINTA DI CERCARE IL PATH
-            thread = threading.Thread(target = im.robot.thinking) 
+            #### THINKING MENTRE FA FINTA DI CERCARE IL PATH
+            #################
+            thread = threading.Thread(target = lambda: im.robot.thinking(age = im.profile[0])) 
             thread.start()
+            #################
 
             im.executeModality('TTS', 'Now I will show you the fastest path to reach the '+garbage_class+' bin')
             im.executeModality('IMAGE', 'imgs/loading/loading-25.gif')   
             time.sleep(5)
 
             #################
-            thread = threading.Thread(target = im.robot.lookhere) 
-            thread.start() 
+            thread = threading.Thread(target = lambda: im.robot.lookhere(age = im.profile[0])) 
+            thread.start()
             #################
+
             im.executeModality('IMAGE', map_bestpath_path)
             im.executeModality('TTS', "Here's the path!")
             time.sleep(10)
@@ -374,7 +391,7 @@ def behaviour():
             if DEBUG: print(im.profile)
 
             #################
-            thread = threading.Thread(target = im.robot.lookhere) 
+            thread = threading.Thread(target = lambda: im.robot.lookhere(age = 'elementary')) 
             thread.start()
             #################
 
@@ -383,7 +400,7 @@ def behaviour():
                 finished = im.super_recycling_game()
 
                 ##########################
-                thread = threading.Thread(target = im.robot.exultation) 
+                thread = threading.Thread(target = lambda: im.robot.exultation(age = 'elementary')) 
                 thread.start()
                 ##########################
 
@@ -396,21 +413,21 @@ def behaviour():
         if finished: 
 
             # Thread con hello 
-            ##########################
-            thread = threading.Thread(target = im.robot.hello) 
+            #################
+            thread = threading.Thread(target = lambda: im.robot.hello(age = im.profile[0])) 
             thread.start()
-            ##########################
+            #################
 
             im.execute('goodbye')
             feed = im.ask('feedback', timeout = 20)
 
             # CREARE GESTURES 1-2 TRISTE, 3 MEZZO MEZZO, 4-5 FELICE 
-            if feed == 1 or feed == 2:
-                im.robot.sad()
-            elif feed == 3:
-                im.robot.normal()
+            if feed == '1' or feed == '2':
+                im.robot.happy(im.profile[0]) 
+            elif feed == '3':
+                im.robot.normal(im.profile[0])
             else: 
-                im.robot.happy()
+                im.robot.sad(im.profile[0])
 
             # robot deve avere una reazione diversa a seconda dello score rating
 
