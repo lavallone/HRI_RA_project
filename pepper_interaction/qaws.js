@@ -153,6 +153,9 @@ function button_fn(event) {
 function button_fn_openPage(event) {
   var url = event.srcElement
   window.open(url.src, '_blank'); // Opens the URL in a new tab/window
+  //to return the value of button
+  var bsrc = event.srcElement || event.originalTarget
+  wsrobot_send(bsrc.id);
 }
 
 

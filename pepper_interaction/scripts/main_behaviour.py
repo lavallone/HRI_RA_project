@@ -50,25 +50,6 @@ def behaviour():
     
 
     anyTouch = im.robot.memory_service.subscriber("TouchChanged")
-
-    #im.robot.people_service = im.robot.app.session.service("ALPeoplePerception")
-    ##print(im.robot.people_service)
-    ##print(im.robot.memory_service.getData('TouchChanged'))
-
-    #idAnyTouch = anyTouch.signal.connect(onTouched)
-    #print(im.robot.memory_service.getEventList())
-
-    '''
-    im.robot.animation_player_service = im.robot.app.session.service("ALAnimationPlayer")
-    im.robot.beh_service = im.robot.app.session.service("ALBehaviorManager")
-    im.robot.al_service = im.robot.app.session.service("ALAutonomousLife")
-    im.robot.rp_service = im.robot.app.session.service("ALRobotPosture")
-    im.robot.bm_service = im.robot.app.session.service("ALBackgroundMovement")
-    im.robot.ba_service = im.robot.app.session.service("ALBasicAwareness")
-    im.robot.sm_service = im.robot.app.session.service("ALSpeakingMovement")
-
-    im.robot.alive = True
-    '''
     
     while True:
 
@@ -133,9 +114,6 @@ def behaviour():
                     #continue
 
         im.robot.stopSensorMonitor()
-
-        #print('VOCA', im.vocabulary)
-
         
         if someone:                 #start interaction
             
@@ -342,27 +320,35 @@ def behaviour():
             im.display.display_image("imgs/plastic.png")
             im.display.display_image("imgs/fashion.png", place='right')
             im.display.display_text("News ♻", "default")
-            im.display.display_newsbuttons([["fashion", "Fashion pollution", "https://earth.org/fast-fashions-detrimental-effect-on-the-environment/"], 
-                                            ["plastic", "Plastic in oceans", "https://oceanliteracy.unesco.org/plastic-pollution-ocean/"],
-                                            ["paper", "Paper recycling" , "https://www.twosides.info/paper-packaging-is-recycled-more-than-any-other-material"]
-                                            ])
-            '''
-            if qualcosa == fashion:
-                im.executeModality('TTS', 'Did you know that "fashion production" comprises 10% of total global carbon emissions, as much as the European Union? And it dries up water sources and pollutes rivers and streams, while 85% of all textiles go to dumps each year? Take a look at this article to learn about "Fast Fashion and Its Environmental Impact".')
-            elif qualcosa == plastic:
-                im.executeModality('TTS', 'Did you know that plastic is one of the most enduring materials man has created? And it is possible that it does not even fully degrade, but becomes what we call microplastic? Take a look at this article to learn about the presence of plastic in our oceans.')
-            else:
-                im.executeModality('TTS', 'Did you know that paper packaging is the most recycled packaging material in Europe? Take a look at the article to deepen the topic.')
-            '''
+            #im.display.display_newsbuttons([["fashion", "Fashion pollution", "https://earth.org/fast-fashions-detrimental-effect-on-the-environment/"], 
+            #                                ["plastic", "Plastic in oceans", "https://oceanliteracy.unesco.org/plastic-pollution-ocean/"],
+            #                                ["paper", "Paper recycling" , "https://www.twosides.info/paper-packaging-is-recycled-more-than-any-other-material"]
+            #                                ])
+            
 
             while not finished:
+
+                buttons = im.display.ask_newsb([["fashion", "Fashion pollution", "https://earth.org/fast-fashions-detrimental-effect-on-the-environment/"], 
+                                    ["plastic", "Plastic in oceans", "https://oceanliteracy.unesco.org/plastic-pollution-ocean/"],
+                                    ["paper", "Paper recycling" , "https://www.twosides.info/paper-packaging-is-recycled-more-than-any-other-material"]
+                                    ], timeout = 20)
+
+
+                if buttons == 'fashion':
+                    im.executeModality('TTS', 'Did you know that "fashion production" comprises 10% of total global carbon emissions, as much as the European Union? And it dries up water sources and pollutes rivers and streams, while 85% of all textiles go to dumps each year? Take a look at this article to learn about "Fast Fashion and Its Environmental Impact".')
+                elif buttons == 'plastic':
+                    im.executeModality('TTS', 'Did you know that plastic is one of the most enduring materials man has created? And it is possible that it does not even fully degrade, but becomes what we call microplastic? Take a look at this article to learn about the presence of plastic in our oceans.')
+                else:
+                    im.executeModality('TTS', 'Did you know that paper packaging is the most recycled packaging material in Europe? Take a look at the article to deepen the topic.')
+                
+
                 time.sleep(10)
                 im.executeModality('TTS', 'Have you finished reading?')
                 # qui a loop ogni tot secondi il robot chiede allo user se ha finito...
                 # appena gli risponde di si --> si setta finished=True ed esce dal loop!
-            
-                ans_news = im.robot.memory_service.getData('FakeRobot/ASR')
                 time.sleep(5)
+
+                ans_news = im.robot.memory_service.getData('FakeRobot/ASR')
                 if ans_news == 'yes': finished = True
                 
 
@@ -371,20 +357,6 @@ def behaviour():
             im.display.display_image("")
             im.display.display_image("", place='right')
             im.display.display_text("", "default")
-            '''
-            article = im.ask('news')
-            im.executeModality('IMAGE', '')
-            #button = im.executeModality('BUTTONS', [('exit', 'EXIT'), ('back', 'BACK')])
-            article = int(article)-1
-            
-            pages = ['microplastics', 'pollution', 'fashion', 'recycled']
-            print(pages)
-            button = im.ask(pages[article], timeout = 25)        
-
-            if button == 'exit': finished = True
-            elif button == 'back': finished = False
-            elif button == 'timeout':finished = True
-            '''
 
         elif(activity == 'play'):
             im.profile[3] = 'play'

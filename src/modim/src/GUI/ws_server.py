@@ -199,11 +199,19 @@ class DisplayWS:
     def cancel_answer(self):
         self.reset_answer = True
 
+    def ask_newsb(self, data, timeout=10):
+        self.remove_buttons()
+        self.display_newsbuttons(data)    
+        a = self.answer(timeout)
+        if (a is not None):
+            a = a.rstrip()
+        return a
+
     def ask(self, data, timeout=10):
-        remove_buttons()
-        display_buttons(data)    
-        a = answer(timeout)
-        remove_buttons()
+        self.remove_buttons()
+        self.display_buttons(data)    
+        a = self.answer(timeout)
+        self.remove_buttons()
         if (a is not None):
             a = a.rstrip()
         return a
