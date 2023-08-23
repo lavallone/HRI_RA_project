@@ -13,7 +13,12 @@ VOCE: and, how old are you?
 
 Utente: Risponde a voce
 
-VOCE: Hi <nome> e <cognome> !
+Welcome:
+TESTO: So, do you go to elementary school?
+VOCE: So, do you go to elementary school?
+
+Utente: Risponde a voce
+VOCE: Hi <nome> <cognome> !
 
 Presentation
 TESTO: I am the EnviroMate of this school! The principal put me here to teach you about recycling!

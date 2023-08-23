@@ -408,7 +408,7 @@ class InteractionManager:
                 c += 1
                 #############
                 # Thread con yes 
-                self.robot.slow_yes('elementary')
+                self.robot.yes('elementary')
                 #thread = threading.Thread(target = self.robot.yes) 
                 #thread.start()
                 #############
@@ -419,7 +419,7 @@ class InteractionManager:
             else: 
                 #############
                 # Thread con no 
-                self.robot.slow_no('elementary')
+                self.robot.no('elementary')
                 #thread = threading.Thread(target = self.robot.no) 
                 #thread.start()
                 #############

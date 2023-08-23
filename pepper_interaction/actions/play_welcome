@@ -2,19 +2,12 @@ IMAGE
 <*,*,*,*>:  imgs/mario/supermario_trashcan.png
 ----
 TEXT
-<*,*,*,*>:  Welcome in Super Recycling Bros Game! <br><b>PRESS START</b>
-----
-GESTURE
-<*,*,*,*>: animations/Stand/Emotions/Positive/Happy_4
+<*,*,*,*>:  Welcome to Super Recycling Bros Game! <br><b>PRESS START</b>
 ----
 TTS
-<*,*,*,*>:  Welcome in Super Recycling Bros Game!
-----
-ASR
-<*,*,*,*> {'start': ['start', 'strat the game', 'game']}
+<*,*,*,*>:  Welcome to Super Recycling Bros Game!
 ----
 BUTTONS
 start
 <*,*,*,*>: START
 ----
-

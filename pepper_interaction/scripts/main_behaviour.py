@@ -38,7 +38,7 @@ def behaviour():
     new_user = ''
 
     def onTouched(value):
-        print('IN ON-TOUCHED', value)
+        print('ON-TOUCHED', value)
 
         #####################
         thread = threading.Thread(target = lambda: im.robot.notouch(age = "elementary")) 
@@ -85,7 +85,7 @@ def behaviour():
                     ##############################################
 
                     im.executeModality('TTS', 'Do you need help? Come here!')
-                    time.sleep(3)
+                    #time.sleep(1)
                     p_back = True
                     while (p_back):
                         sensor = im.robot.sensorvalue()
@@ -174,9 +174,6 @@ def behaviour():
                             open('/home/robot/playground/info_people.txt', 'a').write(' middle\n')
                             im.profile[0] = 'middle'
                             if DEBUG: print(im.profile)
-                    #MODIFY PROFILE - lasciare solo vocale
-
-                    #im.executeModality('TEXT', 'Hi '+new_user_s[0]+' '+new_user_s[1]+', what do you want to do?')
 
                     #################
                     thread = threading.Thread(target = lambda: im.robot.talking(age = im.profile[0])) 
@@ -186,8 +183,6 @@ def behaviour():
                     im.executeModality('TTS', 'Hi '+new_user_s[0]+' '+new_user_s[1]+'.')
                     im.execute('presentation')
                     time.sleep(5)
-                    #inserire parte di presentation su quello che fa
-                    #add gesture di saluto
                 
                 else: 
                     im.profile[0] = 'middle'
@@ -207,19 +202,15 @@ def behaviour():
                 if old_user_school ==  'elementary': im.profile[0] = 'elementary'
                 else: im.profile[0] = 'middle'
                 im.profile[1] = 'old'
-                #MODIFY PROFILE - lasciare solo vocale
-                #im.executeModality('TEXT', 'Welcom back '+new_user[0]+' 'new_user[1]+', what do you want to do?')
 
                 #################
-                thread = threading.Thread(target = lambda: im.robot.talkingfast(age = im.profile[0])) 
+                thread = threading.Thread(target = lambda: im.robot.talkingfast2(age = im.profile[0])) 
                 thread.start()
                 #################
 
                 im.executeModality('TTS', 'Welcome back '+new_user_s[0]+' '+new_user_s[1]+'.')
                 im.execute('presentation')
-                time.sleep(5)
-                #vedi testo
-        
+                time.sleep(5)        
         
         #################
         thread = threading.Thread(target = lambda: im.robot.talkingfast1(age = im.profile[0])) 
@@ -393,20 +384,18 @@ def behaviour():
             im.execute('goodbye')
             feed = im.ask('feedback', timeout = 20)
 
-            # CREARE GESTURES 1-2 TRISTE, 3 MEZZO MEZZO, 4-5 FELICE 
+            #GESTURES 1-2 SAD, 3 NORMAL, 4-5 HAPPY 
             if feed == '1' or feed == '2':
-                im.robot.happy(im.profile[0]) 
+                im.robot.sad(im.profile[0]) 
             elif feed == '3':
                 im.robot.normal(im.profile[0])
             else: 
-                im.robot.sad(im.profile[0])
-
-            # robot deve avere una reazione diversa a seconda dello score rating
-
-        ### mettere in attesa finche non si allontana (tramite laser e sonar)        
+                im.robot.happy(im.profile[0])   
+                im.executeModality('TTS', 'Thank you !')    
 
         anyTouch.signal.disconnect(idAnyTouch)    
 
+        #simulated absence of person 
         im.robot.memory_service.insertData('Device/SubDeviceList/Platform/Front/Sonar/Sensor/Value', 0.0)
         im.robot.memory_service.insertData('Device/SubDeviceList/Platform/Back/Sonar/Sensor/Value', 0.0)
 

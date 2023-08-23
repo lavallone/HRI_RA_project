@@ -10,8 +10,3 @@ TEXT
 TTS
 <*,*,*,*>: Good job! Correct answer. YUPPY!
 ----
-BUTTONS 
-next
-<*,*,*,*>: NEXT QUESTION
-
-

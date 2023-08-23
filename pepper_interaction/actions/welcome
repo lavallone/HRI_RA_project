@@ -2,19 +2,12 @@ IMAGE
 <*,*,*,*>:  imgs/pepper-robot_0.png
 ----
 TEXT
-<*,new,*,*>:  So, do you go to elementary school? 
+<elementary,new,*,*>:  So, do you go to elementary school? 
 ----
 TTS
-<*,*,*,*>:  What is your school order?
 <elementary, new, *, *>: So, do you go to elementary school? 
 ----
 ASR
-<*,*,*,*>:  {'elementary': ['elementary school', 'elementary'], 'middle': ['middle', 'high school', 'secondary', 'secondary school']}
-----
-BUTTONS
-elementary
-<elementary,new,*,*>: YES
-middle
-<elementary,new,*,*>: NO
+<elementary,new,*,*>:  {'elementary': ['elementary school', 'elementary', 'yes'], 'middle': ['middle', 'high school', 'secondary', 'secondary school', 'no']}
 ----
 

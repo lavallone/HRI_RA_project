@@ -9,13 +9,13 @@ TTS
 ----
 IMAGEBUTTONS
 1
-<*,*,*,*>: imgs/smile1.jpg
+<*,*,*,*>: imgs/smile5.jpg
 2
-<*,*,*,*>: imgs/smile2.jpg
+<*,*,*,*>: imgs/smile4.jpg
 3
 <*,*,*,*>: imgs/smile3.jpg
 4
-<*,*,*,*>: imgs/smile4.jpg
+<*,*,*,*>: imgs/smile2.jpg
 5
-<*,*,*,*>: imgs/smile5.jpg
+<*,*,*,*>: imgs/smile1.jpg
 ----

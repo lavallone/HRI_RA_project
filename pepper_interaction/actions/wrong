@@ -5,11 +5,5 @@ TEXT
 <*,*,*,*>: Sorry! Wrong Answer! Try again!
 ----
 TTS
-<*,*,*,*>: Try again! &agrave
+<*,*,*,*>: Try again!
 ----
-BUTTONS 
-try
-<*,*,*,*>: TRY AGAIN
-
-
-
