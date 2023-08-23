@@ -1,0 +1,178 @@
+FLUSSO DIALOGO:
+
+UTENTE NUOVO:
+
+Presentation:
+TESTO: Hi! I am Pepper! Can you tell me your name, surname? (oppure What’s your name?)
+VOCE: Hi! I am Pepper! Can you tell me your name, surname?  (oppure What’s your name?)
+
+Utente: Risponde a voce
+
+TESTO: How old are you?
+VOCE: and, how old are you?
+
+Utente: Risponde a voce
+
+VOCE: Hi <nome> e <cognome> !
+
+Presentation
+TESTO: I am the EnviroMate of this school! The principal put me here to teach you about recycling!
+VOCE: I am the EnviroMate of this school! The principal put me here to teach you about recycling!
+
+Activity - activity
+TESTO: What do you want to do?
+VOCE: What do you want to do?
+
+Utente: Risponde con i bottoni
+
+Activity - Recycle
+TESTO: How can I help you?
+VOCE: How can I help you? You can you ask me where you have to throw a specific object, or even show it to me and I will indicate the right bucket to throw it into.
+
+Utente: Solo voce dice cosa vuole buttare
+
+        se NON viene trovata una corrispondenza con gli elementi da buttare:
+
+        TESTO: Let me see the object
+        VOCE:
+
+    
+    TESTO:
+    VOCE: This is the map of the school, thesea are the available bins in which you can throw your object
+
+    TESTO:
+    VOCE: Now I will show you the fastest path to reach the <garbage_class> bin
+
+    TESTO:
+    VOCE: Here's the path!
+
+Activity - news
+Utente: Risponde con i bottoni - argomento link
+
+TESTO:
+VOCE: legge riassunto di due righe
+
+TESTO:
+VOCE: Have you finished reading?
+
+Utente: solo voce yes or no
+
+Activity - play
+TESTO:  Welcome in Super Recycling Bros Game! PRESS START
+VOCE:  Welcome in Super Recycling Bros Game!
+
+Utente: bottone start
+
+ad ogni iterazione del gioco
+TESTO: What is the right trash? Choose the right alternative
+VOCE: What is the right trash? Choose the right alternative
+
+Activity - goodbye
+
+se elementary e ha scelto play
+TESTO: I hope you enjoyed it! You did a great job! See you next time!
+VOCE: I hope you enjoyed it! You did a great job! See you next time!
+
+se elementary e ha scelto recycle
+TESTO: I hope I helped you out see you next time and remember to respect the ENVIRONMENT!
+VOCE: I hope I helped you out see you next time and remember to respect the ENVIRONMENT!
+
+se middle e recycle
+TESTO: I hope I helped you out see you next time and remember to respect the environment!
+VOCE: I hope I helped you out see you next time and remember to respect the environment!
+
+se middle e news
+TESTO: I hope you learned something! See you next time! Remember to respect the environment!
+VOCE:I hope you learned something! See you next time! Remember to respect the environment!
+
+Activity - feedback
+decidere se deve dire o scrivere qualcosa di specifico in base al feed
+
+
+
+
+
+
+
+
+
+
+
+
+UTENTE VECCHIO:
+TESTO: Hi! I am Pepper! Can you tell me your name, surname?
+VOCE: Hi! I am Pepper! Can you tell me your name, surname?
+
+Utente: Risponde a voce
+
+VOCE: Welcome back <nome> e <cognome> !
+
+Activity
+TESTO: What do you want to do?
+VOCE: What do you want to do?
+
+Utente: Risponde con i bottoni
+
+Activity - Recycle
+TESTO: How can I help you?
+VOCE: How can I help you?
+
+Utente: Solo voce dice cosa vuole buttare
+
+        se NON viene trovata una corrispondenza con gli elementi da buttare:
+
+        TESTO: Let me see the object
+        VOCE:
+
+    
+
+    TESTO:
+    VOCE: This is the map of the school, thesea are the available bins in which you can throw your object
+
+    TESTO:
+    VOCE: Now I will show you the fastest path to reach the <garbage_class> bin
+
+    TESTO:
+    VOCE: Here's the path!
+
+Activity - news
+Utente: Risponde con i bottoni - argomento link
+
+TESTO:
+VOCE: legge riassunto di due righe
+
+TESTO:
+VOCE: Have you finished reading?
+
+Utente: solo voce yes or no
+
+Activity - play
+TESTO:  Welcome in Super Recycling Bros Game! PRESS START
+VOCE:  Welcome in Super Recycling Bros Game!
+
+Utente: bottone start
+
+ad ogni iterazione del gioco
+TESTO: What is the right trash? Choose the right alternative
+VOCE: What is the right trash? Choose the right alternative
+
+Activity - goodbye
+
+se elementary e ha scelto play
+TESTO: I hope you enjoyed it! You did a great job! See you next time!
+VOCE: I hope you enjoyed it! You did a great job! See you next time!
+
+se elementary e ha scelto recycle
+TESTO: I hope I helped you out see you next time and remember to respect the ENVIRONMENT!
+VOCE: I hope I helped you out see you next time and remember to respect the ENVIRONMENT!
+
+se middle e recycle
+TESTO: I hope I helped you out see you next time and remember to respect the environment!
+VOCE: I hope I helped you out see you next time and remember to respect the environment!
+
+se middle e news
+TESTO: I hope you learned something! See you next time! Remember to respect the environment!
+VOCE:I hope you learned something! See you next time! Remember to respect the environment!
+
+Activity - feedback
+decidere se deve dire o scrivere qualcosa di specifico in base al feed
