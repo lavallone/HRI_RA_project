@@ -280,7 +280,9 @@ def behaviour():
             
             # bisogna provare a vedere quanto dura il finding dello shortest path 
             # (corrisponde a quanto tempo l'immagine verrà mostrata)
-            map_goals_path, map_bestpath_path = im.shortest_path(garbage_class)
+            map_goals_path, map_bestpath_path, is_path = im.shortest_path(garbage_class)
+            if int(is_path) == 0: # do something different
+                print("<NO PLAN FOUND>")
             map_goals_path = map_goals_path[3:]
             map_bestpath_path = map_bestpath_path[3:]
 

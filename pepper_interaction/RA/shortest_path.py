@@ -119,9 +119,10 @@ def handle_client(client_socket, client_address):
             # - LTLf-based reward shaping                                                                 #
             ###############################################################################################
             
-            shortest_path, bin_to_update = [], (0,0) # the two values we need to return
+            shortest_path, bin_to_update = [], (0,0) # the two values we need to return (if there exist the path)
+            is_path = 1
             # we choose randomly which technique to use...
-            which_method = random.randint(1,3)
+            which_method = 1#random.randint(1,3)
             if which_method == 1: # planning
                 print("PDDL PLANNING")
                 ris_plan, bin_to_update = plan(garbage_type, fullness, doors_closed)
@@ -144,7 +145,9 @@ def handle_client(client_socket, client_address):
                                 shortest_path.append(states2cells_doors[ris_plan[i]])
                         else:
                             continue
-                # if a plan doesn't exist 'shortest_path' is an empty list
+                # if a plan doesn't exist
+                else:
+                    is_path = 0
                 
             elif which_method == 2 or which_method == 3: # RL
                 if which_method == 2:
@@ -184,11 +187,12 @@ def handle_client(client_socket, client_address):
                 # this means we didn't find a path 
                 if not done:
                     shortest_path =  []
+                    is_path = 0
                 else:
                     bin_to_update = find_value(matrix, shortest_path[-1])
             
-            # update bins
-            if shortest_path is not []:
+            # update bins only if the path exists
+            if is_path == 1:
                 update_fullness(fullness, bin_to_update)
             
             # show the path computed
@@ -200,7 +204,7 @@ def handle_client(client_socket, client_address):
             map_bestpath_path = f'../imgs/map/map_path_{problem_id}.png'
             plt.savefig(map_bestpath_path)
             
-            ris = str(map_goals_path)+","+str(map_bestpath_path)
+            ris = str(map_goals_path)+","+str(map_bestpath_path)+","+str(is_path)
             # send the modified data back to the client
             client_socket.sendall(ris.encode("utf-8"))
     

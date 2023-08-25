@@ -457,12 +457,12 @@ class InteractionManager:
             # receive the response from the server
             ris = client_socket.recv(1024).decode('utf-8')
             print("Server's response:", ris)
-            map_goals_path, map_bestpath_path = str(ris).split(",")
+            map_goals_path, map_bestpath_path, is_path = str(ris).split(",")
             
         finally:
             # Clean up the connection
             client_socket.close()
-        return map_goals_path, map_bestpath_path
+        return map_goals_path, map_bestpath_path, is_path
 
 if __name__ == "__main__":
     pass
