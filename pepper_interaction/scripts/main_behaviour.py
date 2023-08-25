@@ -288,7 +288,8 @@ def behaviour():
             thread = threading.Thread(target = lambda: im.robot.thinking(age = im.profile[0])) 
             thread.start()
             #################
-
+            if garbage_class == 'compost': garbage_class = 'organic waste'
+            if garbage_class == 'trash': garbage_class = 'waste'
             im.executeModality('TTS', 'Now I will show you the fastest path to reach the '+garbage_class+' bin')
             im.executeModality('IMAGE', 'imgs/loading/loading-25.gif')   
             time.sleep(5)
