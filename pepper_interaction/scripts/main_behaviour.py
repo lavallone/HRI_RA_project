@@ -252,15 +252,20 @@ def behaviour():
                 im.executeModality('TEXT', 'Let me see the object') #cambiare il text aggiungere tts
                 img_path = "data/users_imgs/"+str(random.randint(1, 20))+".jpg"
 
-                #### DA VEDERE SE INSERIRE UNA THINKING MENTRE RICONOSCE L'IMMAGINE
-                #thread = threading.Thread(target = im.robot.thinking) 
-                #thread.start()
-                #thread = threading.Thread(target = im.robot.lookhere) 
-                #thread.start()
+                ###################
+                thread = threading.Thread(target = lambda: im.robot.thinking(age = im.profile[0])) 
+                thread.start()
+                ###################
 
                 garbage_class, ris_img_path= im.detect_garbage(img_path)
                 #ris_img_path = "../../../../playground/vision/garbage_detection/"+ris_img_path
                 time.sleep(5)
+
+                ###################
+                thread = threading.Thread(target = lambda: im.robot.lookhere(age = im.profile[0])) 
+                thread.start()
+                ###################
+
                 im.executeModality('IMAGE', 'vision/garbage_detection/'+ris_img_path)
                 time.sleep(5)
             
