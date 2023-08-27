@@ -41,6 +41,7 @@ Utente: Solo voce dice cosa vuole buttare
         TESTO: Let me see the object
         VOCE:
 
+    questa parte è da rivedere!!!!
     
     TESTO:
     VOCE: This is the map of the school, thesea are the available bins in which you can throw your object
@@ -64,7 +65,7 @@ Utente: solo voce yes or no
 
 Activity - play
 TESTO:  Welcome in Super Recycling Bros Game! PRESS START
-VOCE:  Welcome in Super Recycling Bros Game!
+VOCE:  Welcome in Super Recycling Bros Game! (qui gli si può spiegare meglio perchè si fa il gioco)
 
 Utente: bottone start
 

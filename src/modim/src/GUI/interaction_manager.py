@@ -388,7 +388,7 @@ class InteractionManager:
     ## OUR FUNCTIONS
 
     def super_recycling_game(self):
-        dir_path = 'imgs/super_recycling_imgs/'
+        dir_path = 'imgs/game/'
         dict_trash = {}
 
         for elem in os.listdir('/home/robot/playground/'+dir_path):
@@ -406,24 +406,20 @@ class InteractionManager:
             ans = self.ask('play', timeout = 15)
             if ans == class_wast: 
                 c += 1
-                #############
-                # Thread con yes 
+                ########## GESTURE ##########
                 self.robot.yes('elementary')
-                #thread = threading.Thread(target = self.robot.yes) 
-                #thread.start()
-                #############
+                #############################
                 self.execute('correct')
+                time.sleep(3)
                 img_waste = random.choice(list(dict_trash.keys()))
                 class_wast = dict_trash[img_waste] 
                 path_waste = dir_path+img_waste
             else: 
-                #############
-                # Thread con no 
+                ########## GESTURE ##########
                 self.robot.no('elementary')
-                #thread = threading.Thread(target = self.robot.no) 
-                #thread.start()
-                #############
+                #############################
                 self.execute('wrong')
+                time.sleep(3)
         return True
 
     def detect_garbage(self, img_path):

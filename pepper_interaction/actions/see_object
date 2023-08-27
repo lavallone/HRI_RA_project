@@ -1,0 +1,11 @@
+IMAGE
+<elementary,*,*,*>:  imgs/recycle/see_object.png
+<middle,*,*,*>:  imgs/recycle/see_object.png
+----
+TEXT
+<*,*,*,*>:  Therefore, show me the object...
+----
+TTS
+<*,old,*,*>:  Therefore, show me the object you want to throw.
+<*,new, *, *>: Therefore, show me the object you want to throw and I'll tell you in which bin you have to recycle it.
+----

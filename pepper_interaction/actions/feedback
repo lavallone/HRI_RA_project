@@ -1,5 +1,5 @@
 IMAGE
-<*,*,*,*>: imgs/questionar.png
+<*,*,*,*>: imgs/feedback/questionnaire.png
 ----
 TEXT
 <*,*,*,*>: Leave a feedback of your experience
@@ -9,13 +9,13 @@ TTS
 ----
 IMAGEBUTTONS
 1
-<*,*,*,*>: imgs/smile5.jpg
+<*,*,*,*>: imgs/feedback/smile5.jpg
 2
-<*,*,*,*>: imgs/smile4.jpg
+<*,*,*,*>: imgs/feedback/smile4.jpg
 3
-<*,*,*,*>: imgs/smile3.jpg
+<*,*,*,*>: imgs/feedback/smile3.jpg
 4
-<*,*,*,*>: imgs/smile2.jpg
+<*,*,*,*>: imgs/feedback/smile2.jpg
 5
-<*,*,*,*>: imgs/smile1.jpg
+<*,*,*,*>: imgs/feedback/smile1.jpg
 ----

@@ -1,0 +1,13 @@
+IMAGE
+<*,*,*,*>:  imgs/pepper/11.png
+----
+TEXT
+<elementary, new,*,*>: So, do you go to elementary school? 
+----
+TTS
+<elementary, new, *, *>: So, do you go to elementary school? 
+----
+ASR
+<elementary,new,*,*>:  {'elementary': ['elementary school', 'elementary', 'yes'], 'middle': ['middle', 'high school', 'secondary', 'secondary school', 'no']}
+----
+

@@ -1,0 +1,14 @@
+IMAGE
+<*,*,*,*>:  imgs/pepper/13.png
+----
+TEXT
+<*,a,*,*>: ♻️ <br> Hi! I am Pepper! Can you tell me your name and surname?
+<*,new,*,*>: ♻️ <br> I am the EnviroMate of this school! The principal put me here to teach you about recycling!
+<*,old,*,*>: ♻️ <br> I'm happy to see you again!
+----
+TTS
+<*,a,*,*>:  Hi! I am Pepper! Can you tell me your name and surname?
+<*,new,*,*>: I'm the EnviroMate of this school! The principal put me here to teach you about recycling!
+<*,old,*,*>: I'm happy to see you again!
+----
+

@@ -1,8 +1,8 @@
 TEXT
-<*,*,*,*>: What is the right trash? <br><b>Choose the right alternative</b>
+<*,*,*,*>: Which type of waste is this? <br><b>Choose the right alternative</b>
 ----
 TTS
-<*,*,*,*>: What is the right trash? Choose the right alternative
+<*,*,*,*>: Which type of waste is this? Choose the right alternative...
 ----
 BUTTONS
 paper

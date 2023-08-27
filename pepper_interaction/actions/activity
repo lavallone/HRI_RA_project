@@ -1,6 +1,5 @@
 IMAGE
-<elementary,*,*,*>:  imgs/trash/hri.jpg
-<middle,*,*,*>:  imgs/robot-economia-circolare.png
+<*,*,*,*>:  imgs/pepper/8.png
 ----
 TEXT
 <*,new,*,*>: What do you want to do?

@@ -1,23 +1,18 @@
 IMAGE
-<elementary,*,*,*>: imgs/walle-eve-robot.jpg
-<middle,*,*,*>: imgs/hand.png
+<elementary,*,*,recycle>: imgs/recycle/walle-eve-robot.jpg
+<elementary,*,*,play>: imgs/mario/goodbye.jpeg
+<middle,*,*,*>: imgs/pepper/13.png
 ----
 TEXT
 <elementary, *, en, play>: I hope you enjoyed it! You did a great job! Come see me soon!
-
-<elementary,*,en, recycle>:  I hope I helped you out! Come see me soon and remember to respect the ENVIRONMENT!
-
+<elementary,*,en, recycle>:  I hope I helped you out! Come see me soon and remember to respect the environment!
 <middle, *,en, news>: I hope you learned something! See you next time! Remember to respect the environment!
-
-<midlle,*,en, recycle>:  I hope I helped you out! See you next time and remember to respect the environment!
+<middle,*,en, recycle>:  I hope I helped you out! See you next time and remember to respect the environment!
 ----
 TTS
 <elementary, *, en, play>: I hope you enjoyed it! You did a great job! Come see me soon!
-
 <elementary,*,en, recycle>:  I hope I helped you out! Come see me soon and remember to respect the environment!
-
 <middle, *,en, news>: I hope you learned something! See you next time! Remember to respect the environment!
-
 <midlle,*,en, recycle>:  I hope I helped you out! See you next time and remember to respect the environment!
 ----
 

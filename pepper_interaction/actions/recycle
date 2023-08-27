@@ -1,8 +1,12 @@
+IMAGE
+<elementary,*,*,*>:  imgs/recycle/walle.jpg
+<middle,*,*,*>:  imgs/recycle/recycle.gif
+----
 TEXT
-<*,old,*,*>:  What do you want to throw out?
-<*,new, *, *>: What do you want to throw out? 
+<elementary,*,*,*>:  ♻️ <br> Great, do like WALL-E! <br> Which object do you want to recycle?
+<middle,*,*,*>:  Which object do you want to recycle?
 ----
 TTS
-<*,old,*,*>:  What do you want to throw out?
-<*,new, *, *>: What do you want to throw out? You can ask me where you have to throw a specific object, or even show it to me and I will indicate the right bucket to throw it into.
+<*,old,*,*>:  Which object do you want to recycle?
+<*,new, *, *>: Which object do you want to recycle? You can ask me where to throw a particular waste or even show me and I will show you the right bucket to throw it in.
 ----
