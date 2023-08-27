@@ -122,7 +122,7 @@ def handle_client(client_socket, client_address):
             shortest_path, bin_to_update = [], (0,0) # the two values we need to return (if there exist the path)
             is_path = 1
             # we choose randomly which technique to use...
-            which_method = 1#random.randint(1,3)
+            which_method = random.randint(1,3)
             if which_method == 1: # planning
                 print("PDDL PLANNING")
                 ris_plan, bin_to_update = plan(garbage_type, fullness, doors_closed)

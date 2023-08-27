@@ -57,7 +57,7 @@ def behaviour():
         
         # we wait for people to interact with
         while(not someone): 
-            sensor = im.robot.sensorvalue() # 0-->laser, 1-->sonar_front, 2-->sonar_back, 3-->touch_head, 4-->touch_handr, 5-->touch_handl
+            sensor = im.robot.sensorvalue() # 0-->laser, 1-->sonar_front, 2-->sonar_back, 3-->touch_head, 4-->touch_rhand, 5-->touch_lhand
             if DEBUG: print(sensor)
             time.sleep(2)
             
@@ -423,7 +423,9 @@ def behaviour():
         im.robot.memory_service.insertData('Device/SubDeviceList/Platform/Front/Sonar/Sensor/Value', 0.0)
         im.robot.memory_service.insertData('Device/SubDeviceList/Platform/Back/Sonar/Sensor/Value', 0.0)
         print(im.robot.sensorvalue())
-        im.init()
+        im.executeModality('IMAGE', "imgs/pepper/1.png")
+        im.executeModality('TEXT', "Waiting for a human...")
+        
 
 
 if __name__ == "__main__":
