@@ -5,6 +5,7 @@ import os
 import time, datetime
 import socket
 import random
+import threading
 
 from actionReader import *
 from actionWriter import ActionWriter
@@ -399,7 +400,8 @@ class InteractionManager:
             if ans == class_wast: 
                 c += 1
                 ########## GESTURE ##########
-                self.robot.yes('elementary')
+                thread = threading.Thread(target = lambda: self.robot.yes(age = "elementary")) 
+                thread.start()
                 #############################
                 self.execute('correct')
                 time.sleep(3)
@@ -408,7 +410,8 @@ class InteractionManager:
                 path_waste = dir_path+img_waste
             else: 
                 ########## GESTURE ##########
-                self.robot.no('elementary')
+                thread = threading.Thread(target = lambda: self.robot.no(age = "elementary")) 
+                thread.start()
                 #############################
                 self.execute('wrong')
                 time.sleep(3)
