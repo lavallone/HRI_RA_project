@@ -10,7 +10,7 @@ Project for the **H**uman **R**obot **I**nteraction and **R**easoning **A**gents
   ./run.bash
   docker exec -it pepperhri tmux a
   ```
-* **src** folder is a copy of what it's contained in our local machines in "*/home/user_name/src*" (***modim*** and ***pepper-tools*** ).
+* **src** folder is a copy of what it's contained in our local machines in "*/home/user_name/src*" (***modim*** and ***pepper_tools*** ).
 * Finally **pepper_interaction** is the main folder in which we developed all the code to make the interaction happens.
 
 ## Set up ⚙
