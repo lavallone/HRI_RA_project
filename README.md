@@ -16,7 +16,7 @@ Project for the **H**uman **R**obot **I**nteraction and **R**easoning **A**gents
 ## Set up ⚙
 * Create a *python conda environment* to be able to run (outside the ***pepper-hri*** docker container), two *services* developed by us: the **garbage detector** based on YOLOv5 and the **shortest path** planner to indicate the nearest bin where to throw waste items. The latter consists of 3 different strategies (a classical PDDL planner, a Q-learning RL algorithm and a reward shaping method based on $LTL_f$ goal specifications). These two *services* are provided through *sockets* mechanism.
   ```
-  # run this command in the following folders (within the created conda environment): 
+  ## run this command in the following folders (within the created conda environment): 
   # pepper_interaction/RA/planning
   # pepper_interaction/RA/KR_RL
   # pepper_interaction/vision/garbage_detection
