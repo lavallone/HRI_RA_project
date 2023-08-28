@@ -345,7 +345,7 @@ def behaviour():
                     im.executeModality('TTS', 'Did you know that "fashion production" comprises 10% of total global carbon emissions, as much as the European Union? And it dries up water sources and pollutes rivers and streams, while 85% of all textiles go to dumps each year? Take a look at this article to learn about "Fast Fashion and Its Environmental Impact".')
                 elif buttons == 'plastic':
                     im.executeModality('TTS', 'Did you know that plastic is one of the most enduring materials man has created? And it is possible that it does not even fully degrade, but becomes what we call microplastic? Take a look at this article to learn about the presence of plastic in our oceans.')
-                else:
+                elif buttons == 'paper':
                     im.executeModality('TTS', 'Did you know that paper packaging is the most recycled packaging material in Europe? Take a look at the article to deepen the topic.')
                 
                 reading = True
