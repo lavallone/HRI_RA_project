@@ -1,18 +1,8 @@
-# coding=utf-8
 import qi
 import argparse
 import sys
 import time
 import os
-
-import tornado.httpserver
-import tornado.websocket
-import tornado.ioloop
-import tornado.web
-import json
-import select
-from threading import Thread
-
 
 def main():
     parser = argparse.ArgumentParser()
@@ -25,7 +15,7 @@ def main():
     pip = args.pip
     pport = args.robotport
 
-    #Starting application
+    # starting application
     try:
         connection_url = "tcp://" + pip + ":" + str(pport)
         app = qi.Application(["HumanRobotInteraction", "--qi-url=" + connection_url ])
@@ -60,32 +50,26 @@ def main():
     }
     sent = 'START'
 
-    #print('To simulate the interaction of the human with Pepper you can write directly what do you want to tell and for the physical reaction'+
-    # ' you ahve to use this template: nofsensor_valueofsensor')
-
     while sent != 'STOP':
         
         sent = raw_input('Human: ')
-
         split = sent.split(' ')
 
         if split[0] in     memkey_transl.keys():
             sensor_class = split[0]
             sensor_value = float(split[1])
-
-            if sensor_class in ['sonarf', 'sonarb']:      #== 1 or sensor_class == 2:   #sonar front / sonar back
+            # proximity
+            if sensor_class in ['sonarf', 'sonarb']: # front sonar and back sonar
                 print('Type Sensor Input = %s, Sensor Value = %f' %(sensor_class, sensor_value))
                 try:
                     mkey = memkey[memkey_transl[sensor_class]]
                     print("Sonar %s = %f" %(mkey, sensor_value))
                     memory_service.insertData(mkey,sensor_value)
-                    #time.sleep(args.duration)                      #it is necessary only if we want simulate the value for a determinated time 
-                    #memory_service.insertData(mkey,0.0)            #vedere se va bene
                     print(memory_service.getData(mkey,sensor_value))
                 except:
-                    print("ERROR: Sensor %s unknown" %args.sensor)
-            
-            else:       #if sensor_class in ['HeadMiddle', 'LHans', 'RHand']:
+                    print("ERROR: Sensor %s unknown" %args.sensor)          
+            # touch
+            else: # if sensor_class in ['HeadMiddle', 'LHans', 'RHand']
                 try:
                     mkey = memkey[memkey_transl[sensor_class]]
                     print("Touching %s ..." %mkey)
@@ -95,13 +79,13 @@ def main():
                     print("Touching %s ... done" %mkey)
                 except:
                     print("ERROR: Sensor %s unknown" %args.sensor)
+        # simulated human talk
         else:
             tm = int(time.time())
             memory_service.raiseEvent(fakeASRevent, sent)
             memory_service.insertData(fakeASRkey, sent)
             memory_service.insertData(fakeASRtimekey, tm)
             print("Human Say: '%s' " %(sent))
-
 
 if __name__ == "__main__":
     main()

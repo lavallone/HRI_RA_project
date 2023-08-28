@@ -1,4 +1,3 @@
-# coding=utf-8
 import sys
 import time
 import os
@@ -34,7 +33,6 @@ def behaviour():
     finished = False
     p_back = False # True if there is a people behind pepper
     new_user = ''
-    DEBUG = False
     
     im.init()
     anyTouch = im.robot.memory_service.subscriber("TouchChanged")
@@ -47,10 +45,8 @@ def behaviour():
 
         # we read users database
         read = open('/home/robot/playground/info_people.txt', 'r').read()
-        if DEBUG: print('READ:', read)
         list_peoples = []
         list_peoples = read.split('\n')
-        if DEBUG: print('LIST PEOPLE', list_peoples)
 
         im.robot.startSensorMonitor()
         idAnyTouch = anyTouch.signal.connect(onTouched)
@@ -58,7 +54,6 @@ def behaviour():
         # we wait for people to interact with
         while(not someone): 
             sensor = im.robot.sensorvalue() # 0-->laser, 1-->sonar_front, 2-->sonar_back, 3-->touch_head, 4-->touch_rhand, 5-->touch_lhand
-            if DEBUG: print(sensor)
             time.sleep(2)
             
             # if someone is back to the robot
@@ -70,7 +65,6 @@ def behaviour():
                 # we keep asking to the user back to the robot to come in front to start the interaction
                 while (p_back):
                     sensor = im.robot.sensorvalue()
-                    if DEBUG: print(sensor)
                     time.sleep(2)
                     ########## GESTURE ##########
                     thread = threading.Thread(target = im.robot.turnHead) 
@@ -112,10 +106,7 @@ def behaviour():
             im.execute('welcome_01')
             time.sleep(8)
             new_user = im.robot.memory_service.getData('FakeRobot/ASR')
-
-            print(new_user)
             new_user_s = new_user.split(' ')
-            print(new_user_s)
 
             ########## GESTURE ##########
             thread = threading.Thread(target = lambda: im.robot.talkingfast1(age = "elementary")) 
@@ -132,7 +123,6 @@ def behaviour():
                 elem = elem.split(' ')
                 if elem[0] == new_user_s[0] and elem[1] == new_user_s[1]: 
                     new = False
-                    print(elem[2])
                     old_user_school = elem[2]
                     break
                 else: new = True 
@@ -157,7 +147,6 @@ def behaviour():
                         if(age == 'middle'):
                             open('/home/robot/playground/info_people.txt', 'a').write(' middle\n')
                             im.profile[0] = 'middle'
-                            if DEBUG: print(im.profile)
                     ########## GESTURE ##########
                     thread = threading.Thread(target = lambda: im.robot.talking(age = im.profile[0])) 
                     thread.start()
@@ -168,7 +157,6 @@ def behaviour():
                     im.profile[0] = 'middle'
                     open('/home/robot/playground/info_people.txt', 'a').write(' middle\n')
                     im.profile[0] = 'middle'
-                    if DEBUG: print(im.profile)
                     ########## GESTURE ##########
                     thread = threading.Thread(target = lambda: im.robot.talking(age = 'middle')) 
                     thread.start()
@@ -217,7 +205,6 @@ def behaviour():
             
             im.ask('recycle', timeout = 15) # we accept only asr answer
             ans_rec = im.robot.memory_service.getData('FakeRobot/ASR')
-            print('ANS REC', ans_rec)
             ans_rec = ans_rec.split(' ')
             garbage_class = '' 
             # the user will try to tell the robot which object wants to recycle...
@@ -370,7 +357,6 @@ def behaviour():
 
         elif(activity == 'play'):
             im.profile[3] = 'play'
-            if DEBUG: print(im.profile)
             im.executeModality('IMAGE', 'imgs/pepper/4.png')
             im.executeModality('TEXT', "♻️ <br> Now we'll play a quiz about recycling!")
             im.executeModality('TTS', "Now we'll play a quiz about recycling.! I hope you can guess all the answers. Enjoy!")
@@ -422,10 +408,8 @@ def behaviour():
         # setting manually the simualted absence of a person
         im.robot.memory_service.insertData('Device/SubDeviceList/Platform/Front/Sonar/Sensor/Value', 0.0)
         im.robot.memory_service.insertData('Device/SubDeviceList/Platform/Back/Sonar/Sensor/Value', 0.0)
-        print(im.robot.sensorvalue())
         im.executeModality('IMAGE', "imgs/pepper/1.png")
         im.executeModality('TEXT', "Waiting for a human...")
-        
 
 
 if __name__ == "__main__":
