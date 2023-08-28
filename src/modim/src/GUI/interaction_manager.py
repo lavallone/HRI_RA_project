@@ -331,16 +331,6 @@ class InteractionManager:
                 v = [item for sublist in self.asr_meaning.values() for item in sublist]
                 print("ASR enabled with vocabulary: %r" %v)
                 self.vocabulary = v
-            #try:
-            #    if (self.robot != None):
-            #        print('#### start robot ASR... ####')
-            #        #self.robot.asr(self.vocabulary, timeout=30) # blocking !!!
-            #        print('#### end robot ASR... ####')
-            #    else:
-            #        print("No robot for ASR")
-            #except Exception as e:
-            #    print("ERROR in robot ASR")
-            #    print(e)
 
         elif modality.upper() == 'GESTURE':
             print 'run_animation('+interaction+')'
@@ -384,9 +374,11 @@ class InteractionManager:
         if (self.logfile != None):
             self.logfile.close()
             self.logfile = None
-      
-    ## OUR FUNCTIONS
-
+    
+    
+    ################################ OUR ADDED FUNCTIONS #########################################
+    
+    # game
     def super_recycling_game(self):
         dir_path = 'imgs/game/'
         dict_trash = {}
@@ -422,6 +414,7 @@ class InteractionManager:
                 time.sleep(3)
         return True
 
+    # client for garbage detection
     def detect_garbage(self, img_path):
         # create a TCP/IP socket
         client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -441,6 +434,7 @@ class InteractionManager:
             client_socket.close()
         return obj_class, ris_img_path
     
+    # client for shortest path planner
     def shortest_path(self, obj_class):
         # create a TCP/IP socket
         client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -459,6 +453,8 @@ class InteractionManager:
             # Clean up the connection
             client_socket.close()
         return map_goals_path, map_bestpath_path, is_path
+    
+    ##########################################################################################
 
 if __name__ == "__main__":
     pass
